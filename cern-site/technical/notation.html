@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Notation - WorldWideWeb</title></head><body>
+<nav aria-label="breadcrumb"><a href="../index.html">Home</a> › <span>Notation</span></nav>
+<p><a href="../../index.html">Back to my website home page</a></p>
+<main><h1>Notation</h1>
+<section><h2>A. BNF notation for syntax</h2><p>This section has three parts:</p><ol type="a"><li>a straight copy of a section of RFC #822 Standard for ARPA Internet Text Messages,</li><li>changes and additions,</li><li>a set of rules that are used everywhere and listed here once.</li></ol></section>
+<section><h2>(a) Notational Conventions</h2><h3>1. Rule Naming</h3><p>Angle brackets "&lt;" and "&gt;" are not used, in general. The name of a rule is simply the name itself.</p><h3>2. RULE1 | RULE2: Alternatives</h3><p>Elements separated by a vertical bar are alternatives.</p><h3>3. (RULE1 RULE2): Local Alternatives</h3><p>Elements enclosed in parentheses are treated as a single element.</p><h3>4. *RULE: Repetition</h3><p>The character * preceding an element indicates repetition.</p><h3>5. [RULE]: Optional</h3><p>Square brackets enclose optional elements.</p><h3>6. NRULE: Specific Repetition</h3><p>This means exactly n occurrences of an element.</p><h3>7. #RULE: Lists</h3><p>A construct using # indicates a list of elements separated by commas.</p><h3>8. ; Comments</h3><p>A semicolon starts a comment to the end of the line.</p></section>
+<section><h2>(b) Changes and additions</h2><ol><li>Nonterminals are written starting with a capital.</li><li>A rule is written with the ::= notation.</li><li>Alternatives are separated by a vertical bar rather than a slash.</li><li>Some layout character sequences use C string conventions.</li></ol></section>
+<section><h2>(c) General rules</h2><p>HTTP data are written in line format, i.e., line breaks are significant.</p><h3>Line breaks</h3><p><code>CrLf ::= \r\n</code></p><h3>Strings</h3><p>A string is surrounded by double-quote characters.</p></section>
+</main></body></html>
