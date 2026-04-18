@@ -1,0 +1,93 @@
+Bryan Roache CERN Refactor Validation Summary
+Remote homepage: https://bvr91893-glitch.github.io/
+
+Validator results used for submission support:
+- index.html
+  URL reference: https://bvr91893-glitch.github.io/
+  Result: 0 messages via W3C validator (live URL)
+- index.html
+  URL reference: local:index.html
+  Result: 0 messages via W3C validator
+- cern-site/index.html
+  URL reference: local:cern-site/index.html
+  Result: 0 messages via W3C validator
+- cern-site/about/executive-summary.html
+  URL reference: local:cern-site/about/executive-summary.html
+  Result: 0 messages via W3C validator
+- cern-site/code/getting-code.html
+  URL reference: local:cern-site/code/getting-code.html
+  Result: 0 messages via W3C validator
+- cern-site/community/mailing-lists.html
+  URL reference: local:cern-site/community/mailing-lists.html
+  Result: 0 messages via W3C validator
+- cern-site/help/browser-guide.html
+  URL reference: local:cern-site/help/browser-guide.html
+  Result: 0 messages via W3C validator
+- cern-site/help/faq.html
+  URL reference: local:cern-site/help/faq.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/conferences.html
+  URL reference: local:cern-site/hypertext/conferences.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/hypertext-terms.html
+  URL reference: local:cern-site/hypertext/hypertext-terms.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/hypertext-timeline.html
+  URL reference: local:cern-site/hypertext/hypertext-timeline.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/media.html
+  URL reference: local:cern-site/hypertext/media.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/standards.html
+  URL reference: local:cern-site/hypertext/standards.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/ted-nelson.html
+  URL reference: local:cern-site/hypertext/ted-nelson.html
+  Result: 0 messages via W3C validator
+- cern-site/hypertext/terms-list.html
+  URL reference: local:cern-site/hypertext/terms-list.html
+  Result: 0 messages via W3C validator
+- cern-site/mark-up/html-formatting.html
+  URL reference: local:cern-site/mark-up/html-formatting.html
+  Result: 0 messages via W3C validator
+- cern-site/mark-up/html-tags.html
+  URL reference: local:cern-site/mark-up/html-tags.html
+  Result: 0 messages via W3C validator
+- cern-site/news/arbitrary-news.html
+  URL reference: local:cern-site/news/arbitrary-news.html
+  Result: 0 messages via W3C validator
+- cern-site/news/november-1991.html
+  URL reference: local:cern-site/news/november-1991.html
+  Result: 0 messages via W3C validator
+- cern-site/people/people.html
+  URL reference: local:cern-site/people/people.html
+  Result: 0 messages via W3C validator
+- cern-site/project/policy.html
+  URL reference: local:cern-site/project/policy.html
+  Result: 0 messages via W3C validator
+- cern-site/references/bibliography.html
+  URL reference: local:cern-site/references/bibliography.html
+  Result: 0 messages via W3C validator
+- cern-site/resources/subjects.html
+  URL reference: local:cern-site/resources/subjects.html
+  Result: 0 messages via W3C validator
+- cern-site/resources/w3-servers.html
+  URL reference: local:cern-site/resources/w3-servers.html
+  Result: 0 messages via W3C validator
+- cern-site/software/products.html
+  URL reference: local:cern-site/software/products.html
+  Result: 0 messages via W3C validator
+- cern-site/support/help.html
+  URL reference: local:cern-site/support/help.html
+  Result: 0 messages via W3C validator
+- cern-site/technical/notation.html
+  URL reference: local:cern-site/technical/notation.html
+  Result: 0 messages via W3C validator
+- cern-site/www-project/timetable.html
+  URL reference: local:cern-site/www-project/timetable.html
+  Result: 0 messages via W3C validator after table border fix
+- cern-site/www-project/www-project-history.html
+  URL reference: local:cern-site/www-project/www-project-history.html
+  Result: 0 messages via W3C validator
+
+Note: The assignment asks for screenshots in the PDF. This generated report is a text-based validation summary created from the verified validator responses available in this environment.

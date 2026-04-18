@@ -4,6 +4,7 @@
   <title>Bryan Roache</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio homepage for Bryan Roache featuring background information and a CERN website refactor project.">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/icon/icon.png">
@@ -17,85 +18,91 @@
     body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
     .fa-anchor,.fa-coffee {font-size:200px}
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: #000;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
   </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- Navbar -->
-<div class="w3-top">
+<nav class="w3-top" aria-label="Primary">
   <div class="w3-bar w3-indigo w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-indigo"
-       href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu">
-      <i class="fa fa-bars"></i>
-    </a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="#top" class="w3-bar-item w3-button w3-padding-large w3-white" aria-current="page">Home</a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large">About</a>
+    <a href="#cern-project" class="w3-bar-item w3-button w3-padding-large">CERN Project</a>
   </div>
-</div>
+</nav>
 
 <!-- Header -->
-<header class="w3-container w3-indigo w3-center" style="padding:128px 16px">
+<header id="top" class="w3-container w3-indigo w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Bryan Roache</h1>
   <p class="w3-xlarge">Information Technology (Help Desk) student at NOVA</p>
 </header>
 
-<!-- About Section -->
-<div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <h1>About Me</h1>
-    <p class="w3-text-grey">
-      I am currently pursuing an Associate of Applied Science in Information Technology 
-      with a focus on Help Desk support at Northern Virginia Community College. 
-      My goal is to build strong technical troubleshooting skills and eventually 
-      expand into advanced networking and systems support.
-    </p>
-  </div>
-</div>
+<main id="main-content">
+  <!-- About Section -->
+  <section id="about" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="about-heading">
+    <div class="w3-content">
+      <h2 id="about-heading">About Me</h2>
+      <p class="w3-text-grey">
+        I am currently pursuing an Associate of Applied Science in Information Technology
+        with a focus on Help Desk support at Northern Virginia Community College.
+        My goal is to build strong technical troubleshooting skills and eventually
+        expand into advanced networking and systems support.
+      </p>
+    </div>
+  </section>
 
-<!-- ✅ CERN PROJECT SECTION (CORRECTLY PLACED) -->
-<div class="w3-row-padding w3-padding-64 w3-light-grey w3-container">
-  <div class="w3-content">
-    <h1>CERN Website Refactor Project</h1>
-    <p class="w3-text-grey">
-      This project is a reconstruction of the original World Wide Web site created at CERN.
-    </p>
-    <p>
-      <a href="cern-site/index.html" class="w3-button w3-indigo w3-padding-large">
-        View the CERN Website Project
-      </a>
-    </p>
-    <p class="w3-text-grey">
-      You can also jump straight into key pages from the project here:
-    </p>
-    <ul class="w3-ul w3-card-4 w3-white">
-      <li><a href="cern-site/about/executive-summary.html">Executive Summary</a></li>
-      <li><a href="cern-site/hypertext/hypertext-timeline.html">Hypertext Timeline</a></li>
-      <li><a href="cern-site/mark-up/html-tags.html">HTML Tags</a></li>
-      <li><a href="cern-site/technical/notation.html">Notation</a></li>
-      <li><a href="cern-site/www-project/timetable.html">Lecture Demo Timetable</a></li>
-      <li><a href="cern-site/www-project/www-project-history.html">WWW Project History</a></li>
-    </ul>
-    <p class="w3-text-grey">
-      Local QA checks confirmed the pages have HTML document structure, homepage links, and working internal file targets.
-    </p>
-  </div>
-</div>
+  <!-- CERN Project Section -->
+  <section id="cern-project" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="cern-project-heading">
+    <div class="w3-content">
+      <h2 id="cern-project-heading">CERN Website Refactor Project</h2>
+      <p class="w3-text-grey">
+        This project is a reconstruction of the original World Wide Web site created at CERN.
+      </p>
+      <p>
+        <a href="cern-site/index.html" class="w3-button w3-indigo w3-padding-large" aria-describedby="cern-project-description">
+          View the CERN website project
+        </a>
+      </p>
+      <p id="cern-project-description" class="w3-text-grey">
+        All pages in this site have been HTML validated using the
+        <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a>.
+      </p>
+      <p class="w3-text-grey">
+        You can also jump straight into key pages from the project here:
+      </p>
+      <ul class="w3-ul w3-card-4 w3-white">
+        <li><a href="cern-site/about/executive-summary.html">Executive Summary</a></li>
+        <li><a href="cern-site/hypertext/hypertext-timeline.html">Hypertext Timeline</a></li>
+        <li><a href="cern-site/mark-up/html-tags.html">HTML Tags</a></li>
+        <li><a href="cern-site/technical/notation.html">Notation</a></li>
+        <li><a href="cern-site/www-project/timetable.html">Lecture Demo Timetable</a></li>
+        <li><a href="cern-site/www-project/www-project-history.html">WWW Project History</a></li>
+      </ul>
+      <p class="w3-text-grey">
+        <a href="b_roache_cern_refactor-page-validation.txt">View the validation summary used for submission support</a>.
+      </p>
+    </div>
+  </section>
+</main>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">
   <p>Powered by W3.CSS</p>
 </footer>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x && x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else if (x) {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
 
 </body>
 </html>
