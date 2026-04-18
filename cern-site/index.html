@@ -4,8 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>World Wide Web</title>
+  <style>
+    html {
+      font-size: 100%;
+    }
+    body {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+      padding: 1rem;
+      background: #fff;
+      color: #111;
+      font-family: Arial, sans-serif;
+    }
+    a {
+      text-underline-offset: 0.2em;
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #ffbf47;
+      outline-offset: 3px;
+    }
+    .contrast-toolbar {
+      margin-bottom: 1rem;
+    }
+    .contrast-toggle {
+      border: 2px solid #111;
+      background: #fff;
+      color: #111;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .high-contrast {
+      background: #000;
+      color: #fff;
+    }
+    .high-contrast p,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast li {
+      color: #fff;
+    }
+    .high-contrast a {
+      color: #ffd966;
+    }
+    .high-contrast .contrast-toggle {
+      background: #000;
+      color: #fff;
+      border-color: #fff;
+    }
+  </style>
 </head>
 <body>
+  <div class="contrast-toolbar">
+    <button type="button" class="contrast-toggle" id="contrast-toggle" aria-pressed="false">
+      Turn on high contrast
+    </button>
+  </div>
   <p><a href="../index.html">Back to my website home page</a></p>
   <main>
     <h1>World Wide Web</h1>
@@ -32,5 +88,24 @@
     <p>This page has been HTML validated using the <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a>.</p>
     <p><a href="../b_roache_cern_refactor-page-validation.txt">View the full validation summary used for submission support</a>.</p>
   </main>
+  <script>
+    const contrastButton = document.getElementById("contrast-toggle");
+    const contrastStorageKey = "site-high-contrast";
+
+    function setContrastState(enabled) {
+      document.body.classList.toggle("high-contrast", enabled);
+      contrastButton.setAttribute("aria-pressed", enabled ? "true" : "false");
+      contrastButton.textContent = enabled ? "Turn off high contrast" : "Turn on high contrast";
+    }
+
+    const savedContrast = localStorage.getItem(contrastStorageKey) === "true";
+    setContrastState(savedContrast);
+
+    contrastButton.addEventListener("click", () => {
+      const enabled = !document.body.classList.contains("high-contrast");
+      setContrastState(enabled);
+      localStorage.setItem(contrastStorageKey, String(enabled));
+    });
+  </script>
 </body>
 </html>

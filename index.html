@@ -15,9 +15,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    html {
+      font-size: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: "Lato", sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: #fff;
+      color: #111;
+    }
+    h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
     .fa-anchor,.fa-coffee {font-size:200px}
+    a {
+      text-underline-offset: 0.2em;
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #ffbf47;
+      outline-offset: 3px;
+    }
     .skip-link {
       position: absolute;
       left: 1rem;
@@ -30,11 +49,66 @@
     .skip-link:focus {
       top: 1rem;
     }
+    .contrast-toolbar {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      background: #f2f2f2;
+    }
+    .contrast-toggle {
+      border: 2px solid #111;
+      background: #fff;
+      color: #111;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .high-contrast {
+      background: #000;
+      color: #fff;
+    }
+    .high-contrast .w3-indigo,
+    .high-contrast .w3-light-grey,
+    .high-contrast .w3-white,
+    .high-contrast .w3-card,
+    .high-contrast .w3-card-4,
+    .high-contrast .w3-container,
+    .high-contrast .w3-content,
+    .high-contrast .contrast-toolbar,
+    .high-contrast footer,
+    .high-contrast header,
+    .high-contrast nav {
+      background: #000 !important;
+      color: #fff !important;
+      box-shadow: none !important;
+    }
+    .high-contrast .w3-button,
+    .high-contrast .contrast-toggle {
+      background: #000 !important;
+      color: #fff !important;
+      border: 2px solid #fff;
+    }
+    .high-contrast .w3-text-grey,
+    .high-contrast p,
+    .high-contrast li,
+    .high-contrast h1,
+    .high-contrast h2,
+    .high-contrast h3 {
+      color: #fff !important;
+    }
+    .high-contrast a {
+      color: #ffd966 !important;
+    }
   </style>
 </head>
 
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="contrast-toolbar">
+  <button type="button" class="contrast-toggle" id="contrast-toggle" aria-pressed="false">
+    Turn on high contrast
+  </button>
+</div>
 
 <!-- Navbar -->
 <nav class="w3-top" aria-label="Primary">
@@ -103,6 +177,26 @@
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">
   <p>Powered by W3.CSS</p>
 </footer>
+
+<script>
+const contrastButton = document.getElementById("contrast-toggle");
+const contrastStorageKey = "site-high-contrast";
+
+function setContrastState(enabled) {
+  document.body.classList.toggle("high-contrast", enabled);
+  contrastButton.setAttribute("aria-pressed", enabled ? "true" : "false");
+  contrastButton.textContent = enabled ? "Turn off high contrast" : "Turn on high contrast";
+}
+
+const savedContrast = localStorage.getItem(contrastStorageKey) === "true";
+setContrastState(savedContrast);
+
+contrastButton.addEventListener("click", () => {
+  const enabled = !document.body.classList.contains("high-contrast");
+  setContrastState(enabled);
+  localStorage.setItem(contrastStorageKey, String(enabled));
+});
+</script>
 
 </body>
 </html>
