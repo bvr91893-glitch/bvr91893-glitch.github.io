@@ -9,58 +9,164 @@
       font-size: 100%;
     }
     body {
+      --page-bg: #ffffff;
+      --page-fg: #111111;
+      --surface-bg: #f2f2f2;
+      --surface-fg: #111111;
+      --card-bg: #ffffff;
+      --card-fg: #111111;
+      --link-color: #0b57d0;
+      --button-bg: #ffffff;
+      --button-fg: #111111;
+      --button-border: #111111;
+      --focus-color: #ffbf47;
       font-size: 1rem;
       line-height: 1.6;
       margin: 0;
       padding: 1rem;
-      background: #fff;
-      color: #111;
+      background: var(--page-bg);
+      color: var(--page-fg);
       font-family: Arial, sans-serif;
     }
     a {
+      color: var(--link-color);
       text-underline-offset: 0.2em;
     }
     a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid #ffbf47;
+    button:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--focus-color);
       outline-offset: 3px;
+    }
+    body[data-color-mode="white-on-black"] {
+      --page-bg: #000000;
+      --page-fg: #ffffff;
+      --surface-bg: #111111;
+      --surface-fg: #ffffff;
+      --card-bg: #000000;
+      --card-fg: #ffffff;
+      --link-color: #ffd966;
+      --button-bg: #000000;
+      --button-fg: #ffffff;
+      --button-border: #ffffff;
+      --focus-color: #ffd966;
+    }
+    body[data-color-mode="blue-on-black"] {
+      --page-bg: #000000;
+      --page-fg: #9bdcff;
+      --surface-bg: #071826;
+      --surface-fg: #ccefff;
+      --card-bg: #000000;
+      --card-fg: #9bdcff;
+      --link-color: #7fd3ff;
+      --button-bg: #000000;
+      --button-fg: #9bdcff;
+      --button-border: #9bdcff;
+      --focus-color: #7fd3ff;
+    }
+    body[data-color-mode="protanopia"] {
+      --page-bg: #fff7e6;
+      --page-fg: #14233a;
+      --surface-bg: #f0e5ce;
+      --surface-fg: #14233a;
+      --card-bg: #fffdf8;
+      --card-fg: #14233a;
+      --link-color: #005da6;
+      --button-bg: #fffdf8;
+      --button-fg: #14233a;
+      --button-border: #14507b;
+      --focus-color: #c67b00;
+    }
+    body[data-color-mode="deuteranopia"] {
+      --page-bg: #fef8ef;
+      --page-fg: #1d2733;
+      --surface-bg: #e5edf4;
+      --surface-fg: #1d2733;
+      --card-bg: #ffffff;
+      --card-fg: #1d2733;
+      --link-color: #7a4a00;
+      --button-bg: #ffffff;
+      --button-fg: #1d2733;
+      --button-border: #005b99;
+      --focus-color: #7a4a00;
+    }
+    body[data-color-mode="grayscale"] {
+      --page-bg: #f7f7f7;
+      --page-fg: #111111;
+      --surface-bg: #dfdfdf;
+      --surface-fg: #111111;
+      --card-bg: #ffffff;
+      --card-fg: #111111;
+      --link-color: #111111;
+      --button-bg: #ffffff;
+      --button-fg: #111111;
+      --button-border: #2d2d2d;
+      --focus-color: #555555;
     }
     .contrast-toolbar {
       margin-bottom: 1rem;
+      background: var(--surface-bg);
+      color: var(--surface-fg);
+      padding: 1rem;
     }
-    .contrast-toggle {
-      border: 2px solid #111;
-      background: #fff;
-      color: #111;
+    .contrast-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: end;
+    }
+    .contrast-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .contrast-label {
+      font-weight: 700;
+    }
+    .contrast-select {
+      border: 2px solid var(--button-border);
+      background: var(--button-bg);
+      color: var(--button-fg);
       padding: 0.75rem 1rem;
       font-size: 1rem;
-      cursor: pointer;
+      min-width: 15rem;
     }
-    .high-contrast {
-      background: #000;
-      color: #fff;
+    .contrast-description {
+      margin: 0;
+      max-width: 32rem;
     }
-    .high-contrast p,
-    .high-contrast h1,
-    .high-contrast h2,
-    .high-contrast li {
-      color: #fff;
-    }
-    .high-contrast a {
-      color: #ffd966;
-    }
-    .high-contrast .contrast-toggle {
-      background: #000;
-      color: #fff;
-      border-color: #fff;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
 <body>
   <div class="contrast-toolbar">
-    <button type="button" class="contrast-toggle" id="contrast-toggle" aria-pressed="false">
-      Turn on high contrast
-    </button>
+    <div class="contrast-form">
+      <div class="contrast-field">
+        <label class="contrast-label" id="color-mode-label" for="color-mode">Color mode</label>
+        <select class="contrast-select" id="color-mode" aria-describedby="color-mode-help">
+          <option value="default">Black on white</option>
+          <option value="white-on-black">White on black</option>
+          <option value="blue-on-black">Blue on black</option>
+          <option value="protanopia">Protanopia-friendly</option>
+          <option value="deuteranopia">Deuteranopia-friendly</option>
+          <option value="grayscale">Grayscale</option>
+        </select>
+      </div>
+      <p class="contrast-description" id="color-mode-help">
+        Choose a higher-contrast or color-vision-friendly palette for this page.
+      </p>
+    </div>
+    <p class="sr-only" id="color-mode-status" aria-live="polite"></p>
   </div>
   <p><a href="../index.html">Back to my website home page</a></p>
   <main>
@@ -89,22 +195,32 @@
     <p><a href="../b_roache_cern_refactor-page-validation.txt">View the full validation summary used for submission support</a>.</p>
   </main>
   <script>
-    const contrastButton = document.getElementById("contrast-toggle");
-    const contrastStorageKey = "site-high-contrast";
+    const colorModeSelect = document.getElementById("color-mode");
+    const colorModeStatus = document.getElementById("color-mode-status");
+    const colorModeStorageKey = "site-color-mode";
+    const colorModeLabels = {
+      default: "Black on white",
+      "white-on-black": "White on black",
+      "blue-on-black": "Blue on black",
+      protanopia: "Protanopia-friendly",
+      deuteranopia: "Deuteranopia-friendly",
+      grayscale: "Grayscale"
+    };
 
-    function setContrastState(enabled) {
-      document.body.classList.toggle("high-contrast", enabled);
-      contrastButton.setAttribute("aria-pressed", enabled ? "true" : "false");
-      contrastButton.textContent = enabled ? "Turn off high contrast" : "Turn on high contrast";
+    function setColorMode(mode) {
+      const normalizedMode = Object.prototype.hasOwnProperty.call(colorModeLabels, mode) ? mode : "default";
+      document.body.dataset.colorMode = normalizedMode;
+      colorModeSelect.value = normalizedMode;
+      colorModeStatus.textContent = "Color mode set to " + colorModeLabels[normalizedMode] + ".";
     }
 
-    const savedContrast = localStorage.getItem(contrastStorageKey) === "true";
-    setContrastState(savedContrast);
+    const savedColorMode = localStorage.getItem(colorModeStorageKey) || "default";
+    setColorMode(savedColorMode);
 
-    contrastButton.addEventListener("click", () => {
-      const enabled = !document.body.classList.contains("high-contrast");
-      setContrastState(enabled);
-      localStorage.setItem(contrastStorageKey, String(enabled));
+    colorModeSelect.addEventListener("change", (event) => {
+      const selectedMode = event.target.value;
+      setColorMode(selectedMode);
+      localStorage.setItem(colorModeStorageKey, selectedMode);
     });
   </script>
 </body>

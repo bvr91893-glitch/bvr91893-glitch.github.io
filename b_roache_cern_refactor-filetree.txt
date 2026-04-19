@@ -7,7 +7,10 @@ Published site URL: https://bvr91893-glitch.github.io/
   - icon
     - icon.png
 - b_roache_cern_refactor-filetree.txt
+- b_roache_cern_refactor-page-validation.pdf
+- b_roache_cern_refactor-page-validation.txt
 - cern-site
+  - README.md
   - about
     - executive-summary.html
   - code
@@ -36,7 +39,6 @@ Published site URL: https://bvr91893-glitch.github.io/
     - people.html
   - project
     - policy.html
-  - readme.md
   - references
     - bibliography.html
   - resources
