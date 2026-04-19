@@ -1,0 +1,77 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dark Moon Consulting</title>
+    <link rel="stylesheet" href="style.css"> <!-- Make sure your style.css is linked -->
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="Dark Moon Consulting Logo" width="150">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h1>Contact Us</h1>
+        <p>For a consultation of 30 minutes or less, our starting rate is $1200. 
+        We offer a sliding scale to ensure accessibility for all. 
+        Dark Moon Consulting provides expert services in War Consulting, Legal Consulting, Accessibility Access, and Digital Accessibility Consulting.
+        Ready to get started? Reach out to our team today!</p>
+
+        <h2>Request a Consultation</h2>
+        <form action="#" method="post">
+            <label for="first-name">First Name:</label><br>
+            <input type="text" id="first-name" name="first-name" required><br><br>
+
+            <label for="last-name">Last Name:</label><br>
+            <input type="text" id="last-name" name="last-name" required><br><br>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone" name="phone"><br><br>
+
+            <label for="subject">Select a Subject:</label><br>
+            <select id="subject" name="subject" required>
+                <option value="">-- Please choose an option --</option>
+                <option value="war-consulting">War Consulting</option>
+                <option value="legal-consulting">Legal Consulting</option>
+                <option value="accessibility-access">Accessibility Access</option>
+                <option value="digital-accessibility-consulting">Digital Accessibility Consulting</option>
+            </select><br><br>
+
+            <label for="description">Brief description of your consultation needs:</label><br>
+            <textarea id="description" name="description" rows="5" required></textarea><br><br>
+
+            <button type="submit">Submit Request</button>
+        </form>
+
+        <h2>Consulting Services Contacts</h2>
+        <ul>
+            <li>War Consulting: <a href="mailto:war@darkmoon.dark">war@darkmoon.dark</a></li>
+            <li>Legal Consulting: <a href="mailto:law@darkmoon.dark">law@darkmoon.dark</a></li>
+            <li>Accessibility Access: <a href="mailto:access@darkmoon.dark">access@darkmoon.dark</a></li>
+            <li>Digital Accessibility Consulting: <a href="mailto:digital@darkmoon.dark">digital@darkmoon.dark</a></li>
+        </ul>
+    </section>
+</main>
+
+<footer id="footer-area">
+    <p>&copy; 2025 Dark Moon Consulting. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+/* Theming Styles - theme.css */
+
+/* Class Selectors */
+.primary-bg {
+  background-color: #004080;
+  color: white;
+}
+
+.secondary-bg {
+  background-color: #e0f0ff;
+  color: #222;
+}
+
+.rounded-box {
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* ID Selectors */
+#main-call {
+  background-color: #0055a5;
+  padding: 20px;
+  font-size: 1.2rem;
+  border: 2px solid #002f5d;
+  border-radius: 10px;
+  color: white;
+}
+
+#footer-area {
+  background-color: #333;
+  color: #eee;
+  padding: 25px;
+  text-align: center;
+}
+
+/* Optional Attribute Selector */
+[role="button"] {
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+[role="button"]:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
