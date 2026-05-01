@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" role="img" aria-labelledby="title desc">
+  <title id="title">Choosing a practical account</title>
+  <desc id="desc">An original illustration of three account options, with one option selected for clear access and practical fit.</desc>
+  <rect width="760" height="480" fill="#f7f7f7"/>
+  <rect x="95" y="105" width="165" height="245" rx="18" fill="#ffffff" stroke="#2d2d2d" stroke-width="8"/>
+  <rect x="300" y="70" width="165" height="315" rx="18" fill="#ffffff" stroke="#2f4f9d" stroke-width="12"/>
+  <rect x="505" y="105" width="165" height="245" rx="18" fill="#ffffff" stroke="#2d2d2d" stroke-width="8"/>
+  <path d="M342 219 l34 34 64 -82" fill="none" stroke="#14507b" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M128 170 h96 M128 215 h72 M128 260 h96" stroke="#555555" stroke-width="14" stroke-linecap="round"/>
+  <path d="M538 170 h96 M538 215 h72 M538 260 h96" stroke="#555555" stroke-width="14" stroke-linecap="round"/>
+  <path d="M336 122 h96 M336 314 h72" stroke="#14233a" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="177" cy="398" r="18" fill="#2d2d2d"/>
+  <circle cx="382" cy="424" r="18" fill="#2f4f9d"/>
+  <circle cx="587" cy="398" r="18" fill="#2d2d2d"/>
+  <path d="M177 398 h187 M400 424 h187" stroke="#14233a" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+</svg>

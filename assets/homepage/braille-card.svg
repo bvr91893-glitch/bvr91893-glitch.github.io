@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" role="img" aria-labelledby="title desc">
+  <title id="title">Braille debit card concept</title>
+  <desc id="desc">An original illustration of a payment card with raised Braille-style dots and a contactless symbol.</desc>
+  <rect width="760" height="480" fill="#fffdf8"/>
+  <rect x="90" y="105" width="580" height="305" rx="34" fill="#14507b"/>
+  <rect x="130" y="165" width="118" height="76" rx="12" fill="#ffd966"/>
+  <path d="M540 170 c32 32 32 84 0 116 M500 194 c20 20 20 52 0 72 M462 215 c8 8 8 22 0 30" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+  <g fill="#ffffff">
+    <circle cx="145" cy="310" r="13"/>
+    <circle cx="190" cy="310" r="13"/>
+    <circle cx="235" cy="310" r="13"/>
+    <circle cx="145" cy="355" r="13"/>
+    <circle cx="235" cy="355" r="13"/>
+    <circle cx="315" cy="310" r="13"/>
+    <circle cx="360" cy="310" r="13"/>
+    <circle cx="315" cy="355" r="13"/>
+    <circle cx="405" cy="355" r="13"/>
+  </g>
+  <path d="M120 82 h440 c70 0 128 58 128 128 v62" fill="none" stroke="#9bdcff" stroke-width="10" stroke-linecap="round" opacity="0.8"/>
+  <path d="M140 442 h420 c70 0 128 -58 128 -128 v-58" fill="none" stroke="#2f4f9d" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+</svg>

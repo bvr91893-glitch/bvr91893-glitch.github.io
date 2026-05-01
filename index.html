@@ -4,7 +4,7 @@
   <title>Bryan Roache</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio homepage for Bryan Roache featuring background information and a CERN website refactor project.">
+  <meta name="description" content="Portfolio homepage for Bryan Roache, an information technology student and accessibility consultant who designs with practicality and accessibility in mind.">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/icon/icon.png">
@@ -15,10 +15,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
+    @property --accent-bg {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: #2f4f9d;
+    }
+    @property --focus-color {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: #ffbf47;
+    }
+    @property --link-color {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: #0b57d0;
+    }
     html {
       font-size: 100%;
     }
     body {
+      --site-font-family: "Lato", Arial, sans-serif;
+      --heading-font-family: "Lato", Arial, sans-serif;
+      --control-font-family: "Montserrat", Arial, sans-serif;
       --page-bg: #ffffff;
       --page-fg: #111111;
       --surface-bg: #f2f2f2;
@@ -34,14 +52,60 @@
       --muted-color: #333333;
       --focus-color: #ffbf47;
       margin: 0;
-      font-family: "Lato", sans-serif;
+      font-family: var(--site-font-family);
       font-size: 1rem;
       line-height: 1.6;
       background: var(--page-bg);
       color: var(--page-fg);
     }
-    h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    body[data-text-size="14pt"] {
+      font-size: 1.1667rem;
+    }
+    body[data-text-size="16pt"] {
+      font-size: 1.3333rem;
+    }
+    body[data-text-size="18pt"] {
+      font-size: 1.5rem;
+    }
+    body[data-text-size] p,
+    body[data-text-size] li,
+    body[data-text-size] a,
+    body[data-text-size] button,
+    body[data-text-size] select,
+    body[data-text-size] label,
+    body[data-text-size] figcaption,
+    body[data-text-size] .w3-large,
+    body[data-text-size] .w3-xlarge {
+      font-size: 1em !important;
+    }
+    body[data-text-size] h2 {
+      font-size: 1.75em;
+    }
+    body[data-text-size] h3 {
+      font-size: 1.35em;
+    }
+    body[data-text-font="arial"] {
+      --site-font-family: Arial, Helvetica, sans-serif;
+      --heading-font-family: Arial, Helvetica, sans-serif;
+      --control-font-family: Arial, Helvetica, sans-serif;
+    }
+    body[data-text-font="verdana"] {
+      --site-font-family: Verdana, Geneva, sans-serif;
+      --heading-font-family: Verdana, Geneva, sans-serif;
+      --control-font-family: Verdana, Geneva, sans-serif;
+    }
+    body[data-text-font="system"] {
+      --site-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --heading-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --control-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body[data-text-font="serif"] {
+      --site-font-family: Georgia, "Times New Roman", serif;
+      --heading-font-family: Georgia, "Times New Roman", serif;
+      --control-font-family: Georgia, "Times New Roman", serif;
+    }
+    h1,h2,h3,h4,h5,h6 {font-family: var(--heading-font-family)}
+    .w3-bar,h1,button,select {font-family: var(--control-font-family)}
     .fa-anchor,.fa-coffee {font-size:200px}
     a {
       color: var(--link-color);
@@ -132,6 +196,109 @@
       --button-border: #2d2d2d;
       --muted-color: #2d2d2d;
       --focus-color: #555555;
+    }
+    body[data-color-mode="color-wheel"] {
+      --page-bg: #000000;
+      --page-fg: #ffffff;
+      --surface-bg: #111111;
+      --surface-fg: #ffffff;
+      --card-bg: #000000;
+      --card-fg: #ffffff;
+      --accent-bg: #ffd400;
+      --accent-fg: #000000;
+      --link-color: #9bdcff;
+      --button-bg: #000000;
+      --button-fg: #ffffff;
+      --button-border: #ffffff;
+      --muted-color: #ffffff;
+      --focus-color: #ffd400;
+    }
+    @keyframes highContrastWheel {
+      0% {
+        --accent-bg: #ffd400;
+        --focus-color: #ffd400;
+        --link-color: #9bdcff;
+      }
+      25% {
+        --accent-bg: #00e5ff;
+        --focus-color: #00e5ff;
+        --link-color: #ffd400;
+      }
+      50% {
+        --accent-bg: #ff66c4;
+        --focus-color: #ff66c4;
+        --link-color: #9bdcff;
+      }
+      75% {
+        --accent-bg: #7cff6b;
+        --focus-color: #7cff6b;
+        --link-color: #ffd400;
+      }
+      100% {
+        --accent-bg: #ffd400;
+        --focus-color: #ffd400;
+        --link-color: #9bdcff;
+      }
+    }
+    body[data-color-mode="color-wheel"] {
+      animation: highContrastWheel 18s linear infinite;
+    }
+    body[data-color-mode="color-wheel"] .hero-image,
+    body[data-color-mode="color-wheel"] .about-image,
+    body[data-color-mode="color-wheel"] .consulting-image {
+      border-color: var(--accent-bg);
+    }
+    body[data-color-mode="color-wheel"] img {
+      filter: saturate(1.2);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body[data-color-mode="color-wheel"] {
+        animation: none;
+      }
+    }
+    body[data-text-color="yellow"] {
+      --page-fg: #fff36d;
+      --surface-fg: #fff36d;
+      --card-fg: #fff36d;
+      --link-color: #9bdcff;
+      --button-fg: #fff36d;
+      --button-border: #fff36d;
+      --focus-color: #fff36d;
+    }
+    body[data-text-color="cyan"] {
+      --page-fg: #9bdcff;
+      --surface-fg: #9bdcff;
+      --card-fg: #9bdcff;
+      --link-color: #fff36d;
+      --button-fg: #9bdcff;
+      --button-border: #9bdcff;
+      --focus-color: #9bdcff;
+    }
+    body[data-text-color="white"] {
+      --page-bg: #000000;
+      --page-fg: #ffffff;
+      --surface-bg: #111111;
+      --surface-fg: #ffffff;
+      --card-bg: #000000;
+      --card-fg: #ffffff;
+      --link-color: #ffd966;
+      --button-bg: #000000;
+      --button-fg: #ffffff;
+      --button-border: #ffffff;
+      --focus-color: #ffd966;
+    }
+    body[data-text-color="black"] {
+      --page-bg: #ffffff;
+      --page-fg: #000000;
+      --surface-bg: #f2f2f2;
+      --surface-fg: #000000;
+      --card-bg: #ffffff;
+      --card-fg: #000000;
+      --link-color: #003f91;
+      --button-bg: #ffffff;
+      --button-fg: #000000;
+      --button-border: #000000;
+      --focus-color: #a15c00;
     }
     .skip-link {
       position: absolute;
@@ -236,6 +403,47 @@
       background: var(--accent-bg) !important;
       color: var(--accent-fg) !important;
     }
+    .hero-image {
+      width: min(46rem, 100%);
+      height: auto;
+      margin-top: 2rem;
+      border: 6px solid var(--accent-fg);
+      background: var(--card-bg);
+    }
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-image {
+      width: 100%;
+      height: auto;
+      border: 4px solid var(--button-border);
+      background: var(--card-bg);
+    }
+    .consulting-images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .consulting-image {
+      width: 100%;
+      height: auto;
+      border: 4px solid var(--button-border);
+      background: var(--card-bg);
+    }
+    .image-caption {
+      margin-top: 0.5rem;
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .about-layout,
+      .consulting-images {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -252,13 +460,47 @@
         <option value="protanopia">Protanopia-friendly</option>
         <option value="deuteranopia">Deuteranopia-friendly</option>
         <option value="grayscale">Grayscale</option>
+        <option value="color-wheel">High contrast color wheel</option>
+      </select>
+    </div>
+    <div class="contrast-field">
+      <label class="contrast-label" for="text-color">Text color</label>
+      <select class="contrast-select" id="text-color" aria-describedby="text-settings-help">
+        <option value="default">Use color mode text</option>
+        <option value="black">Black text on white</option>
+        <option value="white">White text on black</option>
+        <option value="yellow">Yellow text</option>
+        <option value="cyan">Cyan text</option>
+      </select>
+    </div>
+    <div class="contrast-field">
+      <label class="contrast-label" for="text-size">Text size</label>
+      <select class="contrast-select" id="text-size" aria-describedby="text-settings-help">
+        <option value="default">Default size</option>
+        <option value="14pt">14 point</option>
+        <option value="16pt">16 point</option>
+        <option value="18pt">18 point</option>
+      </select>
+    </div>
+    <div class="contrast-field">
+      <label class="contrast-label" for="text-font">Text font</label>
+      <select class="contrast-select" id="text-font" aria-describedby="text-settings-help">
+        <option value="default">Default font</option>
+        <option value="arial">Arial</option>
+        <option value="verdana">Verdana</option>
+        <option value="system">System font</option>
+        <option value="serif">Georgia serif</option>
       </select>
     </div>
     <p class="contrast-description" id="color-mode-help">
-      Choose a higher-contrast or color-vision-friendly palette for this site.
+      Choose a higher-contrast, color-vision-friendly, or high-contrast shifting palette for this site.
+    </p>
+    <p class="contrast-description" id="text-settings-help">
+      Adjust the site text color, size, and font. Text size goes up to 18 point.
     </p>
   </div>
   <p class="sr-only" id="color-mode-status" aria-live="polite"></p>
+  <p class="sr-only" id="text-settings-status" aria-live="polite"></p>
 </div>
 
 <!-- Navbar -->
@@ -276,20 +518,71 @@
 <!-- Header -->
 <header id="top" class="w3-container w3-indigo w3-center" style="padding:128px 16px">
   <h1 class="w3-margin w3-jumbo">Bryan Roache</h1>
-  <p class="w3-xlarge">Information Technology (Help Desk) student at NOVA</p>
+  <p class="w3-xlarge">Practicality over pretty. Access over assumptions.</p>
+  <p class="w3-large">Information Technology student, accessibility consultant, and practical problem solver.</p>
+  <img
+    class="hero-image"
+    src="assets/homepage/practical-access.svg"
+    alt="Illustration of an accessible technology workspace with a laptop, phone, headset, and tactile dots."
+    width="900"
+    height="520">
 </header>
 
 <main id="main-content">
   <!-- About Section -->
   <section id="about" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="about-heading">
     <div class="w3-content">
-      <h2 id="about-heading">About Me</h2>
-      <p class="w3-text-grey">
-        I am currently pursuing an Associate of Applied Science in Information Technology
-        with a focus on Help Desk support at Northern Virginia Community College.
-        My goal is to build strong technical troubleshooting skills and eventually
-        expand into advanced networking and systems support.
-      </p>
+      <div class="about-layout">
+        <div>
+          <h2 id="about-heading">About Me</h2>
+          <p class="w3-text-grey">
+            I am currently pursuing an Associate of Applied Science in Information Technology
+            with a focus on Help Desk support at Northern Virginia Community College.
+            My goal is to build strong technical troubleshooting skills and eventually
+            expand into advanced networking and systems support.
+          </p>
+          <p class="w3-text-grey">
+            I also do consulting work centered on accessibility and practical technology
+            decisions. I have helped companies think through more accessible platforms,
+            including work connected to Braille debit cards, and I have helped
+            individuals find accounts and services that work best for their needs.
+          </p>
+          <p class="w3-text-grey">
+            As a consultant, I understand that the world is not always built with blind
+            people in mind. My work starts from that reality and focuses on tools,
+            services, and platforms that people can actually use.
+          </p>
+        </div>
+        <figure>
+          <img
+            class="about-image"
+            src="assets/homepage/braille-card.svg"
+            alt="Illustration of a debit card with raised Braille-style dots and a contactless payment symbol."
+            width="760"
+            height="480">
+          <figcaption class="image-caption">Accessibility belongs in everyday tools.</figcaption>
+        </figure>
+      </div>
+      <div class="consulting-images">
+        <figure>
+          <img
+            class="consulting-image"
+            src="assets/homepage/account-fit.svg"
+            alt="Illustration of three account choices with one selected as the best practical fit."
+            width="760"
+            height="480">
+          <figcaption class="image-caption">Practical advice means finding what actually works.</figcaption>
+        </figure>
+        <figure>
+          <img
+            class="consulting-image"
+            src="assets/homepage/practical-access.svg"
+            alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
+            width="900"
+            height="520">
+          <figcaption class="image-caption">Access starts with the real tools people use.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -383,14 +676,42 @@
 <script>
 const colorModeSelect = document.getElementById("color-mode");
 const colorModeStatus = document.getElementById("color-mode-status");
+const textColorSelect = document.getElementById("text-color");
+const textSizeSelect = document.getElementById("text-size");
+const textFontSelect = document.getElementById("text-font");
+const textSettingsStatus = document.getElementById("text-settings-status");
 const colorModeStorageKey = "site-color-mode";
+const textColorStorageKey = "site-text-color";
+const textSizeStorageKey = "site-text-size";
+const textFontStorageKey = "site-text-font";
 const colorModeLabels = {
   default: "Black on white",
   "white-on-black": "White on black",
   "blue-on-black": "Blue on black",
   protanopia: "Protanopia-friendly",
   deuteranopia: "Deuteranopia-friendly",
-  grayscale: "Grayscale"
+  grayscale: "Grayscale",
+  "color-wheel": "High contrast color wheel"
+};
+const textColorLabels = {
+  default: "Use color mode text",
+  black: "Black text on white",
+  white: "White text on black",
+  yellow: "Yellow text",
+  cyan: "Cyan text"
+};
+const textSizeLabels = {
+  default: "Default size",
+  "14pt": "14 point",
+  "16pt": "16 point",
+  "18pt": "18 point"
+};
+const textFontLabels = {
+  default: "Default font",
+  arial: "Arial",
+  verdana: "Verdana",
+  system: "System font",
+  serif: "Georgia serif"
 };
 
 function setColorMode(mode) {
@@ -400,13 +721,57 @@ function setColorMode(mode) {
   colorModeStatus.textContent = "Color mode set to " + colorModeLabels[normalizedMode] + ".";
 }
 
+function normalizeSetting(labels, value) {
+  return Object.prototype.hasOwnProperty.call(labels, value) ? value : "default";
+}
+
+function setTextSettings(options = {}) {
+  const textColor = normalizeSetting(textColorLabels, options.textColor || textColorSelect.value);
+  const textSize = normalizeSetting(textSizeLabels, options.textSize || textSizeSelect.value);
+  const textFont = normalizeSetting(textFontLabels, options.textFont || textFontSelect.value);
+
+  document.body.dataset.textColor = textColor;
+  document.body.dataset.textSize = textSize;
+  document.body.dataset.textFont = textFont;
+  textColorSelect.value = textColor;
+  textSizeSelect.value = textSize;
+  textFontSelect.value = textFont;
+  textSettingsStatus.textContent = "Text settings set to " + textColorLabels[textColor] + ", " + textSizeLabels[textSize] + ", " + textFontLabels[textFont] + ".";
+}
+
 const savedColorMode = localStorage.getItem(colorModeStorageKey) || "default";
+const savedTextColor = localStorage.getItem(textColorStorageKey) || "default";
+const savedTextSize = localStorage.getItem(textSizeStorageKey) || "default";
+const savedTextFont = localStorage.getItem(textFontStorageKey) || "default";
 setColorMode(savedColorMode);
+setTextSettings({
+  textColor: savedTextColor,
+  textSize: savedTextSize,
+  textFont: savedTextFont
+});
 
 colorModeSelect.addEventListener("change", (event) => {
   const selectedMode = event.target.value;
   setColorMode(selectedMode);
   localStorage.setItem(colorModeStorageKey, selectedMode);
+});
+
+textColorSelect.addEventListener("change", (event) => {
+  const selectedTextColor = event.target.value;
+  setTextSettings({ textColor: selectedTextColor });
+  localStorage.setItem(textColorStorageKey, selectedTextColor);
+});
+
+textSizeSelect.addEventListener("change", (event) => {
+  const selectedTextSize = event.target.value;
+  setTextSettings({ textSize: selectedTextSize });
+  localStorage.setItem(textSizeStorageKey, selectedTextSize);
+});
+
+textFontSelect.addEventListener("change", (event) => {
+  const selectedTextFont = event.target.value;
+  setTextSettings({ textFont: selectedTextFont });
+  localStorage.setItem(textFontStorageKey, selectedTextFont);
 });
 </script>
 

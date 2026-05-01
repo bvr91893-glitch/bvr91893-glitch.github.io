@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+  <title id="title">Accessible technology workspace</title>
+  <desc id="desc">An original illustration of a laptop, phone, headset, and tactile dots arranged on a clear desk.</desc>
+  <rect width="900" height="520" fill="#f7f9ff"/>
+  <circle cx="710" cy="110" r="68" fill="#ffd966"/>
+  <rect x="140" y="125" width="470" height="285" rx="24" fill="#ffffff" stroke="#14233a" stroke-width="12"/>
+  <rect x="188" y="174" width="374" height="168" rx="14" fill="#d7f3ff"/>
+  <path d="M210 300 C275 250, 322 284, 374 240 S482 210, 538 270" fill="none" stroke="#2f4f9d" stroke-width="16" stroke-linecap="round"/>
+  <rect x="105" y="410" width="540" height="44" rx="12" fill="#14233a"/>
+  <rect x="200" y="430" width="350" height="22" rx="10" fill="#9bdcff"/>
+  <rect x="655" y="178" width="118" height="214" rx="22" fill="#14233a"/>
+  <rect x="675" y="210" width="78" height="136" rx="10" fill="#ffffff"/>
+  <circle cx="714" cy="365" r="11" fill="#ffffff"/>
+  <path d="M684 254 h58 M684 287 h58 M684 320 h38" stroke="#2f4f9d" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="194" cy="90" r="13" fill="#14233a"/>
+  <circle cx="240" cy="90" r="13" fill="#14233a"/>
+  <circle cx="286" cy="90" r="13" fill="#14233a"/>
+  <circle cx="332" cy="90" r="13" fill="#14233a"/>
+  <circle cx="378" cy="90" r="13" fill="#14233a"/>
+  <path d="M712 130 c52 10 86 46 86 100" fill="none" stroke="#14233a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M798 230 c0 38 -18 68 -50 88" fill="none" stroke="#14233a" stroke-width="14" stroke-linecap="round"/>
+  <rect x="744" y="305" width="60" height="72" rx="20" fill="#2f4f9d"/>
+  <circle cx="776" cy="330" r="10" fill="#ffffff"/>
+</svg>
