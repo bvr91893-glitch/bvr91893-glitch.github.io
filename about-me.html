@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>About Me - Brian V. Roache</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About Brian V. Roache, a blind student with cerebral palsy who focuses on accessibility-first web design and practical consultation.">
+  <link rel="icon" href="assets/icon/icon.png">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <style>
+    body {
+      margin: 0;
+      font-family: Lato, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #111111;
+      background: #ffffff;
+    }
+    h1,
+    h2,
+    h3,
+    nav,
+    button {
+      font-family: Montserrat, Arial, sans-serif;
+    }
+    a {
+      color: #0b57d0;
+      text-underline-offset: 0.2em;
+    }
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #ffbf47;
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: #000000;
+      color: #ffffff;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+    .site-nav {
+      background: #2f4f9d;
+      color: #ffffff;
+    }
+    .site-nav a {
+      color: #ffffff;
+      display: inline-block;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    .site-nav a:hover,
+    .site-nav a:focus {
+      background: #ffffff;
+      color: #111111;
+    }
+    .page-hero {
+      background: #151515;
+      color: #ffffff;
+      padding: 7rem 1rem 4rem;
+    }
+    .content {
+      max-width: 58rem;
+      margin: 0 auto;
+    }
+    main section {
+      padding: 3rem 1rem;
+    }
+    main section:nth-child(even) {
+      background: #f2f2f2;
+    }
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+      max-width: 42rem;
+    }
+    .field {
+      display: grid;
+      gap: 0.35rem;
+    }
+    label {
+      font-weight: 700;
+    }
+    input,
+    textarea {
+      border: 2px solid #111111;
+      border-radius: 0;
+      font: inherit;
+      padding: 0.75rem;
+    }
+    textarea {
+      min-height: 9rem;
+      resize: vertical;
+    }
+    .button-link,
+    button {
+      border: 2px solid #111111;
+      background: #2f4f9d;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 700;
+      padding: 0.85rem 1.1rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <a href="index.html">Home</a>
+  <a href="about-me.html" aria-current="page">About Me</a>
+  <a href="index.html#cern-project">CERN Project</a>
+  <a href="index.html#dark-moon-project">Dark Moon</a>
+  <a href="index.html#landscapes-project">Landscapes</a>
+  <a href="index.html#suno-project">Suno</a>
+</nav>
+
+<header class="page-hero">
+  <div class="content">
+    <h1>About Brian V. Roache</h1>
+    <p>My name is Brian V. Roache, spelled R-O-A-C-H-E. I design and consult with accessibility at the center.</p>
+  </div>
+</header>
+
+<main id="main-content">
+  <section aria-labelledby="my-story-heading">
+    <div class="content">
+      <h2 id="my-story-heading">My Story</h2>
+      <p>
+        My name is Brian V. Roache, spelled R-O-A-C-H-E. I am a male student who is blind
+        and has cerebral palsy. I also use a medical walking boot on my right leg.
+      </p>
+      <p>
+        Accessibility is not just a feature; it is what makes me, me. My life and education
+        have taught me that access should be part of the foundation, not something added later.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="accessibility-philosophy-heading">
+    <div class="content">
+      <h2 id="accessibility-philosophy-heading">Accessibility Philosophy</h2>
+      <p>
+        When I design web pages, I always keep accessibility in mind. My motto is
+        "practicality over pretty," because a website should not only look good; it should
+        work well for real people.
+      </p>
+      <p>
+        I believe accessible design should be clear, dependable, and usable with assistive
+        technology. A page should make sense to someone using a screen reader, keyboard,
+        magnification, or any practical access tool that helps them participate fully.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="experience-heading">
+    <div class="content">
+      <h2 id="experience-heading">Experience</h2>
+      <p>
+        I have worked with organizations ranging from companies like Fidelity to small
+        nonprofits, helping make accessibility work not just for some people, but for everyone.
+      </p>
+      <p>
+        I enjoy helping people find accessible options in areas like education, banking,
+        technology, and everyday life.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="technical-background-heading">
+    <div class="content">
+      <h2 id="technical-background-heading">Technical Background</h2>
+      <p>
+        I have experience with Linux, macOS, and Windows, including Windows XP through
+        Windows 11. I enjoy exploring operating systems and accessibility tools because
+        they help users find what works best for them.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="education-heading">
+    <div class="content">
+      <h2 id="education-heading">Education</h2>
+      <p>
+        I have a paralegal certificate from the University of Arkansas at Little Rock,
+        and I am currently pursuing an Associate of Applied Science in Information Technology.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="personal-background-heading">
+    <div class="content">
+      <h2 id="personal-background-heading">Personal Background</h2>
+      <p>
+        I come from a family with two brothers and two sisters: Julian, Amy, Steven, and Kayla.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact-heading">
+    <div class="content">
+      <h2 id="contact-heading">Contact / Consultation</h2>
+      <p id="contact-invitation">
+        If you need help understanding your accessibility options or would like a consultation,
+        please fill out the contact form, email me directly, or call me.
+      </p>
+      <form class="contact-form" action="mailto:gammon_jingle.13@icloud.com" method="post" enctype="text/plain" aria-describedby="contact-invitation">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="contact-message">How can I help?</label>
+          <textarea id="contact-message" name="message"></textarea>
+        </div>
+        <button type="submit">Submit consultation request</button>
+      </form>
+      <p>
+        Email:
+        <a href="mailto:gammon_jingle.13@icloud.com">gammon_jingle.13@icloud.com</a>
+      </p>
+      <p>
+        Phone:
+        <a href="tel:5555555555">555-555-5555</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="w3-container w3-padding-32 w3-center">
+  <p><a href="index.html">Return to homepage</a></p>
+</footer>
+</body>
+</html>
