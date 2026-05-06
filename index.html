@@ -446,6 +446,84 @@
       margin-top: 0.5rem;
       font-weight: 700;
     }
+    .lightbox-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .lightbox-gallery-item {
+      background: var(--card-bg);
+      border: 3px solid var(--button-border);
+      color: var(--card-fg);
+      cursor: pointer;
+      display: grid;
+      font: inherit;
+      gap: 0.6rem;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .lightbox-gallery-item:hover,
+    .lightbox-gallery-item:focus-visible {
+      background: var(--surface-bg);
+      color: var(--surface-fg);
+      outline: 3px solid var(--focus-color);
+      outline-offset: 3px;
+    }
+    .lightbox-gallery-item img {
+      aspect-ratio: 4 / 3;
+      background: var(--surface-bg);
+      border: 2px solid var(--button-border);
+      height: auto;
+      object-fit: cover;
+      width: 100%;
+    }
+    .lightbox-gallery-item span {
+      font-weight: 700;
+    }
+    .lightbox {
+      background: rgba(0, 0, 0, 0.86);
+      display: grid;
+      inset: 0;
+      padding: 1rem;
+      place-items: center;
+      position: fixed;
+      z-index: 2000;
+    }
+    .lightbox[hidden] {
+      display: none;
+    }
+    .lightbox-content {
+      background: var(--card-bg);
+      border: 4px solid var(--focus-color);
+      color: var(--card-fg);
+      max-height: 92vh;
+      overflow: auto;
+      padding: 1rem;
+      position: relative;
+      width: min(56rem, 96vw);
+    }
+    .lightbox-content img {
+      background: var(--surface-bg);
+      border: 2px solid var(--button-border);
+      height: auto;
+      width: 100%;
+    }
+    .close-lightbox {
+      background: var(--accent-bg);
+      border: 3px solid var(--accent-fg);
+      color: var(--accent-fg);
+      cursor: pointer;
+      font: inherit;
+      font-size: 2rem;
+      font-weight: 700;
+      height: 3rem;
+      line-height: 1;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      width: 3rem;
+    }
     .suno-player {
       border: 4px solid var(--button-border);
       background: var(--card-bg);
@@ -565,11 +643,11 @@
 <nav class="w3-top" aria-label="Primary">
   <div class="w3-bar w3-indigo w3-card w3-left-align w3-large">
     <a href="#top" class="w3-bar-item w3-button w3-padding-large w3-white" aria-current="page">Home</a>
-    <a href="about-me.html" class="w3-bar-item w3-button w3-padding-large">About Me</a>
-    <a href="#cern-project" class="w3-bar-item w3-button w3-padding-large">CERN Project</a>
-    <a href="#dark-moon-project" class="w3-bar-item w3-button w3-padding-large">Dark Moon</a>
-    <a href="#landscapes-project" class="w3-bar-item w3-button w3-padding-large">Landscapes</a>
-    <a href="#suno-project" class="w3-bar-item w3-button w3-padding-large">Suno</a>
+    <a href="#images" class="w3-bar-item w3-button w3-padding-large">Images</a>
+    <a href="#video" class="w3-bar-item w3-button w3-padding-large">Video</a>
+    <a href="#projects" class="w3-bar-item w3-button w3-padding-large">Projects</a>
+    <a href="about-me.html" class="w3-bar-item w3-button w3-padding-large">About</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large">Contact</a>
   </div>
 </nav>
 
@@ -640,8 +718,112 @@
     </div>
   </section>
 
+  <!-- Images Section -->
+  <section id="images" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="images-heading">
+    <div class="w3-content">
+      <h2 id="images-heading">Images</h2>
+      <p class="w3-text-grey">
+        This image gallery uses a lightbox. Select an image to view a larger version without leaving the page.
+      </p>
+      <div class="lightbox-gallery" aria-label="AI landscape image gallery">
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-1.svg"
+          data-title="Calm Landscape"
+          data-description="A calm blue-toned mountain lake scene with soft morning light and a peaceful mood.">
+          <img
+            src="assets/lightbox/emotion-landscape-1.svg"
+            alt="Calm blue mountain lake landscape with soft morning light."
+            width="760"
+            height="570">
+          <span>Calm Landscape</span>
+        </button>
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-2.svg"
+          data-title="Joy Landscape"
+          data-description="A warm golden sunrise over rolling hills, designed to suggest joy and energy.">
+          <img
+            src="assets/lightbox/emotion-landscape-2.svg"
+            alt="Golden sunrise over rolling hills representing joy."
+            width="760"
+            height="570">
+          <span>Joy Landscape</span>
+        </button>
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-3.svg"
+          data-title="Sadness Landscape"
+          data-description="A rainy gray valley with distant mountains, designed to suggest sadness and reflection.">
+          <img
+            src="assets/lightbox/emotion-landscape-3.svg"
+            alt="Rainy gray valley landscape representing sadness."
+            width="760"
+            height="570">
+          <span>Sadness Landscape</span>
+        </button>
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-4.svg"
+          data-title="Anger Landscape"
+          data-description="A stormy red-orange canyon scene with lightning, designed to suggest anger and intensity.">
+          <img
+            src="assets/lightbox/emotion-landscape-4.svg"
+            alt="Stormy red canyon landscape with lightning representing anger."
+            width="760"
+            height="570">
+          <span>Anger Landscape</span>
+        </button>
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-5.svg"
+          data-title="Wonder Landscape"
+          data-description="A purple night sky with bright stars over a quiet forest, designed to suggest wonder.">
+          <img
+            src="assets/lightbox/emotion-landscape-5.svg"
+            alt="Purple starry forest landscape representing wonder."
+            width="760"
+            height="570">
+          <span>Wonder Landscape</span>
+        </button>
+        <button class="lightbox-gallery-item" type="button"
+          data-full="assets/lightbox/emotion-landscape-6.svg"
+          data-title="Hope Landscape"
+          data-description="A green landscape with a bright horizon, designed to suggest hope and forward motion.">
+          <img
+            src="assets/lightbox/emotion-landscape-6.svg"
+            alt="Green landscape with bright horizon representing hope."
+            width="760"
+            height="570">
+          <span>Hope Landscape</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="video-heading">
+    <div class="w3-content">
+      <h2 id="video-heading">Video</h2>
+      <p class="w3-text-grey">
+        This section is reserved for my capstone video content. I will add a final embedded video or local video file before the final deployment.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="projects-heading">
+    <div class="w3-content">
+      <h2 id="projects-heading">Projects</h2>
+      <p class="w3-text-grey">
+        This portfolio includes class projects, accessibility-focused design work, and multimedia experiments.
+      </p>
+      <ul class="w3-ul w3-card-4 w3-white">
+        <li><a href="#cern-project">CERN Website Refactor Project</a></li>
+        <li><a href="#dark-moon-project">Dark Moon Consulting Page</a></li>
+        <li><a href="#landscapes-project">Landscapes Project</a></li>
+        <li><a href="#suno-project">Suno Music Project</a></li>
+      </ul>
+    </div>
+  </section>
+
   <!-- CERN Project Section -->
-  <section id="cern-project" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="cern-project-heading">
+  <section id="cern-project" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="cern-project-heading">
     <div class="w3-content">
       <h2 id="cern-project-heading">CERN Website Refactor Project</h2>
       <p class="w3-text-grey">
@@ -730,7 +912,31 @@
       </div>
     </div>
   </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="contact-heading">
+    <div class="w3-content">
+      <h2 id="contact-heading">Contact</h2>
+      <p class="w3-text-grey">
+        For questions about my portfolio, accessibility work, or class projects, contact me by email.
+      </p>
+      <p>
+        <a href="mailto:gammon_jingle.13@icloud.com" class="w3-button w3-indigo w3-padding-large">
+          Email Brian
+        </a>
+      </p>
+    </div>
+  </section>
 </main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
+  <div class="lightbox-content">
+    <button class="close-lightbox" type="button" aria-label="Close image viewer">&times;</button>
+    <img id="lightbox-image" src="" alt="">
+    <h2 id="lightbox-title"></h2>
+    <p id="lightbox-description"></p>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">
@@ -836,6 +1042,54 @@ textFontSelect.addEventListener("change", (event) => {
   const selectedTextFont = event.target.value;
   setTextSettings({ textFont: selectedTextFont });
   localStorage.setItem(textFontStorageKey, selectedTextFont);
+});
+
+const galleryItems = document.querySelectorAll(".lightbox-gallery-item");
+const lightbox = document.querySelector("#lightbox");
+const lightboxImage = document.querySelector("#lightbox-image");
+const lightboxTitle = document.querySelector("#lightbox-title");
+const lightboxDescription = document.querySelector("#lightbox-description");
+const closeLightboxButton = document.querySelector(".close-lightbox");
+let lastFocusedElement = null;
+
+function openLightbox(item) {
+  lastFocusedElement = document.activeElement;
+  lightboxImage.src = item.getAttribute("data-full");
+  lightboxImage.alt = item.getAttribute("data-description");
+  lightboxTitle.textContent = item.getAttribute("data-title");
+  lightboxDescription.textContent = item.getAttribute("data-description");
+  lightbox.hidden = false;
+  closeLightboxButton.focus();
+}
+
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImage.src = "";
+  lightboxImage.alt = "";
+  lightboxTitle.textContent = "";
+  lightboxDescription.textContent = "";
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+galleryItems.forEach((item) => {
+  item.addEventListener("click", () => openLightbox(item));
+});
+
+closeLightboxButton.addEventListener("click", closeLightbox);
+
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !lightbox.hidden) {
+    closeLightbox();
+  }
 });
 </script>
 

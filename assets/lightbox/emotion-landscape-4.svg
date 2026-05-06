@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Anger Landscape</title>
+  <desc id="desc">Horizontal landscape placeholder image for the anger landscape gallery item.</desc>
+  <rect width="1200" height="800" fill="#ffd0b3"/>
+  <circle cx="950" cy="170" r="90" fill="#fff7cc" opacity="0.9"/>
+  <path d="M0 460 L250 230 L470 460 Z" fill="#e85d04" opacity="0.9"/>
+  <path d="M260 470 L560 180 L850 470 Z" fill="#4a1600" opacity="0.85"/>
+  <path d="M650 480 L900 260 L1200 480 Z" fill="#e85d04" opacity="0.9"/>
+  <rect y="480" width="1200" height="320" fill="#4a1600" opacity="0.95"/>
+  <path d="M0 610 C190 560 350 660 540 610 C730 560 900 650 1200 590 L1200 800 L0 800 Z" fill="#e85d04" opacity="0.75"/>
+  <text x="60" y="720" font-family="Arial, Helvetica, sans-serif" font-size="58" fill="#ffffff">Anger Landscape</text>
+</svg>
