@@ -112,6 +112,32 @@
       padding: 0.85rem 1.1rem;
       text-decoration: none;
     }
+    .organization-links {
+      display: grid;
+      gap: 0.75rem;
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+    }
+    .organization-links a {
+      align-items: center;
+      border: 2px solid #111111;
+      color: #111111;
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem;
+      text-decoration: none;
+    }
+    .organization-links a:hover,
+    .organization-links a:focus {
+      background: #ffffff;
+      color: #111111;
+    }
+    .organization-links img {
+      flex: 0 0 auto;
+      height: 3rem;
+      width: 4.5rem;
+    }
   </style>
 </head>
 <body>
@@ -190,6 +216,32 @@
         accessibility and community input work related to health services, dental information
         exchange, and trauma-informed policy discussions.
       </p>
+      <ul class="organization-links" aria-label="Related advisory and public service links">
+        <li>
+          <a href="https://www.dmas.virginia.gov/about-us/boards-and-public-meetings/beneficiary-advisory-council/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/organizations/dmas-badge.svg" alt="DMAS text badge for Virginia Medicaid.">
+            <span>Virginia Department of Medical Assistance Services Beneficiary Advisory Council</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.dmas.virginia.gov/media/xiolusq0/draft-minutes-for-medicaid-member-advisory-committee-april-8-2024_final.pdf" target="_blank" rel="noopener noreferrer">
+            <img src="assets/organizations/mac-badge.svg" alt="MAC text badge for Medicaid Member Advisory Committee.">
+            <span>April 8, 2024 Medicaid Member Advisory Committee meeting minutes</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.dss.virginia.gov/community/otrp/index.cgi" target="_blank" rel="noopener noreferrer">
+            <img src="assets/organizations/otrp-badge.svg" alt="OTRP text badge for Office of Trauma and Resilience Policy.">
+            <span>Virginia Department of Social Services Office of Trauma and Resilience Policy</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://virginiaheals.com/" target="_blank" rel="noopener noreferrer">
+            <img src="assets/organizations/virginia-heals-badge.svg" alt="Virginia HEALS text badge.">
+            <span>Virginia HEALS</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 
