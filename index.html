@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/icon/icon.png">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Atkinson+Hyperlegible:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,8 +35,8 @@
       font-size: 100%;
     }
     body {
-      --site-font-family: "Lato", Arial, sans-serif;
-      --heading-font-family: "Lato", Arial, sans-serif;
+      --site-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+      --heading-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
       --control-font-family: "Montserrat", Arial, sans-serif;
       --page-bg: #ffffff;
       --page-fg: #111111;
@@ -94,15 +95,15 @@
       --heading-font-family: Verdana, Geneva, sans-serif;
       --control-font-family: Verdana, Geneva, sans-serif;
     }
+    body[data-text-font="atkinson"] {
+      --site-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+      --heading-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+      --control-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
+    }
     body[data-text-font="system"] {
       --site-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --heading-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --control-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    body[data-text-font="serif"] {
-      --site-font-family: Georgia, "Times New Roman", serif;
-      --heading-font-family: Georgia, "Times New Roman", serif;
-      --control-font-family: Georgia, "Times New Roman", serif;
     }
     h1,h2,h3,h4,h5,h6 {font-family: var(--heading-font-family)}
     .w3-bar,h1,button,select {font-family: var(--control-font-family)}
@@ -621,11 +622,11 @@
     <div class="contrast-field">
       <label class="contrast-label" for="text-font">Text font</label>
       <select class="contrast-select" id="text-font" aria-describedby="text-settings-help">
-        <option value="default">Default font</option>
+        <option value="default">Atkinson Hyperlegible</option>
+        <option value="atkinson">Atkinson Hyperlegible</option>
         <option value="arial">Arial</option>
         <option value="verdana">Verdana</option>
         <option value="system">System font</option>
-        <option value="serif">Georgia serif</option>
       </select>
     </div>
     <p class="contrast-description" id="color-mode-help">
@@ -645,6 +646,7 @@
     <a href="#top" class="w3-bar-item w3-button w3-padding-large w3-white" aria-current="page">Home</a>
     <a href="#images" class="w3-bar-item w3-button w3-padding-large">Images</a>
     <a href="#video" class="w3-bar-item w3-button w3-padding-large">Video</a>
+    <a href="#skills" class="w3-bar-item w3-button w3-padding-large">Skills</a>
     <a href="#projects" class="w3-bar-item w3-button w3-padding-large">Projects</a>
     <a href="about-me.html" class="w3-bar-item w3-button w3-padding-large">About</a>
     <a href="#contact" class="w3-bar-item w3-button w3-padding-large">Contact</a>
@@ -684,6 +686,9 @@
             <a href="about-me.html" class="w3-button w3-indigo w3-padding-large">
               Read My Story
             </a>
+            <a href="assets/documents/bryan-v-roache-accessibility-consultant.doc" class="w3-button w3-indigo w3-padding-large" download>
+              Download Resume and Profile
+            </a>
           </p>
         </div>
         <figure>
@@ -716,6 +721,22 @@
           <figcaption class="image-caption">Access starts with the real tools people use.</figcaption>
         </figure>
       </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="skills-heading">
+    <div class="w3-content">
+      <h2 id="skills-heading">Skills</h2>
+      <p class="w3-text-grey">
+        My portfolio focuses on practical technology support, accessible web design, and clear communication.
+      </p>
+      <ul class="w3-ul w3-card-4 w3-white">
+        <li>Accessible HTML structure, headings, links, forms, alt text, and keyboard-friendly navigation.</li>
+        <li>GitHub Pages project organization, static website updates, and local link checking.</li>
+        <li>Assistive technology experience with VoiceOver, screen-reader workflows, and everyday access tools.</li>
+        <li>Microsoft Office, Outlook, PowerPoint, macOS, Windows, and practical help desk support.</li>
+      </ul>
     </div>
   </section>
 
@@ -981,11 +1002,11 @@ const textSizeLabels = {
   "18pt": "18 point"
 };
 const textFontLabels = {
-  default: "Default font",
+  default: "Atkinson Hyperlegible",
+  atkinson: "Atkinson Hyperlegible",
   arial: "Arial",
   verdana: "Verdana",
-  system: "System font",
-  serif: "Georgia serif"
+  system: "System font"
 };
 
 function setColorMode(mode) {

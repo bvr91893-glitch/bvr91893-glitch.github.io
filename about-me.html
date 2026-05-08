@@ -7,12 +7,12 @@
   <meta name="description" content="About Bryan V. Roache, a blind student with cerebral palsy who focuses on accessibility-first web design and practical consultation.">
   <link rel="icon" href="assets/icon/icon.png">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Atkinson+Hyperlegible:400,700">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <style>
     body {
       margin: 0;
-      font-family: Lato, Arial, sans-serif;
+      font-family: "Atkinson Hyperlegible", Arial, sans-serif;
       font-size: 1rem;
       line-height: 1.7;
       color: #111111;
@@ -68,8 +68,15 @@
       color: #ffffff;
       padding: 7rem 1rem 4rem;
     }
+    .page-hero p {
+      max-width: 42rem;
+    }
     .content {
       max-width: 58rem;
+      margin: 0 auto;
+    }
+    .wide-content {
+      max-width: 72rem;
       margin: 0 auto;
     }
     main section {
@@ -151,6 +158,7 @@
       text-transform: uppercase;
     }
     .summary-title {
+      margin: 0;
       font-size: 1.35rem;
       font-weight: 700;
     }
@@ -167,6 +175,49 @@
     }
     .accordion-panel {
       padding: 1.25rem;
+    }
+    .intro-layout,
+    .visual-layout,
+    .panel-layout {
+      align-items: center;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+    }
+    .visual-layout {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .visual-panel,
+    .image-panel {
+      background: #ffffff;
+      border: 3px solid #111111;
+      color: #111111;
+      margin: 0;
+      padding: 1rem;
+    }
+    .visual-panel img,
+    .image-panel img {
+      background: #f7f7f7;
+      border: 2px solid #2f4f9d;
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+    .visual-panel figcaption,
+    .image-panel figcaption {
+      font-weight: 700;
+      margin-top: 0.75rem;
+    }
+    .quick-points {
+      display: grid;
+      gap: 0.75rem;
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+    }
+    .quick-points li {
+      border-left: 0.45rem solid #2f4f9d;
+      padding-left: 0.9rem;
     }
     .scan-list {
       display: grid;
@@ -200,6 +251,13 @@
       height: 3rem;
       width: 4.5rem;
     }
+    @media (max-width: 760px) {
+      .intro-layout,
+      .visual-layout,
+      .panel-layout {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -209,6 +267,7 @@
   <a href="index.html#top">Home</a>
   <a href="index.html#images">Images</a>
   <a href="index.html#video">Video</a>
+  <a href="index.html#skills">Skills</a>
   <a href="index.html#projects">Projects</a>
   <a href="about-me.html" aria-current="page">About</a>
   <a href="#contact">Contact</a>
@@ -222,58 +281,139 @@
 </header>
 
 <main id="main-content">
-  <section aria-labelledby="my-story-heading">
-    <details class="accordion-card" open>
-      <summary id="my-story-heading">
-        <span class="summary-label">
-          <span class="summary-kicker">Personal story</span>
-          <span class="summary-title">Accessibility Is Not Extra. It Is Lived Experience.</span>
-        </span>
-        <span class="summary-action" aria-hidden="true"></span>
-      </summary>
-      <div class="accordion-panel">
+  <section aria-labelledby="quick-intro-heading">
+    <div class="wide-content intro-layout">
+      <div>
+        <h2 id="quick-intro-heading">Quick Intro</h2>
         <p>
           Bryan V. Roache, spelled R-O-A-C-H-E, is a male student who is blind
           and has cerebral palsy. He also uses a medical walking boot on his right leg.
         </p>
         <p>
-          Accessibility is not just a feature; it is part of Bryan's lived experience. His life and education
-          have taught him that access should be part of the foundation, not something added later.
+          His portfolio focuses on accessibility-first web design, practical technology help,
+          and real-world consulting for people who need tools to work better.
         </p>
+        <ul class="quick-points" aria-label="Quick facts about Bryan">
+          <li>Accessibility is lived experience, not an extra feature.</li>
+          <li>Web pages should be clear, useful, and practical for real people.</li>
+          <li>Assistive technology and everyday technology both belong in the design conversation.</li>
+        </ul>
+      </div>
+      <figure class="image-panel">
+        <img
+          src="assets/homepage/braille-card.svg"
+          alt="Illustration of a payment card with raised Braille-style dots and a contactless symbol."
+          width="760"
+          height="480">
+        <figcaption>Accessibility belongs in everyday tools.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="visual-summary-heading">
+    <div class="wide-content">
+      <h2 id="visual-summary-heading">What This Page Shows</h2>
+      <div class="visual-layout">
+        <figure class="visual-panel">
+          <img
+            src="assets/homepage/practical-access.svg"
+            alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
+            width="900"
+            height="520">
+          <figcaption>Practical access starts with the tools people actually use.</figcaption>
+        </figure>
+        <figure class="visual-panel">
+          <img
+            src="assets/homepage/account-fit.svg"
+            alt="Illustration of three account choices with one selected as the best practical fit."
+            width="760"
+            height="480">
+          <figcaption>Good advice helps people choose what fits their real situation.</figcaption>
+        </figure>
+        <figure class="visual-panel">
+          <img
+            src="assets/organizations/be-my-eyes-badge.svg"
+            alt="Be My Eyes text badge."
+            width="96"
+            height="64">
+          <figcaption>Experience with access tools shapes the work.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="my-story-heading">
+    <details class="accordion-card">
+      <summary>
+        <span class="summary-label">
+          <span class="summary-kicker">Accessibility point of view</span>
+          <h2 id="my-story-heading" class="summary-title">Accessibility Is Not Extra. It Is Lived Experience.</h2>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <div class="panel-layout">
+          <div>
+            <p>
+              Accessibility is not just a feature; it is part of Bryan's lived experience. His life and education
+              have taught him that access should be part of the foundation, not something added later.
+            </p>
+          </div>
+          <figure class="image-panel">
+            <img
+              src="assets/homepage/braille-card.svg"
+              alt="Illustration of a payment card with raised Braille-style dots and a contactless symbol."
+              width="760"
+              height="480">
+            <figcaption>Access should be built in from the start.</figcaption>
+          </figure>
+        </div>
       </div>
     </details>
   </section>
 
   <section aria-labelledby="accessibility-philosophy-heading">
     <details class="accordion-card">
-      <summary id="accessibility-philosophy-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Design point of view</span>
-          <span class="summary-title">Practicality Over Pretty</span>
+          <h2 id="accessibility-philosophy-heading" class="summary-title">Practicality Over Pretty</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
       <div class="accordion-panel">
-        <p>
-          When Bryan designs web pages, he keeps accessibility in mind. His motto is
-          "practicality over pretty," because a website should not only look good; it should
-          work well for real people.
-        </p>
-        <p>
-          Bryan believes accessible design should be clear, dependable, and usable with assistive
-          technology. A page should make sense to someone using a screen reader, keyboard,
-          magnification, or any practical access tool that helps them participate fully.
-        </p>
+        <div class="panel-layout">
+          <div>
+            <p>
+              When Bryan designs web pages, he keeps accessibility in mind. His motto is
+              "practicality over pretty," because a website should not only look good; it should
+              work well for real people.
+            </p>
+            <p>
+              Bryan believes accessible design should be clear, dependable, and usable with assistive
+              technology. A page should make sense to someone using a screen reader, keyboard,
+              magnification, or any practical access tool that helps them participate fully.
+            </p>
+          </div>
+          <figure class="image-panel">
+            <img
+              src="assets/homepage/practical-access.svg"
+              alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
+              width="900"
+              height="520">
+            <figcaption>Practicality means designing around real access needs.</figcaption>
+          </figure>
+        </div>
       </div>
     </details>
   </section>
 
   <section aria-labelledby="experience-heading">
     <details class="accordion-card">
-      <summary id="experience-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Professional experience</span>
-          <span class="summary-title">Access Work With Real Organizations</span>
+          <h2 id="experience-heading" class="summary-title">Access Work With Real Organizations</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
@@ -324,59 +464,81 @@
 
   <section aria-labelledby="technical-background-heading">
     <details class="accordion-card">
-      <summary id="technical-background-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Technology skills</span>
-          <span class="summary-title">Tools That Make Technology Work</span>
+          <h2 id="technical-background-heading" class="summary-title">Tools That Make Technology Work</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
       <div class="accordion-panel">
-        <ul class="scan-list">
-          <li>Linux, macOS, and Windows experience, including Windows XP through Windows 11.</li>
-          <li>GitHub and GitHub Pages for version control, project organization, and website deployment.</li>
-          <li>Microsoft Office, Outlook, PowerPoint, help desk preparation, and practical assistive technology workflows.</li>
-          <li>Independent living technology skills and hands-on experience with tools for blind and low-vision users.</li>
-        </ul>
+        <div class="panel-layout">
+          <ul class="scan-list">
+            <li>Linux, macOS, and Windows experience, including Windows XP through Windows 11.</li>
+            <li>GitHub and GitHub Pages for version control, project organization, and website deployment.</li>
+            <li>Microsoft Office, Outlook, PowerPoint, help desk preparation, and practical assistive technology workflows.</li>
+            <li>Independent living technology skills and hands-on experience with tools for blind and low-vision users.</li>
+          </ul>
+          <figure class="image-panel">
+            <img
+              src="assets/homepage/account-fit.svg"
+              alt="Illustration of three account choices with one selected as the best practical fit."
+              width="760"
+              height="480">
+            <figcaption>Technical help works best when it fits the person using it.</figcaption>
+          </figure>
+        </div>
       </div>
     </details>
   </section>
 
   <section aria-labelledby="services-heading">
     <details class="accordion-card" open>
-      <summary id="services-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Services offered</span>
-          <span class="summary-title">Ways Bryan Can Help</span>
+          <h2 id="services-heading" class="summary-title">Ways Bryan Can Help</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
       <div class="accordion-panel">
-        <p>
-          Bryan offers practical accessibility and technology guidance for people, organizations,
-          schools, and businesses that want tools and services to work better for disabled users.
-        </p>
-        <ul class="scan-list">
-          <li>Accessibility consulting for websites, services, documents, and everyday technology workflows.</li>
-          <li>Assistive technology recommendations for Medicaid, education, and independent living use cases.</li>
-          <li>Business-sector accessibility consulting, including guidance on how to find, request, and use accessible tools and services.</li>
-          <li>Resume writing and practical communication support for people who need help presenting their experience clearly.</li>
-        </ul>
-        <p>
-          <a class="button-link" href="assets/documents/bryan-v-roache-accessibility-consultant.doc" download>
-            Download Bryan's Resume and Accessibility Consultant Profile
-          </a>
-        </p>
+        <div class="panel-layout">
+          <div>
+            <p>
+              Bryan offers practical accessibility and technology guidance for people, organizations,
+              schools, and businesses that want tools and services to work better for disabled users.
+            </p>
+            <ul class="scan-list">
+              <li>Accessibility consulting for websites, services, documents, and everyday technology workflows.</li>
+              <li>Assistive technology recommendations for Medicaid, education, and independent living use cases.</li>
+              <li>Business-sector accessibility consulting, including guidance on how to find, request, and use accessible tools and services.</li>
+              <li>Resume writing and practical communication support for people who need help presenting their experience clearly.</li>
+            </ul>
+            <p>
+              <a class="button-link" href="assets/documents/bryan-v-roache-accessibility-consultant.doc" download>
+                Download Bryan's Resume and Accessibility Consultant Profile
+              </a>
+            </p>
+          </div>
+          <figure class="image-panel">
+            <img
+              src="assets/homepage/practical-access.svg"
+              alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
+              width="900"
+              height="520">
+            <figcaption>Services focus on practical access, not decoration.</figcaption>
+          </figure>
+        </div>
       </div>
     </details>
   </section>
 
   <section aria-labelledby="education-heading">
     <details class="accordion-card">
-      <summary id="education-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Education</span>
-          <span class="summary-title">Legal Training Meets Information Technology</span>
+          <h2 id="education-heading" class="summary-title">Legal Training Meets Information Technology</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
@@ -391,10 +553,10 @@
 
   <section aria-labelledby="personal-background-heading">
     <details class="accordion-card">
-      <summary id="personal-background-heading">
+      <summary>
         <span class="summary-label">
           <span class="summary-kicker">Personal background</span>
-          <span class="summary-title">The Person Behind The Work</span>
+          <h2 id="personal-background-heading" class="summary-title">The Person Behind The Work</h2>
         </span>
         <span class="summary-action" aria-hidden="true"></span>
       </summary>
@@ -438,10 +600,6 @@
       <p>
         LinkedIn:
         <a href="https://www.linkedin.com/in/Bryan-r-b62a4426" target="_blank" rel="noopener noreferrer">linkedin.com/in/Bryan-r-b62a4426</a>
-      </p>
-      <p>
-        Phone:
-        <a href="tel:5555555555">555-555-5555</a>
       </p>
     </div>
   </section>
