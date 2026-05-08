@@ -112,6 +112,68 @@
       padding: 0.85rem 1.1rem;
       text-decoration: none;
     }
+    .accordion-card {
+      border: 2px solid #111111;
+      background: #ffffff;
+      margin: 0 auto;
+      max-width: 58rem;
+    }
+    .accordion-card + .accordion-card {
+      margin-top: 1rem;
+    }
+    .accordion-card summary {
+      align-items: center;
+      background: #2f4f9d;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      justify-content: space-between;
+      list-style: none;
+      padding: 1rem;
+    }
+    .accordion-card summary::-webkit-details-marker {
+      display: none;
+    }
+    .accordion-card summary:hover,
+    .accordion-card summary:focus {
+      background: #151515;
+    }
+    .summary-label {
+      display: grid;
+      gap: 0.2rem;
+    }
+    .summary-kicker {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .summary-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .summary-action {
+      border: 2px solid #ffffff;
+      font-weight: 700;
+      padding: 0.35rem 0.6rem;
+    }
+    .accordion-card[open] .summary-action::before {
+      content: "Hide";
+    }
+    .accordion-card:not([open]) .summary-action::before {
+      content: "Show";
+    }
+    .accordion-panel {
+      padding: 1.25rem;
+    }
+    .scan-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+      padding-left: 1.25rem;
+    }
     .organization-links {
       display: grid;
       gap: 0.75rem;
@@ -155,181 +217,201 @@
 <header class="page-hero">
   <div class="content">
     <h1>About Brian V. Roache</h1>
-    <p>My name is Brian V. Roache, spelled R-O-A-C-H-E. I am an accessibility and equity consultant who designs and consults with accessibility at the center.</p>
+    <p>Brian V. Roache is an accessibility and equity consultant who designs and consults with accessibility at the center.</p>
   </div>
 </header>
 
 <main id="main-content">
   <section aria-labelledby="my-story-heading">
-    <div class="content">
-      <h2 id="my-story-heading">My Story</h2>
-      <p>
-        My name is Brian V. Roache, spelled R-O-A-C-H-E. I am a male student who is blind
-        and has cerebral palsy. I also use a medical walking boot on my right leg.
-      </p>
-      <p>
-        Accessibility is not just a feature; it is what makes me, me. My life and education
-        have taught me that access should be part of the foundation, not something added later.
-      </p>
-    </div>
+    <details class="accordion-card" open>
+      <summary id="my-story-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Personal story</span>
+          <span class="summary-title">Accessibility Is Not Extra. It Is Lived Experience.</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <p>
+          Brian V. Roache, spelled R-O-A-C-H-E, is a male student who is blind
+          and has cerebral palsy. He also uses a medical walking boot on his right leg.
+        </p>
+        <p>
+          Accessibility is not just a feature; it is part of Brian's lived experience. His life and education
+          have taught him that access should be part of the foundation, not something added later.
+        </p>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="accessibility-philosophy-heading">
-    <div class="content">
-      <h2 id="accessibility-philosophy-heading">Accessibility Philosophy</h2>
-      <p>
-        When I design web pages, I always keep accessibility in mind. My motto is
-        "practicality over pretty," because a website should not only look good; it should
-        work well for real people.
-      </p>
-      <p>
-        I believe accessible design should be clear, dependable, and usable with assistive
-        technology. A page should make sense to someone using a screen reader, keyboard,
-        magnification, or any practical access tool that helps them participate fully.
-      </p>
-    </div>
+    <details class="accordion-card">
+      <summary id="accessibility-philosophy-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Design point of view</span>
+          <span class="summary-title">Practicality Over Pretty</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <p>
+          When Brian designs web pages, he keeps accessibility in mind. His motto is
+          "practicality over pretty," because a website should not only look good; it should
+          work well for real people.
+        </p>
+        <p>
+          Brian believes accessible design should be clear, dependable, and usable with assistive
+          technology. A page should make sense to someone using a screen reader, keyboard,
+          magnification, or any practical access tool that helps them participate fully.
+        </p>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="experience-heading">
-    <div class="content">
-      <h2 id="experience-heading">Experience</h2>
-      <p>
-        I am an accessibility consultant with experience advising organizations on making
-        programs, services, and technology easier to access. My work includes helping people
-        think through practical solutions for disability access, customer support, education,
-        banking, housing, and everyday technology.
-      </p>
-      <p>
-        I have worked as a technical consultant, helping administrators find cost-effective
-        ways to implement technology in the workplace and troubleshoot minor technical issues.
-        I also have volunteer public speaking and advocacy experience raising awareness for
-        disability-related causes.
-      </p>
-      <p>
-        I have contributed accessibility-focused ideas for organizations ranging from small
-        nonprofits to larger companies. One example is my work with Fidelity Investments,
-        where I contributed ideas for a Braille debit card designed to improve usability for
-        blind and visually impaired customers.
-      </p>
-      <p>
-        I also have customer service experience helping people troubleshoot accounts, set up
-        services, understand their options, and communicate clearly over the phone.
-      </p>
-      <p>
-        I have also participated in accessibility testing and feedback for visual-assistance
-        technology, including Be My Eyes. My experience with Be My Eyes showed me how mobile
-        tools can support independence in everyday situations, from identifying mail to safely
-        navigating a task with help from a remote volunteer.
-      </p>
-      <p>
-        In 2024, I also participated in public service and advisory work connected to Virginia
-        health and human services, including Medicaid Member Advisory Committee work with the
-        Virginia Department of Medical Assistance Services. I continue to stay involved in
-        accessibility and community input work related to health services, dental information
-        exchange, and trauma-informed policy discussions.
-      </p>
-      <ul class="organization-links" aria-label="Related advisory and public service links">
-        <li>
-          <a href="https://www.dmas.virginia.gov/about-us/boards-and-public-meetings/beneficiary-advisory-council/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/organizations/dmas-badge.svg" alt="DMAS text badge for Virginia Medicaid.">
-            <span>Virginia Department of Medical Assistance Services Beneficiary Advisory Council</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.dmas.virginia.gov/media/xiolusq0/draft-minutes-for-medicaid-member-advisory-committee-april-8-2024_final.pdf" target="_blank" rel="noopener noreferrer">
-            <img src="assets/organizations/mac-badge.svg" alt="MAC text badge for Medicaid Member Advisory Committee.">
-            <span>April 8, 2024 Medicaid Member Advisory Committee meeting minutes</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.dss.virginia.gov/community/otrp/index.cgi" target="_blank" rel="noopener noreferrer">
-            <img src="assets/organizations/otrp-badge.svg" alt="OTRP text badge for Office of Trauma and Resilience Policy.">
-            <span>Virginia Department of Social Services Office of Trauma and Resilience Policy</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://virginiaheals.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/organizations/virginia-heals-badge.svg" alt="Virginia HEALS text badge.">
-            <span>Virginia HEALS</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.bemyeyes.com/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/organizations/be-my-eyes-badge.svg" alt="Be My Eyes text badge.">
-            <span>Be My Eyes</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <details class="accordion-card">
+      <summary id="experience-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Professional experience</span>
+          <span class="summary-title">Access Work With Real Organizations</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <ul class="scan-list">
+          <li>Accessibility consulting for programs, services, customer support, education, banking, housing, and everyday technology.</li>
+          <li>Technical consulting that helps administrators choose cost-effective tools and troubleshoot minor technical issues.</li>
+          <li>Accessibility-focused product feedback, including Fidelity Investments Braille debit card usability ideas.</li>
+          <li>Customer service experience helping people troubleshoot accounts, set up services, and understand their options.</li>
+          <li>Visual-assistance testing and feedback through Be My Eyes, including real-world support tasks such as identifying mail and navigating with remote help.</li>
+          <li>2024 public service and advisory work connected to Virginia health and human services, including Medicaid Member Advisory Committee work with DMAS.</li>
+        </ul>
+        <ul class="organization-links" aria-label="Related advisory and public service links">
+          <li>
+            <a href="https://www.dmas.virginia.gov/about-us/boards-and-public-meetings/beneficiary-advisory-council/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/organizations/dmas-badge.svg" alt="DMAS text badge for Virginia Medicaid.">
+              <span>Virginia Department of Medical Assistance Services Beneficiary Advisory Council</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.dmas.virginia.gov/media/xiolusq0/draft-minutes-for-medicaid-member-advisory-committee-april-8-2024_final.pdf" target="_blank" rel="noopener noreferrer">
+              <img src="assets/organizations/mac-badge.svg" alt="MAC text badge for Medicaid Member Advisory Committee.">
+              <span>April 8, 2024 Medicaid Member Advisory Committee meeting minutes</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.dss.virginia.gov/community/otrp/index.cgi" target="_blank" rel="noopener noreferrer">
+              <img src="assets/organizations/otrp-badge.svg" alt="OTRP text badge for Office of Trauma and Resilience Policy.">
+              <span>Virginia Department of Social Services Office of Trauma and Resilience Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://virginiaheals.com/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/organizations/virginia-heals-badge.svg" alt="Virginia HEALS text badge.">
+              <span>Virginia HEALS</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.bemyeyes.com/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/organizations/be-my-eyes-badge.svg" alt="Be My Eyes text badge.">
+              <span>Be My Eyes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="technical-background-heading">
-    <div class="content">
-      <h2 id="technical-background-heading">Technical Background</h2>
-      <p>
-        I have experience with Linux, macOS, and Windows, including Windows XP through
-        Windows 11. I enjoy exploring operating systems and accessibility tools because
-        they help users find what works best for them.
-      </p>
-      <p>
-        I am experienced with GitHub and GitHub Pages for version control, project organization,
-        website deployment, and maintaining portfolio projects. I also have a help desk
-        background and experience with Microsoft Office, Outlook, PowerPoint, and practical
-        assistive technology workflows.
-      </p>
-      <p>
-        My training background includes help desk preparation, independent living technology
-        skills, and hands-on experience with assistive tools for blind and low-vision users.
-      </p>
-    </div>
+    <details class="accordion-card">
+      <summary id="technical-background-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Technology skills</span>
+          <span class="summary-title">Tools That Make Technology Work</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <ul class="scan-list">
+          <li>Linux, macOS, and Windows experience, including Windows XP through Windows 11.</li>
+          <li>GitHub and GitHub Pages for version control, project organization, and website deployment.</li>
+          <li>Microsoft Office, Outlook, PowerPoint, help desk preparation, and practical assistive technology workflows.</li>
+          <li>Independent living technology skills and hands-on experience with tools for blind and low-vision users.</li>
+        </ul>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="services-heading">
-    <div class="content">
-      <h2 id="services-heading">Professional Services</h2>
-      <p>
-        I offer practical accessibility and technology guidance for people, organizations,
-        schools, and businesses that want tools and services to work better for disabled users.
-      </p>
-      <ul>
-        <li>Accessibility consulting for websites, services, documents, and everyday technology workflows.</li>
-        <li>Assistive technology recommendations for Medicaid, education, and independent living use cases.</li>
-        <li>Business-sector accessibility consulting, including guidance on how to find, request, and use accessible tools and services.</li>
-        <li>Resume writing and practical communication support for people who need help presenting their experience clearly.</li>
-      </ul>
-      <p>
-        <a class="button-link" href="assets/documents/bryan-v-roache-accessibility-consultant.doc" download>
-          Download My Resume and Accessibility Consultant Profile
-        </a>
-      </p>
-    </div>
+    <details class="accordion-card" open>
+      <summary id="services-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Services offered</span>
+          <span class="summary-title">Ways Brian Can Help</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <p>
+          Brian offers practical accessibility and technology guidance for people, organizations,
+          schools, and businesses that want tools and services to work better for disabled users.
+        </p>
+        <ul class="scan-list">
+          <li>Accessibility consulting for websites, services, documents, and everyday technology workflows.</li>
+          <li>Assistive technology recommendations for Medicaid, education, and independent living use cases.</li>
+          <li>Business-sector accessibility consulting, including guidance on how to find, request, and use accessible tools and services.</li>
+          <li>Resume writing and practical communication support for people who need help presenting their experience clearly.</li>
+        </ul>
+        <p>
+          <a class="button-link" href="assets/documents/bryan-v-roache-accessibility-consultant.doc" download>
+            Download Brian's Resume and Accessibility Consultant Profile
+          </a>
+        </p>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="education-heading">
-    <div class="content">
-      <h2 id="education-heading">Education</h2>
-      <p>
-        I have a paralegal certificate from the University of Arkansas at Little Rock,
-        and I am currently pursuing an Associate of Applied Science in Information Technology.
-      </p>
-    </div>
+    <details class="accordion-card">
+      <summary id="education-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Education</span>
+          <span class="summary-title">Legal Training Meets Information Technology</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <p>
+          Brian has a paralegal certificate from the University of Arkansas at Little Rock,
+          and is currently pursuing an Associate of Applied Science in Information Technology.
+        </p>
+      </div>
+    </details>
   </section>
 
   <section aria-labelledby="personal-background-heading">
-    <div class="content">
-      <h2 id="personal-background-heading">Personal Background</h2>
-      <p>
-        I come from a family with two brothers and two sisters: Julian, Amy, Steven, and Kayla.
-      </p>
-    </div>
+    <details class="accordion-card">
+      <summary id="personal-background-heading">
+        <span class="summary-label">
+          <span class="summary-kicker">Personal background</span>
+          <span class="summary-title">The Person Behind The Work</span>
+        </span>
+        <span class="summary-action" aria-hidden="true"></span>
+      </summary>
+      <div class="accordion-panel">
+        <p>
+          Brian comes from a family with two brothers and two sisters: Julian, Amy, Steven, and Kayla.
+        </p>
+      </div>
+    </details>
   </section>
 
   <section id="contact" aria-labelledby="contact-heading">
     <div class="content">
       <h2 id="contact-heading">Contact / Consultation</h2>
       <p id="contact-invitation">
-        If you need help understanding your accessibility options or would like a consultation,
-        please fill out the contact form, email me directly, or call me.
+        For help understanding accessibility options or requesting a consultation,
+        please fill out the contact form, send an email, or call.
       </p>
       <form class="contact-form" action="mailto:gammon_jingle.13@icloud.com" method="post" enctype="text/plain" aria-describedby="contact-invitation">
         <div class="field">
@@ -341,7 +423,7 @@
           <input id="contact-email" name="email" type="email" autocomplete="email">
         </div>
         <div class="field">
-          <label for="contact-message">How can I help?</label>
+          <label for="contact-message">How can Brian help?</label>
           <textarea id="contact-message" name="message"></textarea>
         </div>
         <button type="submit">Submit consultation request</button>
