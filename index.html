@@ -411,6 +411,38 @@
       border: 6px solid var(--accent-fg);
       background: var(--card-bg);
     }
+    .site-footer {
+      background: #000000 !important;
+      color: #ffffff !important;
+      opacity: 1 !important;
+    }
+    .footer-brand {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+    .footer-car {
+      height: auto;
+      max-width: 32rem;
+      width: min(100%, 32rem);
+    }
+    .footer-powered {
+      color: #ffffff !important;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .footer-word-red {
+      color: #ff4b4b;
+    }
+    .footer-word-blue {
+      color: #6bd2ff;
+    }
+    .footer-word-green {
+      color: #71ff71;
+    }
     .home-hero {
       background: #151515 !important;
       color: #ffffff !important;
@@ -964,8 +996,33 @@
 </div>
 
 <!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-center w3-opacity">
-  <p>Powered by W3.CSS</p>
+<footer class="site-footer w3-container w3-padding-64 w3-center">
+  <div class="footer-brand">
+    <svg class="footer-car" role="img" aria-labelledby="race-car-title race-car-desc" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+      <title id="race-car-title">High contrast race car</title>
+      <desc id="race-car-desc">A red, blue, and white race car with black tires and yellow rims.</desc>
+      <rect width="640" height="260" fill="#000000"/>
+      <path d="M78 168 L126 96 H275 L342 55 H430 L501 98 L562 112 L594 168 Z" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round"/>
+      <path d="M115 158 L149 110 H280 L333 77 H420 L475 110 L548 126 L568 158 Z" fill="#0057ff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M111 158 H570 L594 168 H78 Z" fill="#ff1f1f" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M296 94 L341 70 H417 L452 94 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M162 111 H267 L231 144 H132 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M437 119 H523 L555 137 H453 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="177" cy="169" r="42" fill="#000000" stroke="#ffffff" stroke-width="8"/>
+      <circle cx="177" cy="169" r="21" fill="#ffd400" stroke="#000000" stroke-width="5"/>
+      <circle cx="482" cy="169" r="42" fill="#000000" stroke="#ffffff" stroke-width="8"/>
+      <circle cx="482" cy="169" r="21" fill="#ffd400" stroke="#000000" stroke-width="5"/>
+      <path d="M77 181 H596" stroke="#ffd400" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <p class="footer-powered">
+      Powered by
+      <span class="footer-word-red">Accessibility</span>
+      <span class="footer-word-blue">at</span>
+      <span class="footer-word-green">a</span>
+      <span class="footer-word-red">higher</span>
+      <span class="footer-word-blue">frequency</span>
+    </p>
+  </div>
 </footer>
 
 <script>
