@@ -51,6 +51,11 @@
       --button-fg: #111111;
       --button-border: #111111;
       --muted-color: #333333;
+      --border-soft: #c9d3ea;
+      --section-tint: #f6f8fc;
+      --section-warm: #fff8eb;
+      --accent-secondary: #0f766e;
+      --shadow-soft: 0 1rem 2.5rem rgba(17, 24, 39, 0.14);
       --focus-color: #ffbf47;
       margin: 0;
       font-family: var(--site-font-family);
@@ -132,6 +137,11 @@
       --button-fg: #ffffff;
       --button-border: #ffffff;
       --muted-color: #ffffff;
+      --border-soft: #ffffff;
+      --section-tint: #111111;
+      --section-warm: #111111;
+      --accent-secondary: #ffd966;
+      --shadow-soft: none;
       --focus-color: #ffd966;
     }
     body[data-color-mode="blue-on-black"] {
@@ -148,6 +158,11 @@
       --button-fg: #9bdcff;
       --button-border: #9bdcff;
       --muted-color: #d7f3ff;
+      --border-soft: #9bdcff;
+      --section-tint: #071826;
+      --section-warm: #071826;
+      --accent-secondary: #ffd966;
+      --shadow-soft: none;
       --focus-color: #7fd3ff;
     }
     body[data-color-mode="protanopia"] {
@@ -164,6 +179,11 @@
       --button-fg: #14233a;
       --button-border: #14507b;
       --muted-color: #24344d;
+      --border-soft: #14507b;
+      --section-tint: #f0e5ce;
+      --section-warm: #fff7e6;
+      --accent-secondary: #14507b;
+      --shadow-soft: none;
       --focus-color: #c67b00;
     }
     body[data-color-mode="deuteranopia"] {
@@ -180,6 +200,11 @@
       --button-fg: #1d2733;
       --button-border: #005b99;
       --muted-color: #2e3946;
+      --border-soft: #005b99;
+      --section-tint: #e5edf4;
+      --section-warm: #fef8ef;
+      --accent-secondary: #7a4a00;
+      --shadow-soft: none;
       --focus-color: #7a4a00;
     }
     body[data-color-mode="grayscale"] {
@@ -196,6 +221,11 @@
       --button-fg: #111111;
       --button-border: #2d2d2d;
       --muted-color: #2d2d2d;
+      --border-soft: #2d2d2d;
+      --section-tint: #dfdfdf;
+      --section-warm: #f7f7f7;
+      --accent-secondary: #111111;
+      --shadow-soft: none;
       --focus-color: #555555;
     }
     body[data-color-mode="color-wheel"] {
@@ -212,6 +242,11 @@
       --button-fg: #ffffff;
       --button-border: #ffffff;
       --muted-color: #ffffff;
+      --border-soft: #ffffff;
+      --section-tint: #111111;
+      --section-warm: #111111;
+      --accent-secondary: #ffd400;
+      --shadow-soft: none;
       --focus-color: #ffd400;
     }
     @keyframes highContrastWheel {
@@ -286,6 +321,10 @@
       --button-bg: #000000;
       --button-fg: #ffffff;
       --button-border: #ffffff;
+      --border-soft: #ffffff;
+      --section-tint: #111111;
+      --section-warm: #111111;
+      --shadow-soft: none;
       --focus-color: #ffd966;
     }
     body[data-text-color="black"] {
@@ -299,6 +338,10 @@
       --button-bg: #ffffff;
       --button-fg: #000000;
       --button-border: #000000;
+      --border-soft: #000000;
+      --section-tint: #f2f2f2;
+      --section-warm: #ffffff;
+      --shadow-soft: none;
       --focus-color: #a15c00;
     }
     .skip-link {
@@ -364,6 +407,30 @@
       background: var(--accent-bg) !important;
       color: var(--accent-fg) !important;
     }
+    .w3-content {
+      max-width: 68rem;
+    }
+    main section {
+      border-top: 1px solid var(--border-soft);
+    }
+    main section:nth-of-type(odd) {
+      background: var(--page-bg) !important;
+    }
+    main section:nth-of-type(even),
+    main section.w3-light-grey {
+      background: var(--section-tint) !important;
+    }
+    main h2 {
+      margin-bottom: 0.65rem;
+    }
+    main h2::after {
+      background: var(--accent-secondary);
+      content: "";
+      display: block;
+      height: 0.25rem;
+      margin-top: 0.6rem;
+      width: 4.25rem;
+    }
     .w3-light-grey,
     footer,
     .contrast-toolbar {
@@ -391,6 +458,7 @@
     }
     nav .w3-bar {
       color: var(--accent-fg) !important;
+      box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.18);
     }
     nav .w3-button {
       color: var(--accent-fg) !important;
@@ -408,8 +476,10 @@
       width: min(64rem, 100%);
       height: auto;
       margin-top: 2rem;
-      border: 6px solid var(--accent-fg);
+      border: 4px solid var(--accent-fg);
+      border-radius: 8px;
       background: var(--card-bg);
+      box-shadow: var(--shadow-soft);
     }
     .site-footer {
       background: #000000 !important;
@@ -444,8 +514,10 @@
       color: #71ff71;
     }
     .home-hero {
-      background: #151515 !important;
+      background: linear-gradient(135deg, #151515 0%, #263f77 52%, #0f766e 100%) !important;
       color: #ffffff !important;
+      overflow: hidden;
+      padding: 8rem 1rem 4.5rem !important;
     }
     .home-hero .w3-xlarge,
     .home-hero .w3-large {
@@ -457,11 +529,16 @@
       gap: 2rem;
       align-items: center;
     }
+    figure {
+      margin: 0;
+    }
     .about-image {
       width: 100%;
       height: auto;
-      border: 4px solid var(--button-border);
+      border: 2px solid var(--border-soft);
+      border-radius: 8px;
       background: var(--card-bg);
+      box-shadow: var(--shadow-soft);
     }
     .supporting-images {
       display: grid;
@@ -472,22 +549,26 @@
     .supporting-image {
       width: 100%;
       height: auto;
-      border: 4px solid var(--button-border);
+      border: 2px solid var(--border-soft);
+      border-radius: 8px;
       background: var(--card-bg);
     }
     .image-caption {
       margin-top: 0.5rem;
       font-weight: 700;
+      color: var(--muted-color);
     }
     .lightbox-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 1.25rem;
       margin-top: 2rem;
     }
     .lightbox-gallery-item {
       background: var(--card-bg);
-      border: 3px solid var(--button-border);
+      border: 2px solid var(--border-soft);
+      border-radius: 8px;
+      box-shadow: 0 0.4rem 1rem rgba(17, 24, 39, 0.08);
       color: var(--card-fg);
       cursor: pointer;
       display: grid;
@@ -506,7 +587,8 @@
     .lightbox-gallery-item img {
       aspect-ratio: 4 / 3;
       background: var(--surface-bg);
-      border: 2px solid var(--button-border);
+      border-radius: 6px;
+      border: 1px solid var(--border-soft);
       height: auto;
       object-fit: cover;
       width: 100%;
@@ -528,7 +610,8 @@
     }
     .lightbox-content {
       background: var(--card-bg);
-      border: 4px solid var(--focus-color);
+      border: 3px solid var(--focus-color);
+      border-radius: 8px;
       color: var(--card-fg);
       max-height: 92vh;
       overflow: auto;
@@ -538,7 +621,8 @@
     }
     .lightbox-content img {
       background: var(--surface-bg);
-      border: 2px solid var(--button-border);
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
       height: auto;
       width: 100%;
     }
@@ -558,8 +642,10 @@
       width: 3rem;
     }
     .suno-player {
-      border: 4px solid var(--button-border);
+      border: 2px solid var(--border-soft);
+      border-radius: 8px;
       background: var(--card-bg);
+      box-shadow: var(--shadow-soft);
       color: var(--card-fg);
       padding: 1.5rem;
       max-width: 46rem;
@@ -593,10 +679,12 @@
     }
     .suno-progress {
       background: var(--surface-bg);
-      border: 2px solid var(--button-border);
+      border: 2px solid var(--border-soft);
+      border-radius: 999px;
       flex: 1 1 14rem;
       height: 1rem;
       min-width: 12rem;
+      overflow: hidden;
     }
     .suno-progress-fill {
       background: var(--accent-bg);
@@ -604,13 +692,39 @@
       height: 100%;
       width: 42%;
     }
+    .w3-ul.w3-card-4,
+    .w3-ul.w3-card {
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft) !important;
+      overflow: hidden;
+    }
+    .w3-ul li {
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+    }
+    .media-note {
+      background: var(--section-warm);
+      border-left: 0.45rem solid var(--accent-secondary);
+      margin-top: 1.25rem;
+      padding: 1rem;
+    }
     .suno-player-note {
       margin: 1rem 0 0;
     }
     @media (max-width: 760px) {
+      .home-hero {
+        padding-top: 7.25rem !important;
+      }
       .about-layout,
       .supporting-images {
         grid-template-columns: 1fr;
+      }
+      .contrast-select {
+        min-width: min(100%, 18rem);
+      }
+      .w3-bar .w3-bar-item {
+        width: 50%;
       }
     }
   </style>
@@ -696,7 +810,9 @@
     alt="Red and gold Bryan V. Roache hero graphic with a flying white dove above a multimedia web player."
     title="Accessibility at a higher frequency."
     width="1200"
-    height="620">
+    height="620"
+    decoding="async"
+    fetchpriority="high">
 </header>
 
 <main id="main-content">
@@ -725,7 +841,9 @@
             src="assets/homepage/braille-card.svg"
             alt="Illustration of a debit card with raised Braille-style dots and a contactless payment symbol."
             width="760"
-            height="480">
+            height="480"
+            loading="lazy"
+            decoding="async">
           <figcaption class="image-caption">Accessibility belongs in everyday tools.</figcaption>
         </figure>
       </div>
@@ -736,7 +854,9 @@
             src="assets/homepage/account-fit.svg"
             alt="Illustration of three account choices with one selected as the best practical fit."
             width="760"
-            height="480">
+            height="480"
+            loading="lazy"
+            decoding="async">
           <figcaption class="image-caption">Practical advice means finding what actually works.</figcaption>
         </figure>
         <figure>
@@ -745,7 +865,9 @@
             src="assets/homepage/practical-access.svg"
             alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
             width="900"
-            height="520">
+            height="520"
+            loading="lazy"
+            decoding="async">
           <figcaption class="image-caption">Access starts with the real tools people use.</figcaption>
         </figure>
       </div>
@@ -784,7 +906,9 @@
             src="assets/lightbox/emotion-landscape-1.svg"
             alt="Calm blue mountain lake landscape with soft morning light."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Calm Landscape</span>
         </button>
         <button class="lightbox-gallery-item" type="button"
@@ -795,7 +919,9 @@
             src="assets/lightbox/emotion-landscape-2.svg"
             alt="Golden sunrise over rolling hills representing joy."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Joy Landscape</span>
         </button>
         <button class="lightbox-gallery-item" type="button"
@@ -806,7 +932,9 @@
             src="assets/lightbox/emotion-landscape-3.svg"
             alt="Rainy gray valley landscape representing sadness."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Sadness Landscape</span>
         </button>
         <button class="lightbox-gallery-item" type="button"
@@ -817,7 +945,9 @@
             src="assets/lightbox/emotion-landscape-4.svg"
             alt="Stormy red canyon landscape with lightning representing anger."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Anger Landscape</span>
         </button>
         <button class="lightbox-gallery-item" type="button"
@@ -828,7 +958,9 @@
             src="assets/lightbox/emotion-landscape-5.svg"
             alt="Purple starry forest landscape representing wonder."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Wonder Landscape</span>
         </button>
         <button class="lightbox-gallery-item" type="button"
@@ -839,7 +971,9 @@
             src="assets/lightbox/emotion-landscape-6.svg"
             alt="Green landscape with bright horizon representing hope."
             width="760"
-            height="570">
+            height="570"
+            loading="lazy"
+            decoding="async">
           <span>Hope Landscape</span>
         </button>
       </div>
@@ -852,6 +986,9 @@
       <h2 id="video-heading">Video</h2>
       <p class="w3-text-grey">
         This section is reserved for my capstone video content. I will add a final embedded video or local video file before the final deployment.
+      </p>
+      <p class="media-note">
+        When the video is added, this space should include visible controls, captions, and a transcript link so the media remains usable with screen readers, keyboards, captions, and magnification.
       </p>
     </div>
   </section>

@@ -11,12 +11,21 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <style>
     body {
+      --page-bg: #ffffff;
+      --page-fg: #111111;
+      --surface-bg: #f6f8fc;
+      --card-bg: #ffffff;
+      --accent-bg: #2f4f9d;
+      --accent-secondary: #0f766e;
+      --border-soft: #c9d3ea;
+      --focus-color: #ffbf47;
+      --shadow-soft: 0 1rem 2.5rem rgba(17, 24, 39, 0.12);
       margin: 0;
       font-family: "Atkinson Hyperlegible", Arial, sans-serif;
       font-size: 1rem;
       line-height: 1.7;
-      color: #111111;
-      background: #ffffff;
+      color: var(--page-fg);
+      background: var(--page-bg);
     }
     h1,
     h2,
@@ -49,8 +58,9 @@
       top: 1rem;
     }
     .site-nav {
-      background: #2f4f9d;
+      background: var(--accent-bg);
       color: #ffffff;
+      box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.18);
     }
     .site-nav a {
       color: #ffffff;
@@ -64,9 +74,9 @@
       color: #111111;
     }
     .page-hero {
-      background: #151515;
+      background: linear-gradient(135deg, #151515 0%, #263f77 52%, #0f766e 100%);
       color: #ffffff;
-      padding: 7rem 1rem 4rem;
+      padding: 7rem 1rem 4.25rem;
     }
     .page-hero p {
       max-width: 42rem;
@@ -80,10 +90,19 @@
       margin: 0 auto;
     }
     main section {
+      border-top: 1px solid var(--border-soft);
       padding: 3rem 1rem;
     }
     main section:nth-child(even) {
-      background: #f2f2f2;
+      background: var(--surface-bg);
+    }
+    main h2::after {
+      background: var(--accent-secondary);
+      content: "";
+      display: block;
+      height: 0.25rem;
+      margin-top: 0.55rem;
+      width: 4rem;
     }
     .contact-form {
       display: grid;
@@ -111,7 +130,7 @@
     .button-link,
     button {
       border: 2px solid #111111;
-      background: #2f4f9d;
+      background: var(--accent-bg);
       color: #ffffff;
       cursor: pointer;
       display: inline-block;
@@ -120,17 +139,20 @@
       text-decoration: none;
     }
     .accordion-card {
-      border: 2px solid #111111;
-      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      background: var(--card-bg);
+      box-shadow: var(--shadow-soft);
       margin: 0 auto;
       max-width: 58rem;
+      overflow: hidden;
     }
     .accordion-card + .accordion-card {
       margin-top: 1rem;
     }
     .accordion-card summary {
       align-items: center;
-      background: #2f4f9d;
+      background: var(--accent-bg);
       color: #ffffff;
       cursor: pointer;
       display: flex;
@@ -164,6 +186,7 @@
     }
     .summary-action {
       border: 2px solid #ffffff;
+      border-radius: 999px;
       font-weight: 700;
       padding: 0.35rem 0.6rem;
     }
@@ -187,10 +210,15 @@
     .visual-layout {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    figure {
+      margin: 0;
+    }
     .visual-panel,
     .image-panel {
-      background: #ffffff;
-      border: 3px solid #111111;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      box-shadow: 0 0.4rem 1rem rgba(17, 24, 39, 0.08);
       color: #111111;
       margin: 0;
       padding: 1rem;
@@ -198,9 +226,11 @@
     .visual-panel img,
     .image-panel img {
       background: #f7f7f7;
-      border: 2px solid #2f4f9d;
+      border: 1px solid var(--border-soft);
+      border-radius: 6px;
       display: block;
       height: auto;
+      object-fit: cover;
       width: 100%;
     }
     .visual-panel figcaption,
@@ -216,7 +246,7 @@
       padding: 0;
     }
     .quick-points li {
-      border-left: 0.45rem solid #2f4f9d;
+      border-left: 0.45rem solid var(--accent-secondary);
       padding-left: 0.9rem;
     }
     .scan-list {
@@ -234,7 +264,10 @@
     }
     .organization-links a {
       align-items: center;
-      border: 2px solid #111111;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      box-shadow: 0 0.35rem 0.9rem rgba(17, 24, 39, 0.08);
       color: #111111;
       display: flex;
       gap: 1rem;
@@ -252,6 +285,9 @@
       width: 4.5rem;
     }
     @media (max-width: 760px) {
+      .site-nav a {
+        width: 50%;
+      }
       .intro-layout,
       .visual-layout,
       .panel-layout {
