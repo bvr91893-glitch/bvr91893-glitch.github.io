@@ -89,7 +89,7 @@ section { scroll-margin-top: 80px; }
 .hero { scroll-margin-top: 0; }
 
 /* ── 2. HEADER + BOOKMARK NAV ────────────────────────────── */
-header {
+body > header {
   position: sticky; top: 0; z-index: 50;
   background: rgba(11,11,15,.85);
   backdrop-filter: blur(10px);
