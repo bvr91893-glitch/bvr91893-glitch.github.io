@@ -1,1312 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bryan V. Roache</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio homepage for Bryan V. Roache, an information technology student who focuses on accessibility-first web design.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bryan Roache – ITE 170 · NOVA</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/icon/icon.png">
+  <!-- Phosphor icons — load each weight's CSS directly so the font
+       reliably registers. The script-bundle form sometimes silently skips
+       weights; importing the regular + fill stylesheets explicitly avoids
+       missing-glyph squares. Pinned to v2.1.1 for stability. -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Atkinson+Hyperlegible:400,700">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Shared site styles (used by every page) -->
+  <link rel="stylesheet" href="css/style.css" />
 
-  <style>
-    @property --accent-bg {
-      syntax: "<color>";
-      inherits: true;
-      initial-value: #2f4f9d;
-    }
-    @property --focus-color {
-      syntax: "<color>";
-      inherits: true;
-      initial-value: #ffbf47;
-    }
-    @property --link-color {
-      syntax: "<color>";
-      inherits: true;
-      initial-value: #0b57d0;
-    }
-    html {
-      font-size: 100%;
-    }
-    body {
-      --site-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
-      --heading-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
-      --control-font-family: "Montserrat", Arial, sans-serif;
-      --page-bg: #ffffff;
-      --page-fg: #111111;
-      --surface-bg: #f2f2f2;
-      --surface-fg: #111111;
-      --card-bg: #ffffff;
-      --card-fg: #111111;
-      --accent-bg: #2f4f9d;
-      --accent-fg: #ffffff;
-      --link-color: #0b57d0;
-      --button-bg: #ffffff;
-      --button-fg: #111111;
-      --button-border: #111111;
-      --muted-color: #333333;
-      --border-soft: #c9d3ea;
-      --section-tint: #f6f8fc;
-      --section-warm: #fff8eb;
-      --accent-secondary: #0f766e;
-      --shadow-soft: 0 1rem 2.5rem rgba(17, 24, 39, 0.14);
-      --focus-color: #ffbf47;
-      margin: 0;
-      font-family: var(--site-font-family);
-      font-size: 1rem;
-      line-height: 1.6;
-      background: var(--page-bg);
-      color: var(--page-fg);
-    }
-    body[data-text-size="14pt"] {
-      font-size: 1.1667rem;
-    }
-    body[data-text-size="16pt"] {
-      font-size: 1.3333rem;
-    }
-    body[data-text-size="18pt"] {
-      font-size: 1.5rem;
-    }
-    body[data-text-size] p,
-    body[data-text-size] li,
-    body[data-text-size] a,
-    body[data-text-size] button,
-    body[data-text-size] select,
-    body[data-text-size] label,
-    body[data-text-size] figcaption,
-    body[data-text-size] .w3-large,
-    body[data-text-size] .w3-xlarge {
-      font-size: 1em !important;
-    }
-    body[data-text-size] h2 {
-      font-size: 1.75em;
-    }
-    body[data-text-size] h3 {
-      font-size: 1.35em;
-    }
-    body[data-text-font="arial"] {
-      --site-font-family: Arial, Helvetica, sans-serif;
-      --heading-font-family: Arial, Helvetica, sans-serif;
-      --control-font-family: Arial, Helvetica, sans-serif;
-    }
-    body[data-text-font="verdana"] {
-      --site-font-family: Verdana, Geneva, sans-serif;
-      --heading-font-family: Verdana, Geneva, sans-serif;
-      --control-font-family: Verdana, Geneva, sans-serif;
-    }
-    body[data-text-font="atkinson"] {
-      --site-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
-      --heading-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
-      --control-font-family: "Atkinson Hyperlegible", Arial, sans-serif;
-    }
-    body[data-text-font="system"] {
-      --site-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --heading-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --control-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    h1,h2,h3,h4,h5,h6 {font-family: var(--heading-font-family)}
-    .w3-bar,h1,button,select {font-family: var(--control-font-family)}
-    .fa-anchor,.fa-coffee {font-size:200px}
-    a {
-      color: var(--link-color);
-      text-underline-offset: 0.2em;
-    }
-    a:focus-visible,
-    button:focus-visible,
-    select:focus-visible {
-      outline: 3px solid var(--focus-color);
-      outline-offset: 3px;
-    }
-    body[data-color-mode="white-on-black"] {
-      --page-bg: #000000;
-      --page-fg: #ffffff;
-      --surface-bg: #111111;
-      --surface-fg: #ffffff;
-      --card-bg: #000000;
-      --card-fg: #ffffff;
-      --accent-bg: #000000;
-      --accent-fg: #ffffff;
-      --link-color: #ffd966;
-      --button-bg: #000000;
-      --button-fg: #ffffff;
-      --button-border: #ffffff;
-      --muted-color: #ffffff;
-      --border-soft: #ffffff;
-      --section-tint: #111111;
-      --section-warm: #111111;
-      --accent-secondary: #ffd966;
-      --shadow-soft: none;
-      --focus-color: #ffd966;
-    }
-    body[data-color-mode="blue-on-black"] {
-      --page-bg: #000000;
-      --page-fg: #9bdcff;
-      --surface-bg: #071826;
-      --surface-fg: #bfe9ff;
-      --card-bg: #000000;
-      --card-fg: #9bdcff;
-      --accent-bg: #0a2b3f;
-      --accent-fg: #ccefff;
-      --link-color: #7fd3ff;
-      --button-bg: #000000;
-      --button-fg: #9bdcff;
-      --button-border: #9bdcff;
-      --muted-color: #d7f3ff;
-      --border-soft: #9bdcff;
-      --section-tint: #071826;
-      --section-warm: #071826;
-      --accent-secondary: #ffd966;
-      --shadow-soft: none;
-      --focus-color: #7fd3ff;
-    }
-    body[data-color-mode="protanopia"] {
-      --page-bg: #fff7e6;
-      --page-fg: #14233a;
-      --surface-bg: #f0e5ce;
-      --surface-fg: #14233a;
-      --card-bg: #fffdf8;
-      --card-fg: #14233a;
-      --accent-bg: #14507b;
-      --accent-fg: #ffffff;
-      --link-color: #005da6;
-      --button-bg: #fffdf8;
-      --button-fg: #14233a;
-      --button-border: #14507b;
-      --muted-color: #24344d;
-      --border-soft: #14507b;
-      --section-tint: #f0e5ce;
-      --section-warm: #fff7e6;
-      --accent-secondary: #14507b;
-      --shadow-soft: none;
-      --focus-color: #c67b00;
-    }
-    body[data-color-mode="deuteranopia"] {
-      --page-bg: #fef8ef;
-      --page-fg: #1d2733;
-      --surface-bg: #e5edf4;
-      --surface-fg: #1d2733;
-      --card-bg: #ffffff;
-      --card-fg: #1d2733;
-      --accent-bg: #005b99;
-      --accent-fg: #ffffff;
-      --link-color: #7a4a00;
-      --button-bg: #ffffff;
-      --button-fg: #1d2733;
-      --button-border: #005b99;
-      --muted-color: #2e3946;
-      --border-soft: #005b99;
-      --section-tint: #e5edf4;
-      --section-warm: #fef8ef;
-      --accent-secondary: #7a4a00;
-      --shadow-soft: none;
-      --focus-color: #7a4a00;
-    }
-    body[data-color-mode="grayscale"] {
-      --page-bg: #f7f7f7;
-      --page-fg: #111111;
-      --surface-bg: #dfdfdf;
-      --surface-fg: #111111;
-      --card-bg: #ffffff;
-      --card-fg: #111111;
-      --accent-bg: #2d2d2d;
-      --accent-fg: #ffffff;
-      --link-color: #111111;
-      --button-bg: #ffffff;
-      --button-fg: #111111;
-      --button-border: #2d2d2d;
-      --muted-color: #2d2d2d;
-      --border-soft: #2d2d2d;
-      --section-tint: #dfdfdf;
-      --section-warm: #f7f7f7;
-      --accent-secondary: #111111;
-      --shadow-soft: none;
-      --focus-color: #555555;
-    }
-    body[data-color-mode="color-wheel"] {
-      --page-bg: #000000;
-      --page-fg: #ffffff;
-      --surface-bg: #111111;
-      --surface-fg: #ffffff;
-      --card-bg: #000000;
-      --card-fg: #ffffff;
-      --accent-bg: #ffd400;
-      --accent-fg: #000000;
-      --link-color: #9bdcff;
-      --button-bg: #000000;
-      --button-fg: #ffffff;
-      --button-border: #ffffff;
-      --muted-color: #ffffff;
-      --border-soft: #ffffff;
-      --section-tint: #111111;
-      --section-warm: #111111;
-      --accent-secondary: #ffd400;
-      --shadow-soft: none;
-      --focus-color: #ffd400;
-    }
-    @keyframes highContrastWheel {
-      0% {
-        --accent-bg: #ffd400;
-        --focus-color: #ffd400;
-        --link-color: #9bdcff;
-      }
-      25% {
-        --accent-bg: #00e5ff;
-        --focus-color: #00e5ff;
-        --link-color: #ffd400;
-      }
-      50% {
-        --accent-bg: #ff66c4;
-        --focus-color: #ff66c4;
-        --link-color: #9bdcff;
-      }
-      75% {
-        --accent-bg: #7cff6b;
-        --focus-color: #7cff6b;
-        --link-color: #ffd400;
-      }
-      100% {
-        --accent-bg: #ffd400;
-        --focus-color: #ffd400;
-        --link-color: #9bdcff;
-      }
-    }
-    body[data-color-mode="color-wheel"] {
-      animation: highContrastWheel 18s linear infinite;
-    }
-    body[data-color-mode="color-wheel"] .hero-image,
-    body[data-color-mode="color-wheel"] .about-image,
-    body[data-color-mode="color-wheel"] .supporting-image {
-      border-color: var(--accent-bg);
-    }
-    body[data-color-mode="color-wheel"] img {
-      filter: saturate(1.2);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      body[data-color-mode="color-wheel"] {
-        animation: none;
-      }
-    }
-    body[data-text-color="yellow"] {
-      --page-fg: #fff36d;
-      --surface-fg: #fff36d;
-      --card-fg: #fff36d;
-      --link-color: #9bdcff;
-      --button-fg: #fff36d;
-      --button-border: #fff36d;
-      --focus-color: #fff36d;
-    }
-    body[data-text-color="cyan"] {
-      --page-fg: #9bdcff;
-      --surface-fg: #9bdcff;
-      --card-fg: #9bdcff;
-      --link-color: #fff36d;
-      --button-fg: #9bdcff;
-      --button-border: #9bdcff;
-      --focus-color: #9bdcff;
-    }
-    body[data-text-color="white"] {
-      --page-bg: #000000;
-      --page-fg: #ffffff;
-      --surface-bg: #111111;
-      --surface-fg: #ffffff;
-      --card-bg: #000000;
-      --card-fg: #ffffff;
-      --link-color: #ffd966;
-      --button-bg: #000000;
-      --button-fg: #ffffff;
-      --button-border: #ffffff;
-      --border-soft: #ffffff;
-      --section-tint: #111111;
-      --section-warm: #111111;
-      --shadow-soft: none;
-      --focus-color: #ffd966;
-    }
-    body[data-text-color="black"] {
-      --page-bg: #ffffff;
-      --page-fg: #000000;
-      --surface-bg: #f2f2f2;
-      --surface-fg: #000000;
-      --card-bg: #ffffff;
-      --card-fg: #000000;
-      --link-color: #003f91;
-      --button-bg: #ffffff;
-      --button-fg: #000000;
-      --button-border: #000000;
-      --border-soft: #000000;
-      --section-tint: #f2f2f2;
-      --section-warm: #ffffff;
-      --shadow-soft: none;
-      --focus-color: #a15c00;
-    }
-    .skip-link {
-      position: absolute;
-      left: 1rem;
-      top: -3rem;
-      background: #000;
-      color: #fff;
-      padding: 0.75rem 1rem;
-      z-index: 1000;
-    }
-    .skip-link:focus {
-      top: 1rem;
-    }
-    .contrast-toolbar {
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      background: var(--surface-bg);
-      color: var(--surface-fg);
-    }
-    .contrast-form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: end;
-      justify-content: center;
-    }
-    .contrast-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-    .contrast-label {
-      font-weight: 700;
-    }
-    .contrast-select {
-      border: 2px solid var(--button-border);
-      background: var(--button-bg);
-      color: var(--button-fg);
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      min-width: 15rem;
-    }
-    .contrast-description {
-      margin: 0;
-      max-width: 36rem;
-    }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-    .w3-indigo,
-    header.w3-indigo,
-    .w3-button.w3-indigo {
-      background: var(--accent-bg) !important;
-      color: var(--accent-fg) !important;
-    }
-    .w3-content {
-      max-width: 68rem;
-    }
-    main section {
-      border-top: 1px solid var(--border-soft);
-    }
-    main section:nth-of-type(odd) {
-      background: var(--page-bg) !important;
-    }
-    main section:nth-of-type(even),
-    main section.w3-light-grey {
-      background: var(--section-tint) !important;
-    }
-    main h2 {
-      margin-bottom: 0.65rem;
-    }
-    main h2::after {
-      background: var(--accent-secondary);
-      content: "";
-      display: block;
-      height: 0.25rem;
-      margin-top: 0.6rem;
-      width: 4.25rem;
-    }
-    .w3-light-grey,
-    footer,
-    .contrast-toolbar {
-      background: var(--surface-bg) !important;
-      color: var(--surface-fg) !important;
-    }
-    .w3-white,
-    .w3-card,
-    .w3-card-4 {
-      background: var(--card-bg) !important;
-      color: var(--card-fg) !important;
-    }
-    .w3-button,
-    .contrast-select {
-      border-color: var(--button-border);
-    }
-    .w3-text-grey,
-    p,
-    li,
-    h1,
-    h2,
-    h3,
-    footer {
-      color: inherit !important;
-    }
-    nav .w3-bar {
-      color: var(--accent-fg) !important;
-      box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.18);
-    }
-    nav .w3-button {
-      color: var(--accent-fg) !important;
-    }
-    nav .w3-button.w3-white {
-      background: var(--card-bg) !important;
-      color: var(--card-fg) !important;
-    }
-    nav .w3-button:hover,
-    .w3-button:hover {
-      background: var(--accent-bg) !important;
-      color: var(--accent-fg) !important;
-    }
-    .hero-image {
-      width: min(64rem, 100%);
-      height: auto;
-      margin-top: 2rem;
-      border: 4px solid var(--accent-fg);
-      border-radius: 8px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-soft);
-    }
-    .site-footer {
-      background: #000000 !important;
-      color: #ffffff !important;
-      opacity: 1 !important;
-    }
-    .footer-brand {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      justify-content: center;
-    }
-    .footer-car {
-      height: auto;
-      max-width: 32rem;
-      width: min(100%, 32rem);
-    }
-    .footer-powered {
-      color: #ffffff !important;
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin: 0;
-    }
-    .footer-word-red {
-      color: #ff4b4b;
-    }
-    .footer-word-blue {
-      color: #6bd2ff;
-    }
-    .footer-word-green {
-      color: #71ff71;
-    }
-    .home-hero {
-      background: linear-gradient(135deg, #151515 0%, #263f77 52%, #0f766e 100%) !important;
-      color: #ffffff !important;
-      overflow: hidden;
-      padding: 8rem 1rem 4.5rem !important;
-    }
-    .home-hero .w3-xlarge,
-    .home-hero .w3-large {
-      color: #ffffff !important;
-    }
-    .about-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.7fr);
-      gap: 2rem;
-      align-items: center;
-    }
-    figure {
-      margin: 0;
-    }
-    .about-image {
-      width: 100%;
-      height: auto;
-      border: 2px solid var(--border-soft);
-      border-radius: 8px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-soft);
-    }
-    .supporting-images {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .supporting-image {
-      width: 100%;
-      height: auto;
-      border: 2px solid var(--border-soft);
-      border-radius: 8px;
-      background: var(--card-bg);
-    }
-    .image-caption {
-      margin-top: 0.5rem;
-      font-weight: 700;
-      color: var(--muted-color);
-    }
-    .lightbox-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-      gap: 1.25rem;
-      margin-top: 2rem;
-    }
-    .lightbox-gallery-item {
-      background: var(--card-bg);
-      border: 2px solid var(--border-soft);
-      border-radius: 8px;
-      box-shadow: 0 0.4rem 1rem rgba(17, 24, 39, 0.08);
-      color: var(--card-fg);
-      cursor: pointer;
-      display: grid;
-      font: inherit;
-      gap: 0.6rem;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    .lightbox-gallery-item:hover,
-    .lightbox-gallery-item:focus-visible {
-      background: var(--surface-bg);
-      color: var(--surface-fg);
-      outline: 3px solid var(--focus-color);
-      outline-offset: 3px;
-    }
-    .lightbox-gallery-item img {
-      aspect-ratio: 4 / 3;
-      background: var(--surface-bg);
-      border-radius: 6px;
-      border: 1px solid var(--border-soft);
-      height: auto;
-      object-fit: cover;
-      width: 100%;
-    }
-    .lightbox-gallery-item span {
-      font-weight: 700;
-    }
-    .lightbox {
-      background: rgba(0, 0, 0, 0.86);
-      display: grid;
-      inset: 0;
-      padding: 1rem;
-      place-items: center;
-      position: fixed;
-      z-index: 2000;
-    }
-    .lightbox[hidden] {
-      display: none;
-    }
-    .lightbox-content {
-      background: var(--card-bg);
-      border: 3px solid var(--focus-color);
-      border-radius: 8px;
-      color: var(--card-fg);
-      max-height: 92vh;
-      overflow: auto;
-      padding: 1rem;
-      position: relative;
-      width: min(56rem, 96vw);
-    }
-    .lightbox-content img {
-      background: var(--surface-bg);
-      border: 1px solid var(--border-soft);
-      border-radius: 6px;
-      height: auto;
-      width: 100%;
-    }
-    .close-lightbox {
-      background: var(--accent-bg);
-      border: 3px solid var(--accent-fg);
-      color: var(--accent-fg);
-      cursor: pointer;
-      font: inherit;
-      font-size: 2rem;
-      font-weight: 700;
-      height: 3rem;
-      line-height: 1;
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-      width: 3rem;
-    }
-    .suno-player {
-      border: 2px solid var(--border-soft);
-      border-radius: 8px;
-      background: var(--card-bg);
-      box-shadow: var(--shadow-soft);
-      color: var(--card-fg);
-      padding: 1.5rem;
-      max-width: 46rem;
-    }
-    .suno-player-title {
-      margin: 0 0 0.25rem;
-      font-size: 1.35rem;
-      font-weight: 700;
-    }
-    .suno-player-meta {
-      margin: 0 0 1rem;
-    }
-    .suno-player-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
-    .suno-play-link {
-      align-items: center;
-      border-radius: 999px;
-      display: inline-flex;
-      font-weight: 700;
-      gap: 0.5rem;
-      min-height: 3rem;
-      text-decoration: none;
-    }
-    .suno-play-icon {
-      font-size: 1.15em;
-      line-height: 1;
-    }
-    .suno-progress {
-      background: var(--surface-bg);
-      border: 2px solid var(--border-soft);
-      border-radius: 999px;
-      flex: 1 1 14rem;
-      height: 1rem;
-      min-width: 12rem;
-      overflow: hidden;
-    }
-    .suno-progress-fill {
-      background: var(--accent-bg);
-      display: block;
-      height: 100%;
-      width: 42%;
-    }
-    .w3-ul.w3-card-4,
-    .w3-ul.w3-card {
-      border: 1px solid var(--border-soft);
-      border-radius: 8px;
-      box-shadow: var(--shadow-soft) !important;
-      overflow: hidden;
-    }
-    .w3-ul li {
-      padding-bottom: 1rem;
-      padding-top: 1rem;
-    }
-    .media-note {
-      background: var(--section-warm);
-      border-left: 0.45rem solid var(--accent-secondary);
-      margin-top: 1.25rem;
-      padding: 1rem;
-    }
-    .suno-player-note {
-      margin: 1rem 0 0;
-    }
-    @media (max-width: 760px) {
-      .home-hero {
-        padding-top: 7.25rem !important;
-      }
-      .about-layout,
-      .supporting-images {
-        grid-template-columns: 1fr;
-      }
-      .contrast-select {
-        min-width: min(100%, 18rem);
-      }
-      .w3-bar .w3-bar-item {
-        width: 50%;
-      }
-    }
-  </style>
+  <!-- ============================================================
+    ONE-PAGE PORTFOLIO WITH BOOKMARK LINKS
+    ────────────────────────────────────────────────────────────
+    The nav at the top has 5 bookmarks that JUMP to sections
+    farther down this same page:
+       1. Home     — hero slideshow      (#home)
+       2. Images   — photo gallery       (#images)
+       3. Video    — featured video      (#video)
+       4. About    — your story + skills (#about)
+       5. Contact  — form + email        (#contact)
+
+    Bookmarks work because each section has an id="..." that
+    matches the href="#..." in the nav link.
+
+    Everything is in THIS file:
+       • HTML  (page structure, below)
+       • CSS   (inside the <style> block)
+       • JS    (the slideshow at the bottom)
+
+    HOW TO EDIT:
+       • Find a ★ comment — that marks something to replace.
+       • Search Cmd+F / Ctrl+F for HOME, IMAGES, VIDEO,
+         ABOUT, CONTACT to jump around.
+  ============================================================ -->
+
 </head>
 
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<div class="contrast-toolbar">
-  <div class="contrast-form">
-    <div class="contrast-field">
-      <label class="contrast-label" id="color-mode-label" for="color-mode">Color mode</label>
-      <select class="contrast-select" id="color-mode" aria-describedby="color-mode-help">
-        <option value="default">Black on white</option>
-        <option value="white-on-black">White on black</option>
-        <option value="blue-on-black">Blue on black</option>
-        <option value="protanopia">Protanopia-friendly</option>
-        <option value="deuteranopia">Deuteranopia-friendly</option>
-        <option value="grayscale">Grayscale</option>
-        <option value="color-wheel">High contrast color wheel</option>
-      </select>
-    </div>
-    <div class="contrast-field">
-      <label class="contrast-label" for="text-color">Text color</label>
-      <select class="contrast-select" id="text-color" aria-describedby="text-settings-help">
-        <option value="default">Use color mode text</option>
-        <option value="black">Black text on white</option>
-        <option value="white">White text on black</option>
-        <option value="yellow">Yellow text</option>
-        <option value="cyan">Cyan text</option>
-      </select>
-    </div>
-    <div class="contrast-field">
-      <label class="contrast-label" for="text-size">Text size</label>
-      <select class="contrast-select" id="text-size" aria-describedby="text-settings-help">
-        <option value="default">Default size</option>
-        <option value="14pt">14 point</option>
-        <option value="16pt">16 point</option>
-        <option value="18pt">18 point</option>
-      </select>
-    </div>
-    <div class="contrast-field">
-      <label class="contrast-label" for="text-font">Text font</label>
-      <select class="contrast-select" id="text-font" aria-describedby="text-settings-help">
-        <option value="default">Atkinson Hyperlegible</option>
-        <option value="atkinson">Atkinson Hyperlegible</option>
-        <option value="arial">Arial</option>
-        <option value="verdana">Verdana</option>
-        <option value="system">System font</option>
-      </select>
-    </div>
-    <p class="contrast-description" id="color-mode-help">
-      Choose a higher-contrast, color-vision-friendly, or high-contrast shifting palette for this site.
+
+  <!-- Skip link: appears when a keyboard user presses Tab on page load.
+       Lets screen-reader and keyboard users jump straight to <main>,
+       past the navigation. (Required for WCAG 2.4.1 — Bypass Blocks.) -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ============================================================
+    HEADER + BOOKMARK NAV
+    Each link's href="#xxx" jumps to the section with id="xxx"
+    farther down the page.
+  ============================================================ -->
+  <header>
+    <a class="brand" href="#home" aria-label="Bryan Roache — return to top of page">Bryan<span>Roache</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="toggleNav()">
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+    <nav id="primary-nav" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#approach">Approach</a>
+      <a href="#projects">Projects</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1" aria-label="Bryan Roache portfolio">
+
+    <!-- Screen-reader-only orientation block. Sighted users don't see this,
+         but screen readers read it right after the skip link, so blind
+         visitors get a clear map of the page before they start exploring. -->
+    <p class="sr-only">
+      Welcome to Bryan Roache's portfolio. This is a single page with five main sections, in this order:
+      About, Approach (seven cards on how I work and what I value),
+      Projects (selected class work), Gallery (emotion landscape images and a featured video),
+      and Contact (a message form). Each section starts with a clearly labeled header.
+      Use the navigation menu to jump to any section. Press Tab to move through links and controls.
+      Press the Escape key to close any open dialog. Use arrow keys inside the photo viewer to move between images.
     </p>
-    <p class="contrast-description" id="text-settings-help">
-      Adjust the site text color, size, and font. Text size goes up to 18 point.
-    </p>
-  </div>
-  <p class="sr-only" id="color-mode-status" aria-live="polite"></p>
-  <p class="sr-only" id="text-settings-status" aria-live="polite"></p>
-</div>
 
-<!-- Navbar -->
-<nav class="w3-top" aria-label="Primary">
-  <div class="w3-bar w3-indigo w3-card w3-left-align w3-large">
-    <a href="#top" class="w3-bar-item w3-button w3-padding-large w3-white" aria-current="page">Home</a>
-    <a href="#images" class="w3-bar-item w3-button w3-padding-large">Images</a>
-    <a href="#video" class="w3-bar-item w3-button w3-padding-large">Video</a>
-    <a href="#skills" class="w3-bar-item w3-button w3-padding-large">Skills</a>
-    <a href="#projects" class="w3-bar-item w3-button w3-padding-large">Projects</a>
-    <a href="about-me.html" class="w3-bar-item w3-button w3-padding-large">About</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large">Contact</a>
-  </div>
-</nav>
+    <!-- ════════════════════════════════════════════════════════
+      ★ HOME — hero slideshow
+      Replace each <img src="..."> with your own image.
+    ════════════════════════════════════════════════════════ -->
+    <!-- aria-roledescription tells screen readers this is a slideshow.
+         alt="" marks decorative images so they're skipped. The text
+         content (h1/p) is what gets announced. -->
+    <section class="hero" id="home" aria-roledescription="slideshow" aria-label="Welcome">
+      <div class="hero-slide active" aria-hidden="false">
+        <img src="images/multimedia_hero1.png" alt="A glowing laptop and digital devices release vibrant streams of blue, purple, and orange light. Floating around them are symbols for coding, video, audio, design, and accessibility, representing the powerful connection between creativity, technology, and inclusive multimedia." />
+      </div>
+      <div class="hero-slide" aria-hidden="true">
+        <img src="images/multimedia_hero2.png" alt="At the center of the image, a bright accessibility symbol with a person using a white cane radiates energy. Surrounding it are colorful waves, HTML code, video, audio, typography, and storytelling elements, symbolizing how accessibility is the heart of modern web and multimedia design." />
+      </div>
+      <div class="hero-slide" aria-hidden="true">
+        <img src="images/multimedia_hero3.png" alt="A laptop glowing with code sends swirling ribbons of neon color across the scene. Icons for images, music, video, typography, and communication orbit around a digital globe, representing the worldwide impact of web development, multimedia, and creative storytelling." />
+      </div>
 
-<!-- Header -->
-<header id="top" class="w3-container w3-indigo w3-center home-hero" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Bryan V. Roache</h1>
-  <p class="w3-xlarge">Practicality over pretty.</p>
-  <p class="w3-large">Information technology student focused on accessibility-first web design.</p>
-  <img
-    class="hero-image"
-    src="assets/homepage/bryan-roache-dove-roach.svg"
-    alt="Red and gold Bryan V. Roache hero graphic with a flying white dove above a multimedia web player."
-    title="Accessibility at a higher frequency."
-    width="1200"
-    height="620"
-    decoding="async"
-    fetchpriority="high">
-</header>
+      <div class="hero-text">
+        <h1>Bryan Roache</h1>
+        <p>Web designer and multimedia student at NOVA.
+           Information technology student focused on accessibility-first web design.</p>
+        <a href="#about" class="btn">About Me <span aria-hidden="true">→</span></a>
+      </div>
 
-<main id="main-content">
-  <!-- About Section -->
-  <section id="about" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="about-heading">
-    <div class="w3-content">
-      <div class="about-layout">
+      <!-- Pause control — WCAG requires a way to pause auto-moving content. -->
+      <button class="hero-pause" id="hero-pause" aria-label="Pause slideshow" aria-pressed="false">
+        <i class="ph ph-pause" aria-hidden="true"></i>
+      </button>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ ABOUT — moved up to greet visitors right after the hero
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" id="about" aria-labelledby="about-heading">
+      <header class="section-header">
+        <div class="section-header__icon" aria-hidden="true"><i class="ph-fill ph-user-circle"></i></div>
+        <p class="section-header__eyebrow">About</p>
+        <h2 id="about-heading" class="section-header__title">Who's behind the keyboard</h2>
+        <p class="section-header__lede">A NOVA student building accessible web work — and a full life off-screen.</p>
+        <span class="section-header__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="about-grid">
+        <!-- Initials avatar — "BR" rendered with CSS instead of a photo.
+             role="img" + aria-label so screen readers announce it as an image. -->
+        <div class="about-photo about-initials" role="img" aria-label="Bryan Roache initials">BR</div>
+
         <div>
-          <h2 id="about-heading">Short Introduction</h2>
-          <p class="w3-text-grey">
-            Bryan V. Roache is an information technology student focused on accessibility-first web design.
-          </p>
-          <p class="w3-text-grey">
-            My work starts with a simple idea: a website should be clear, useful,
-            and practical for real people.
-          </p>
-          <p class="w3-text-grey">
-            <a href="about-me.html" class="w3-button w3-indigo w3-padding-large">
-              Read My Story
-            </a>
-          </p>
+          <h3>Bryan Roache</h3>
+          <p>I'm a student at NOVA Annandale studying Web and Multimedia with a focus on accessibility.</p>
+          <p>Outside of class, I'm into activism, volunteering, music and exercise.</p>
+
+          <h4 class="skills-heading">Technical Skills</h4>
+          <ul class="skills" aria-label="Technical skills">
+            <li class="skill"><i class="ph ph-code" aria-hidden="true"></i> HTML Development</li>
+            <li class="skill"><i class="ph ph-keyboard" aria-hidden="true"></i> Typing 150 WPM</li>
+            <li class="skill"><i class="ph ph-magnifying-glass" aria-hidden="true"></i> Accessibility Evaluation</li>
+            <li class="skill"><i class="ph ph-eye-slash" aria-hidden="true"></i> Assistive Tech for Blind Users</li>
+            <li class="skill"><i class="ph ph-wheelchair" aria-hidden="true"></i> Physical Disability Access</li>
+          </ul>
+
+          <h4 class="skills-heading">Advocacy &amp; Volunteering</h4>
+          <ul class="skills" aria-label="Advocacy and volunteering">
+            <li class="skill"><i class="ph ph-megaphone" aria-hidden="true"></i> Dental Information Exchange</li>
+            <li class="skill"><i class="ph ph-shield-check" aria-hidden="true"></i> Virginia Medicaid Council</li>
+            <li class="skill"><i class="ph ph-tree-evergreen" aria-hidden="true"></i> The Cedar Foundation</li>
+            <li class="skill"><i class="ph ph-graduation-cap" aria-hidden="true"></i> Skill-Building School in Africa</li>
+          </ul>
         </div>
-        <figure>
-          <img
-            class="about-image"
-            src="assets/homepage/braille-card.svg"
-            alt="Illustration of a debit card with raised Braille-style dots and a contactless payment symbol."
-            width="760"
-            height="480"
-            loading="lazy"
-            decoding="async">
-          <figcaption class="image-caption">Accessibility belongs in everyday tools.</figcaption>
-        </figure>
       </div>
-      <div class="supporting-images">
-        <figure>
-          <img
-            class="supporting-image"
-            src="assets/homepage/account-fit.svg"
-            alt="Illustration of three account choices with one selected as the best practical fit."
-            width="760"
-            height="480"
-            loading="lazy"
-            decoding="async">
-          <figcaption class="image-caption">Practical advice means finding what actually works.</figcaption>
-        </figure>
-        <figure>
-          <img
-            class="supporting-image"
-            src="assets/homepage/practical-access.svg"
-            alt="Illustration of accessible devices arranged for practical use, including a computer, phone, headset, and tactile dots."
-            width="900"
-            height="520"
-            loading="lazy"
-            decoding="async">
-          <figcaption class="image-caption">Access starts with the real tools people use.</figcaption>
-        </figure>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ APPROACH — wraps the 7 info cards under one nav target.
+      Order:
+        Philosophy  → Work Style, Design POV, Accessibility POV
+        Background  → Education, Technology Skills
+        Output      → Portfolio Focus, Project Experience
+    ════════════════════════════════════════════════════════ -->
+    <section class="section-group" id="approach" aria-labelledby="approach-heading">
+      <header class="section-header">
+        <div class="section-header__icon" aria-hidden="true"><i class="ph-fill ph-lightbulb-filament"></i></div>
+        <p class="section-header__eyebrow">Approach</p>
+        <h2 id="approach-heading" class="section-header__title">The lens I bring to every page</h2>
+        <p class="section-header__lede">Seven cards on how I think, what I've learned, and what I aim for. Use the Hide buttons to collapse any card you've already read.</p>
+        <span class="section-header__rule" aria-hidden="true"></span>
+      </header>
+
+    <!-- 1. WORK STYLE — philosophy intro -->
+    <section class="info-card" id="work-style" aria-labelledby="work-style-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-compass"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Work Style</p>
+          <h3 id="work-style-title" class="info-card__title">How Bryan Approaches Projects</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="work-style-body">Hide</button>
       </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="skills-heading">
-    <div class="w3-content">
-      <h2 id="skills-heading">Skills</h2>
-      <p class="w3-text-grey">
-        My portfolio focuses on practical technology support, accessible web design, and clear communication.
-      </p>
-      <ul class="w3-ul w3-card-4 w3-white">
-        <li>Accessible HTML structure, headings, links, forms, alt text, and keyboard-friendly navigation.</li>
-        <li>GitHub Pages project organization, static website updates, and local link checking.</li>
-        <li>Assistive technology awareness, screen-reader-friendly structure, and everyday access tools.</li>
-        <li>Microsoft Office, Outlook, PowerPoint, macOS, Windows, and practical help desk support.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Images Section -->
-  <section id="images" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="images-heading">
-    <div class="w3-content">
-      <h2 id="images-heading">Images</h2>
-      <p class="w3-text-grey">
-        This image gallery uses a lightbox. Select an image to view a larger version without leaving the page.
-      </p>
-      <div class="lightbox-gallery" aria-label="AI landscape image gallery">
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-1.svg"
-          data-title="Calm Landscape"
-          data-description="A calm blue-toned mountain lake scene with soft morning light and a peaceful mood.">
-          <img
-            src="assets/lightbox/emotion-landscape-1.svg"
-            alt="Calm blue mountain lake landscape with soft morning light."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Calm Landscape</span>
-        </button>
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-2.svg"
-          data-title="Joy Landscape"
-          data-description="A warm golden sunrise over rolling hills, designed to suggest joy and energy.">
-          <img
-            src="assets/lightbox/emotion-landscape-2.svg"
-            alt="Golden sunrise over rolling hills representing joy."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Joy Landscape</span>
-        </button>
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-3.svg"
-          data-title="Sadness Landscape"
-          data-description="A rainy gray valley with distant mountains, designed to suggest sadness and reflection.">
-          <img
-            src="assets/lightbox/emotion-landscape-3.svg"
-            alt="Rainy gray valley landscape representing sadness."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Sadness Landscape</span>
-        </button>
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-4.svg"
-          data-title="Anger Landscape"
-          data-description="A stormy red-orange canyon scene with lightning, designed to suggest anger and intensity.">
-          <img
-            src="assets/lightbox/emotion-landscape-4.svg"
-            alt="Stormy red canyon landscape with lightning representing anger."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Anger Landscape</span>
-        </button>
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-5.svg"
-          data-title="Wonder Landscape"
-          data-description="A purple night sky with bright stars over a quiet forest, designed to suggest wonder.">
-          <img
-            src="assets/lightbox/emotion-landscape-5.svg"
-            alt="Purple starry forest landscape representing wonder."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Wonder Landscape</span>
-        </button>
-        <button class="lightbox-gallery-item" type="button"
-          data-full="assets/lightbox/emotion-landscape-6.svg"
-          data-title="Hope Landscape"
-          data-description="A green landscape with a bright horizon, designed to suggest hope and forward motion.">
-          <img
-            src="assets/lightbox/emotion-landscape-6.svg"
-            alt="Green landscape with bright horizon representing hope."
-            width="760"
-            height="570"
-            loading="lazy"
-            decoding="async">
-          <span>Hope Landscape</span>
-        </button>
+      <div class="info-card__body" id="work-style-body">
+        <p class="info-card__lede">Every project starts with three questions: <em>Is it clear? Is it useful? Can someone get where they're going without a fight?</em></p>
+        <p>From there, the work is in the details — heading order that makes sense, link text that tells the truth, color you can actually read, alt text that respects the reader's time, and navigation that gets out of the way.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Video Section -->
-  <section id="video" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="video-heading">
-    <div class="w3-content">
-      <h2 id="video-heading">Video</h2>
-      <p class="w3-text-grey">
-        This section is reserved for my capstone video content. I will add a final embedded video or local video file before the final deployment.
-      </p>
-      <p class="media-note">
-        When the video is added, this space should include visible controls, captions, and a transcript link so the media remains usable with screen readers, keyboards, captions, and magnification.
-      </p>
-    </div>
-  </section>
+    <!-- 2. DESIGN POV — text-only (figure removed to avoid duplicating practical-access.svg) -->
+    <section class="info-card" id="design-pov" aria-labelledby="design-pov-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-paint-brush-broad"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Design Point of View</p>
+          <h3 id="design-pov-title" class="info-card__title">Practicality Over Pretty</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="design-pov-body">Hide</button>
+      </div>
+      <div class="info-card__body" id="design-pov-body">
+        <p class="info-card__lede"><em>Practicality over pretty.</em> That's the whole job.</p>
+        <p>A page that looks gorgeous but locks out a screen reader isn't finished — it's a sketch with a finish on it. The work isn't done until someone using a keyboard, magnification, or a voice can move through it without a workaround.</p>
+        <p class="info-card__pull"><i class="ph-fill ph-quotes" aria-hidden="true"></i>Beautiful is good. Beautiful and usable is the assignment.</p>
+      </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="projects-heading">
-    <div class="w3-content">
-      <h2 id="projects-heading">Projects</h2>
-      <p class="w3-text-grey">
-        This portfolio includes class projects, accessibility-focused design work, and multimedia experiments.
-      </p>
-      <ul class="w3-ul w3-card-4 w3-white">
-        <li><a href="#cern-project">CERN Website Refactor Project</a></li>
-        <li><a href="#dark-moon-project">Dark Moon Consulting Page</a></li>
-        <li><a href="#landscapes-project">Landscapes Project</a></li>
-        <li><a href="#suno-project">Suno Music Project</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CERN Project Section -->
-  <section id="cern-project" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="cern-project-heading">
-    <div class="w3-content">
-      <h2 id="cern-project-heading">CERN Website Refactor Project</h2>
-      <p class="w3-text-grey">
-        This project is a reconstruction of the original World Wide Web site created at CERN.
-      </p>
-      <p>
-        <a href="cern-site/index.html" class="w3-button w3-indigo w3-padding-large" aria-describedby="cern-project-description">
-          View the CERN website project
-        </a>
-      </p>
-      <p id="cern-project-description" class="w3-text-grey">
-        All pages in this site have been HTML validated using the
-        <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a>.
-      </p>
-      <p class="w3-text-grey">
-        You can also jump straight into key pages from the project here:
-      </p>
-      <ul class="w3-ul w3-card-4 w3-white">
-        <li><a href="cern-site/about/executive-summary.html">Executive Summary</a></li>
-        <li><a href="cern-site/hypertext/hypertext-timeline.html">Hypertext Timeline</a></li>
-        <li><a href="cern-site/mark-up/html-tags.html">HTML Tags</a></li>
-        <li><a href="cern-site/technical/notation.html">Notation</a></li>
-        <li><a href="cern-site/www-project/timetable.html">Lecture Demo Timetable</a></li>
-        <li><a href="cern-site/www-project/www-project-history.html">WWW Project History</a></li>
-      </ul>
-      <p class="w3-text-grey">
-        <a href="b_roache_cern_refactor-page-validation.txt">View the validation summary used for submission support</a>.
-      </p>
-    </div>
-  </section>
-
-  <!-- Dark Moon Consulting Section -->
-  <section id="dark-moon-project" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="dark-moon-project-heading">
-    <div class="w3-content">
-      <h2 id="dark-moon-project-heading">Dark Moon Consulting Page</h2>
-      <p class="w3-text-grey">
-        This page was imported from the Dark Moon files archive and added as a separate static site folder.
-      </p>
-      <p>
-        <a href="dark-moon/index.html" class="w3-button w3-indigo w3-padding-large">
-          View the Dark Moon Consulting page
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Landscapes Project Section -->
-  <section id="landscapes-project" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="landscapes-project-heading">
-    <div class="w3-content">
-      <h2 id="landscapes-project-heading">Landscapes Project</h2>
-      <p class="w3-text-grey">
-        This project uses AI-generated landscape images to show different emotions through nature scenes.
-      </p>
-      <p>
-        <a href="landscapes-project/index.html" class="w3-button w3-indigo w3-padding-large">
-          View the Landscapes Project
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <!-- Suno Section -->
-  <section id="suno-project" class="w3-row-padding w3-padding-64 w3-container" aria-labelledby="suno-project-heading">
-    <div class="w3-content">
-      <h2 id="suno-project-heading">My 1st try at Suno</h2>
-      <div class="suno-player" aria-label="Suno media player preview">
-        <p class="suno-player-title">UnparalleledShoegaze356</p>
-        <p class="suno-player-meta">My first Suno music project</p>
-        <div class="suno-player-controls">
-          <a href="https://suno.com/" class="w3-button w3-indigo w3-padding-large suno-play-link" target="_blank" rel="noopener noreferrer" aria-describedby="suno-project-description">
-            <span class="suno-play-icon" aria-hidden="true">&#9658;</span>
-            <span>Open on Suno</span>
-          </a>
-          <div class="suno-progress" aria-hidden="true">
-            <span class="suno-progress-fill"></span>
+    <!-- 3. ACCESSIBILITY POV — accent, with the braille card as the philosophy capstone -->
+    <section class="info-card info-card--accent" id="accessibility-pov" aria-labelledby="accessibility-pov-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-hand-heart"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Accessibility Point of View</p>
+          <h3 id="accessibility-pov-title" class="info-card__title">Accessibility Is Not Extra. It Is Lived Experience.</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="accessibility-pov-body">Hide</button>
+      </div>
+      <div class="info-card__body info-card__body--split" id="accessibility-pov-body">
+        <div class="info-card__text">
+          <p class="info-card__lede">Accessibility isn't a feature you add at the end. <em>It's the foundation, poured first.</em></p>
+          <ul class="info-card__list--rich">
+            <li><i class="ph ph-eye-slash" aria-hidden="true"></i><span>Screen readers find their way home.</span></li>
+            <li><i class="ph ph-keyboard" aria-hidden="true"></i><span>Keyboards land where they should.</span></li>
+            <li><i class="ph ph-closed-captioning" aria-hidden="true"></i><span>Captions show up. Alt text tells the truth.</span></li>
+            <li><i class="ph ph-translate" aria-hidden="true"></i><span>The user doesn't have to translate the design — the design already speaks their language.</span></li>
+          </ul>
+          <p class="info-card__pull"><i class="ph-fill ph-quotes" aria-hidden="true"></i>This isn't a checkbox. It's a way of building. And once you build like that, you can't go back.</p>
+        </div>
+        <figure class="info-card__figure">
+          <div class="info-card__figure-frame">
+            <img src="images/braille-card.svg" alt="Illustration of a payment card with raised Braille-style dots and a contactless symbol — a concept design for an accessible debit card." />
           </div>
-        </div>
-        <p class="suno-player-note" id="suno-project-description">
-          Opens Suno in a new browser tab. This preview is styled like a media player because the submitted files do not include a local audio file.
-        </p>
-        <p>
-          <a href="https://suno.com/" target="_blank" rel="noopener noreferrer">
-            UnparalleledShoegaze356 | Join me on Suno
-          </a>
-        </p>
+          <figcaption><i class="ph-fill ph-buildings" aria-hidden="true"></i>Access should be built in from the start.</figcaption>
+        </figure>
       </div>
+    </section>
+
+    <!-- 4. EDUCATION — background -->
+    <section class="info-card" id="education" aria-labelledby="education-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-graduation-cap"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Education</p>
+          <h3 id="education-title" class="info-card__title">Legal Training Meets Information Technology</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="education-body">Hide</button>
+      </div>
+      <div class="info-card__body" id="education-body">
+        <ul class="info-card__list--rich">
+          <li><i class="ph ph-scales" aria-hidden="true"></i><span>A <strong>paralegal certificate</strong> from the University of Arkansas at Little Rock — taught me to read carefully, structure clearly, and never assume the reader has the same map I do.</span></li>
+          <li><i class="ph ph-code" aria-hidden="true"></i><span>An <strong>Associate of Applied Science in Information Technology</strong> — in progress at NOVA — is teaching me to build the systems that put those instincts on the page.</span></li>
+        </ul>
+        <p class="info-card__pull"><i class="ph-fill ph-quotes" aria-hidden="true"></i>Both disciplines speak the same language: <em>clarity is care, and structure is access.</em></p>
+      </div>
+    </section>
+
+    <!-- 5. TECHNOLOGY SKILLS — capability -->
+    <section class="info-card" id="technology-skills" aria-labelledby="technology-skills-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-toolbox"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Technology Skills</p>
+          <h3 id="technology-skills-title" class="info-card__title">Tools That Make Technology Work</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="technology-skills-body">Hide</button>
+      </div>
+      <div class="info-card__body info-card__body--split" id="technology-skills-body">
+        <div class="info-card__text">
+          <p class="info-card__lede">Tools are only as good as the people they serve.</p>
+          <ul class="info-card__list--rich">
+            <li><i class="ph ph-desktop" aria-hidden="true"></i><span><strong>Linux, macOS, and Windows</strong> from XP through 11 — whichever room you're in, I can find the door.</span></li>
+            <li><i class="ph ph-git-branch" aria-hidden="true"></i><span><strong>Git, GitHub, and GitHub Pages</strong> for version history that tells a story and a deploy that's one push away.</span></li>
+            <li><i class="ph ph-files" aria-hidden="true"></i><span><strong>Microsoft Office, Outlook, and PowerPoint</strong> for the everyday — plus help-desk fundamentals and assistive-tech workflows.</span></li>
+            <li><i class="ph ph-hand-tap" aria-hidden="true"></i><span><strong>Hands-on time with screen readers</strong>, keyboard navigation, and the structure that makes them sing.</span></li>
+          </ul>
+        </div>
+        <figure class="info-card__figure">
+          <div class="info-card__figure-frame">
+            <img src="images/account-fit.svg" alt="Three account option cards with the middle option highlighted as the practical fit." />
+          </div>
+          <figcaption><i class="ph-fill ph-puzzle-piece" aria-hidden="true"></i>Technical help works best when it fits the person using it.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 6. PORTFOLIO FOCUS — accent, bridges into the work -->
+    <section class="info-card info-card--accent" id="portfolio-focus" aria-labelledby="portfolio-focus-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-flag-pennant"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Portfolio Focus</p>
+          <h3 id="portfolio-focus-title" class="info-card__title">What This Portfolio Highlights</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="portfolio-focus-body">Hide</button>
+      </div>
+      <div class="info-card__body info-card__body--split" id="portfolio-focus-body">
+        <div class="info-card__text">
+          <p class="info-card__lede">This portfolio is a working studio, not a gallery.</p>
+          <p>Every page is built to be read by a person <em>and</em> a screen reader, opened on a phone <em>or</em> a desktop, and understood on the first scroll.</p>
+          <ul class="info-card__list--rich">
+            <li><i class="ph ph-tree-structure" aria-hidden="true"></i><span><strong>Built to be navigated</strong> — semantic structure, skip links, headings in the right order.</span></li>
+            <li><i class="ph ph-pencil-line" aria-hidden="true"></i><span><strong>Written to be understood</strong> — short paragraphs, plain language, descriptions that mean something.</span></li>
+            <li><i class="ph ph-eye" aria-hidden="true"></i><span><strong>Designed to be read</strong> — type you don't have to fight, contrast that holds up in daylight.</span></li>
+            <li><i class="ph ph-rocket-launch" aria-hidden="true"></i><span><strong>Shipped, not staged</strong> — every page lives on GitHub Pages, link-checked and ready to share.</span></li>
+          </ul>
+        </div>
+        <figure class="info-card__figure">
+          <div class="info-card__figure-frame">
+            <img src="images/practical-access.svg" alt="Illustration of a laptop, phone, and headset arranged on a clean desk with assistive-tech accents." />
+          </div>
+          <figcaption><i class="ph-fill ph-target" aria-hidden="true"></i>The portfolio focuses on practical access, not decoration.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 7. PROJECT EXPERIENCE — recap that introduces the project gallery below -->
+    <section class="info-card" id="project-experience" aria-labelledby="project-experience-title">
+      <div class="info-card__head">
+        <div class="info-card__head-icon" aria-hidden="true"><i class="ph-fill ph-folder-open"></i></div>
+        <div class="info-card__head-text">
+          <p class="info-card__eyebrow">Project Experience</p>
+          <h3 id="project-experience-title" class="info-card__title">Class Work With Practical Access Goals</h3>
+          <span class="info-card__rule" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="info-card__hide" aria-expanded="true" aria-controls="project-experience-body">Hide</button>
+      </div>
+      <div class="info-card__body" id="project-experience-body">
+        <p class="info-card__lede">Each class project tries to answer one question: <em>would this still work for someone who can't use it the way I do?</em></p>
+        <ul class="info-card__list--rich">
+          <li><i class="ph ph-house-line" aria-hidden="true"></i><span><strong>Built a homepage portfolio</strong> with clear sections for projects, images, video, skills, and contact — bookmarked, keyboard-friendly, and quick to scan.</span></li>
+          <li><i class="ph ph-arrows-counter-clockwise" aria-hidden="true"></i><span><strong>Refactored class projects</strong> including the CERN site rebuild and the landscapes gallery, with linked pages that all hold together.</span></li>
+          <li><i class="ph ph-tree-structure" aria-hidden="true"></i><span><strong>Wired in accessible structure</strong> — heading hierarchy, skip links, alt text, focus states, and color contrast that earn their keep.</span></li>
+          <li><i class="ph ph-github-logo" aria-hidden="true"></i><span><strong>Shipped through GitHub Pages</strong> with the static files organized so anyone can clone, open, and read along.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    </section>
+    <!-- end #approach -->
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ PROJECTS — the actual class work, themed to match the site
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" id="projects" aria-labelledby="projects-heading">
+      <header class="section-header">
+        <div class="section-header__icon" aria-hidden="true"><i class="ph-fill ph-stack"></i></div>
+        <p class="section-header__eyebrow">Projects</p>
+        <h2 id="projects-heading" class="section-header__title">Selected Class Projects</h2>
+        <p class="section-header__lede">A handful of sites and experiments built this semester — each organized for keyboard navigation, screen-reader structure, and readable contrast from the start.</p>
+        <span class="section-header__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="projects">
+
+        <!-- CERN — biggest project; expandable sub-page list + W3C validation file -->
+        <article class="project-card project-card--featured">
+          <div class="project-header">
+            <div class="project-icon" aria-hidden="true"><i class="ph ph-globe-hemisphere-west"></i></div>
+            <h3>CERN Website Refactor</h3>
+          </div>
+          <p>A reconstruction of Tim Berners-Lee's original World Wide Web site at CERN — rebuilt with semantic HTML, validated by the W3C, and re-published on GitHub Pages.</p>
+          <a href="cern-site/index.html" class="project-card__cta" aria-label="Open the CERN website refactor home page">View the CERN site <span aria-hidden="true">→</span></a>
+
+          <details class="project-card__details">
+            <summary><i class="ph ph-list-bullets" aria-hidden="true"></i>Jump to a key page</summary>
+            <ul class="project-card__sublinks">
+              <li><a href="cern-site/about/executive-summary.html">Executive Summary</a></li>
+              <li><a href="cern-site/hypertext/hypertext-timeline.html">Hypertext Timeline</a></li>
+              <li><a href="cern-site/mark-up/html-tags.html">HTML Tags</a></li>
+              <li><a href="cern-site/technical/notation.html">Notation</a></li>
+              <li><a href="cern-site/www-project/timetable.html">Lecture Demo Timetable</a></li>
+              <li><a href="cern-site/www-project/www-project-history.html">WWW Project History</a></li>
+            </ul>
+          </details>
+
+          <p class="project-card__meta">
+            <i class="ph ph-seal-check" aria-hidden="true"></i>
+            All pages validated with the
+            <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Markup Validation Service</a> —
+            <a href="b_roache_cern_refactor-page-validation.txt">view the validation summary</a>.
+          </p>
+        </article>
+
+        <!-- Dark Moon -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon" aria-hidden="true"><i class="ph ph-moon-stars"></i></div>
+            <h3>Dark Moon Consulting</h3>
+          </div>
+          <p>A small static consulting page imported from the Dark Moon files archive and re-organized as a clean, link-checked subfolder of this portfolio.</p>
+          <a href="dark-moon/index.html" class="project-card__cta" aria-label="Open the Dark Moon Consulting page">View the Dark Moon page <span aria-hidden="true">→</span></a>
+        </article>
+
+        <!-- Landscapes -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon" aria-hidden="true"><i class="ph ph-mountains"></i></div>
+            <h3>Landscapes Project</h3>
+          </div>
+          <p>AI-generated landscape images mapped to human emotions — a visual study paired with descriptive alt text so the meaning carries even when the image doesn't.</p>
+          <a href="landscapes-project/index.html" class="project-card__cta" aria-label="Open the Landscapes project">View the Landscapes project <span aria-hidden="true">→</span></a>
+        </article>
+
+        <!-- Suno music — external; track name + clarifying note -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-icon" aria-hidden="true"><i class="ph ph-music-notes"></i></div>
+            <h3>First Try at Suno</h3>
+          </div>
+          <p><strong>UnparalleledShoegaze356</strong> — my first attempt at composing music with AI on Suno's platform.</p>
+          <p class="project-card__meta">
+            <i class="ph ph-info" aria-hidden="true"></i>
+            The track is hosted on Suno; this card links out to it because the submission package didn't include a local audio file.
+          </p>
+          <a href="https://suno.com/" target="_blank" rel="noopener" class="project-card__cta" aria-label="Open my Suno track in a new tab">Listen on Suno <span class="sr-only">(opens in a new tab)</span> <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ GALLERY — wraps the image gallery and the featured video
+      under one nav target so visitors land on a clear chapter.
+    ════════════════════════════════════════════════════════ -->
+    <section class="section-group" id="gallery" aria-labelledby="gallery-heading">
+      <header class="section-header">
+        <div class="section-header__icon" aria-hidden="true"><i class="ph-fill ph-images"></i></div>
+        <p class="section-header__eyebrow">Gallery</p>
+        <h2 id="gallery-heading" class="section-header__title">Visual Work</h2>
+        <p class="section-header__lede">Emotion-driven landscape images and a featured multimedia video — captioned, alt-texted, and keyboard-friendly.</p>
+        <span class="section-header__rule" aria-hidden="true"></span>
+      </header>
+
+    <section class="inner" id="images" aria-labelledby="images-heading">
+      <h3 id="images-heading"><span class="heading-icon" aria-hidden="true"><i class="ph-fill ph-palette"></i></span>Emotion Landscapes</h3>
+      <p>Six landscape images, each paired with a feeling. Click any photo to open the slideshow — use ← → arrows or Tab to navigate, Enter to open, Esc to close.</p>
+
+      <div class="gallery">
+        <button type="button" class="gallery-item" aria-label="Open photo 1 in slideshow: calm landscape">
+          <img src="images/emotion-landscape-1.svg" alt="Calm landscape — soft horizons in muted blues and greens." />
+        </button>
+        <button type="button" class="gallery-item" aria-label="Open photo 2 in slideshow: joy landscape">
+          <img src="images/emotion-landscape-2.svg" alt="Joyful landscape — warm sunlit fields under an open sky." />
+        </button>
+        <button type="button" class="gallery-item" aria-label="Open photo 3 in slideshow: sadness landscape">
+          <img src="images/emotion-landscape-3.svg" alt="Sad landscape — overcast scene in cool, washed-out tones." />
+        </button>
+        <button type="button" class="gallery-item" aria-label="Open photo 4 in slideshow: anger landscape">
+          <img src="images/emotion-landscape-4.svg" alt="Angry landscape — storm-lit terrain in deep reds and shadow." />
+        </button>
+        <button type="button" class="gallery-item" aria-label="Open photo 5 in slideshow: wonder landscape">
+          <img src="images/emotion-landscape-5.svg" alt="Wondrous landscape — surreal sky and luminous mountains." />
+        </button>
+        <button type="button" class="gallery-item" aria-label="Open photo 6 in slideshow: hope landscape">
+          <img src="images/emotion-landscape-6.svg" alt="Hopeful landscape — sunrise breaking over a quiet valley." />
+        </button>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX overlay (opened by clicking a gallery image) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+      <button class="lightbox-btn lightbox-close" aria-label="Close slideshow" onclick="closeLightbox()">
+        <i class="ph ph-x" aria-hidden="true"></i>
+      </button>
+      <button class="lightbox-btn lightbox-prev" aria-label="Previous photo" onclick="changeSlide(-1)">
+        <i class="ph ph-caret-left" aria-hidden="true"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="" />
+      <button class="lightbox-btn lightbox-next" aria-label="Next photo" onclick="changeSlide(1)">
+        <i class="ph ph-caret-right" aria-hidden="true"></i>
+      </button>
+      <div class="lightbox-counter" id="lightbox-counter" aria-live="polite">1 of 6</div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="w3-row-padding w3-padding-64 w3-light-grey w3-container" aria-labelledby="contact-heading">
-    <div class="w3-content">
-      <h2 id="contact-heading">Contact</h2>
-      <p class="w3-text-grey">
-        Connect about class projects, accessibility-first web design, or multimedia portfolio work by email or LinkedIn.
-      </p>
-      <p>
-        <a href="mailto:gammon_jingle.13@icloud.com" class="w3-button w3-indigo w3-padding-large">
-          Email Bryan
-        </a>
-        <a href="https://www.linkedin.com/in/Bryan-r-b62a4426" class="w3-button w3-indigo w3-padding-large" target="_blank" rel="noopener noreferrer">
-          Visit My LinkedIn
-        </a>
-      </p>
+    <!-- ════════════════════════════════════════════════════════
+      ★ VIDEO — featured multimedia piece
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" id="video" aria-labelledby="video-heading">
+      <h3 id="video-heading"><span class="heading-icon" aria-hidden="true"><i class="ph-fill ph-video-camera"></i></span>Featured Video</h3>
+      <p class="video-note"><strong>Heads up for screen-reader users:</strong> this video has no narration — the description below is the audio description.</p>
+      <p id="video-description">An abstract energetic visualization of multimedia creation. A glowing laptop and digital devices release vibrant streams of blue, purple, and orange light. Floating around them are symbols for coding, video, audio, design, and a bright accessibility symbol with a white cane radiating energy.</p>
+
+      <div class="video-wrap">
+        <video src="media/bryan_video.mp4"
+               controls
+               aria-labelledby="video-heading"
+               aria-describedby="video-description">
+          Your browser doesn't support inline video. <a href="media/bryan_video.mp4">Download the featured video (MP4)</a> instead.
+        </video>
+      </div>
+    </section>
+
+    </section>
+    <!-- end #gallery -->
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ CONTACT — form + email
+      Replace the email address with your real one.
+    ════════════════════════════════════════════════════════ -->
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <header class="section-header">
+        <div class="section-header__icon" aria-hidden="true"><i class="ph-fill ph-paper-plane-tilt"></i></div>
+        <p class="section-header__eyebrow">Contact</p>
+        <h2 id="contact-heading" class="section-header__title">Get in Touch</h2>
+        <p class="section-header__lede">Have a question or want to connect? Send a message — I read every one.</p>
+        <span class="section-header__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="contact-grid">
+        <!-- ★ FORMSPREE
+             Sign up at https://formspree.io/, create a form, and paste
+             your endpoint URL into the action attribute below.
+             Format:  https://formspree.io/f/YOUR_FORM_ID
+
+             ACCESSIBILITY NOTES:
+             • Every input has a real <label for="..."> tied to its id —
+               screen readers announce the label when the field is focused.
+             • Placeholder text is NOT a label (it disappears on typing).
+             • aria-required tells assistive tech the field is mandatory. -->
+        <form class="form"
+              action="https://formspree.io/f/mgodpkkg"
+              method="POST"
+              aria-labelledby="contact-heading">
+          <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
+          <input id="name" type="text" name="name"
+                 placeholder="Your name" required aria-required="true" autocomplete="name" />
+
+          <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+          <input id="email" type="email" name="email"
+                 placeholder="you@example.com" required aria-required="true" autocomplete="email" />
+
+          <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+          <textarea id="message" name="message"
+                    placeholder="What would you like to say?" required aria-required="true"></textarea>
+
+          <!-- Optional: redirect after submission -->
+          <!-- <input type="hidden" name="_next" value="https://yoursite.com/thanks.html" /> -->
+          <input type="hidden" name="_subject" value="New portfolio message" />
+          <button type="submit" class="btn">Send Message <span aria-hidden="true">→</span></button>
+        </form>
+
+        <div class="contact-info" aria-label="Other ways to reach me">
+          <h3>Find me online</h3>
+          <a href="mailto:mailto:bvr91893@gmail.com" aria-label="Email Bryan Roache">
+            <i class="ph ph-envelope" aria-hidden="true"></i>
+            <span>mailto:bvr91893@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/bryan-r-b62a4426/" target="_blank" rel="noopener" aria-label="Bryan Roache on LinkedIn">
+            <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+            <span>LinkedIn <span class="sr-only">(opens in a new tab)</span></span>
+          </a>
+          <a href="https://github.com/bvr91893-glitch
+" target="_blank" rel="noopener" aria-label="Bryan Roache on GitHub">
+            <i class="ph ph-github-logo" aria-hidden="true"></i>
+            <span>GitHub <span class="sr-only">(opens in a new tab)</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <!-- Stage wraps the SVG so the drive-in animation (translateX) and
+           the flip (scaleX) can live on different elements without fighting
+           over the transform property. -->
+      <div class="footer-car-stage" aria-hidden="false">
+      <svg class="footer-car" role="img" aria-labelledby="race-car-title race-car-desc" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+        <title id="race-car-title">Portfolio race car</title>
+        <desc id="race-car-desc">A purple and off-white race car with dark wheels, matching the portfolio's color palette.</desc>
+        <rect width="640" height="260" fill="#0b0b0f"/>
+        <path d="M78 168 L126 96 H275 L342 55 H430 L501 98 L562 112 L594 168 Z" fill="#e8e8ee" stroke="#e8e8ee" stroke-width="8" stroke-linejoin="round"/>
+        <path d="M115 158 L149 110 H280 L333 77 H420 L475 110 L548 126 L568 158 Z" fill="#7c5cff" stroke="#0b0b0f" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M111 158 H570 L594 168 H78 Z" fill="#4f37c9" stroke="#0b0b0f" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M296 94 L341 70 H417 L452 94 Z" fill="#e8e8ee" stroke="#0b0b0f" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M162 111 H267 L231 144 H132 Z" fill="#e8e8ee" stroke="#0b0b0f" stroke-width="5" stroke-linejoin="round"/>
+        <path d="M437 119 H523 L555 137 H453 Z" fill="#e8e8ee" stroke="#0b0b0f" stroke-width="5" stroke-linejoin="round"/>
+        <circle cx="177" cy="169" r="42" fill="#0b0b0f" stroke="#e8e8ee" stroke-width="8"/>
+        <circle cx="177" cy="169" r="21" fill="#7c5cff" stroke="#0b0b0f" stroke-width="5"/>
+        <circle cx="482" cy="169" r="42" fill="#0b0b0f" stroke="#e8e8ee" stroke-width="8"/>
+        <circle cx="482" cy="169" r="21" fill="#7c5cff" stroke="#0b0b0f" stroke-width="5"/>
+        <path d="M77 181 H596" stroke="#7c5cff" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      </div>
+      <p class="footer-copy">© 2026 Bryan Roache · ITE 170 · NOVA Annandale</p>
+      <p class="footer-note">Built with semantic HTML, keyboard support, and screen-reader testing in mind.</p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" hidden>
-  <div class="lightbox-content">
-    <button class="close-lightbox" type="button" aria-label="Close image viewer">&times;</button>
-    <img id="lightbox-image" src="" alt="">
-    <h2 id="lightbox-title"></h2>
-    <p id="lightbox-description"></p>
-  </div>
-</div>
+  <!-- ============================================================
+    JAVASCRIPT — two small features
+       1. Hero slideshow — auto-cycles every 4 seconds
+       2. handleSubmit() — pretends to send the contact form
+  ============================================================ -->
+  <script>
+    // ── 1. HERO SLIDESHOW ──
+    // Auto-cycles every 5 seconds. Pausable (WCAG 2.2.2) and respects
+    // the user's "Reduce motion" OS setting — never auto-plays then.
+    const slides = document.querySelectorAll('.hero-slide');
+    const pauseBtn = document.getElementById('hero-pause');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let heroTimer = null;
 
-<!-- Footer -->
-<footer class="site-footer w3-container w3-padding-64 w3-center">
-  <div class="footer-brand">
-    <svg class="footer-car" role="img" aria-labelledby="race-car-title race-car-desc" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
-      <title id="race-car-title">High contrast race car</title>
-      <desc id="race-car-desc">A red, blue, and white race car with black tires and yellow rims.</desc>
-      <rect width="640" height="260" fill="#000000"/>
-      <path d="M78 168 L126 96 H275 L342 55 H430 L501 98 L562 112 L594 168 Z" fill="#ffffff" stroke="#ffffff" stroke-width="8" stroke-linejoin="round"/>
-      <path d="M115 158 L149 110 H280 L333 77 H420 L475 110 L548 126 L568 158 Z" fill="#0057ff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
-      <path d="M111 158 H570 L594 168 H78 Z" fill="#ff1f1f" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
-      <path d="M296 94 L341 70 H417 L452 94 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
-      <path d="M162 111 H267 L231 144 H132 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
-      <path d="M437 119 H523 L555 137 H453 Z" fill="#ffffff" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
-      <circle cx="177" cy="169" r="42" fill="#000000" stroke="#ffffff" stroke-width="8"/>
-      <circle cx="177" cy="169" r="21" fill="#ffd400" stroke="#000000" stroke-width="5"/>
-      <circle cx="482" cy="169" r="42" fill="#000000" stroke="#ffffff" stroke-width="8"/>
-      <circle cx="482" cy="169" r="21" fill="#ffd400" stroke="#000000" stroke-width="5"/>
-      <path d="M77 181 H596" stroke="#ffd400" stroke-width="6" stroke-linecap="round"/>
-    </svg>
-    <p class="footer-powered">
-      Powered by
-      <span class="footer-word-red">Accessibility</span>
-      <span class="footer-word-blue">at</span>
-      <span class="footer-word-green">a</span>
-      <span class="footer-word-red">higher</span>
-      <span class="footer-word-blue">frequency</span>
-    </p>
-  </div>
-</footer>
+    function showSlide(i) {
+      slides[current].classList.remove('active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      slides[current].setAttribute('aria-hidden', 'false');
+    }
+    function startHero() {
+      if (heroTimer) return;
+      heroTimer = setInterval(() => showSlide(current + 1), 5000);
+      pauseBtn.setAttribute('aria-pressed', 'false');
+      pauseBtn.setAttribute('aria-label', 'Pause slideshow');
+      pauseBtn.querySelector('i').className = 'ph ph-pause';
+    }
+    function stopHero() {
+      clearInterval(heroTimer);
+      heroTimer = null;
+      pauseBtn.setAttribute('aria-pressed', 'true');
+      pauseBtn.setAttribute('aria-label', 'Play slideshow');
+      pauseBtn.querySelector('i').className = 'ph ph-play';
+    }
+    pauseBtn.addEventListener('click', () => {
+      heroTimer ? stopHero() : startHero();
+    });
+    // Don't auto-start if the user prefers reduced motion.
+    if (!prefersReduced) startHero();
+    else stopHero();
 
-<script>
-const colorModeSelect = document.getElementById("color-mode");
-const colorModeStatus = document.getElementById("color-mode-status");
-const textColorSelect = document.getElementById("text-color");
-const textSizeSelect = document.getElementById("text-size");
-const textFontSelect = document.getElementById("text-font");
-const textSettingsStatus = document.getElementById("text-settings-status");
-const colorModeStorageKey = "site-color-mode";
-const textColorStorageKey = "site-text-color";
-const textSizeStorageKey = "site-text-size";
-const textFontStorageKey = "site-text-font";
-const colorModeLabels = {
-  default: "Black on white",
-  "white-on-black": "White on black",
-  "blue-on-black": "Blue on black",
-  protanopia: "Protanopia-friendly",
-  deuteranopia: "Deuteranopia-friendly",
-  grayscale: "Grayscale",
-  "color-wheel": "High contrast color wheel"
-};
-const textColorLabels = {
-  default: "Use color mode text",
-  black: "Black text on white",
-  white: "White text on black",
-  yellow: "Yellow text",
-  cyan: "Cyan text"
-};
-const textSizeLabels = {
-  default: "Default size",
-  "14pt": "14 point",
-  "16pt": "16 point",
-  "18pt": "18 point"
-};
-const textFontLabels = {
-  default: "Atkinson Hyperlegible",
-  atkinson: "Atkinson Hyperlegible",
-  arial: "Arial",
-  verdana: "Verdana",
-  system: "System font"
-};
+    // ── 2. LIGHTBOX SLIDESHOW ──
+    // Keyboard-friendly: Tab into a gallery photo, press Enter to open.
+    // Arrow keys navigate, Esc closes. Focus is trapped while open and
+    // returned to the photo that opened it on close (WCAG 2.4.3).
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const counter     = document.getElementById('lightbox-counter');
+    let currentImg = 0;
+    let lastFocused = null;
 
-function setColorMode(mode) {
-  const normalizedMode = Object.prototype.hasOwnProperty.call(colorModeLabels, mode) ? mode : "default";
-  document.body.dataset.colorMode = normalizedMode;
-  colorModeSelect.value = normalizedMode;
-  colorModeStatus.textContent = "Color mode set to " + colorModeLabels[normalizedMode] + ".";
-}
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+    });
 
-function normalizeSetting(labels, value) {
-  return Object.prototype.hasOwnProperty.call(labels, value) ? value : "default";
-}
+    function openLightbox(i) {
+      lastFocused = document.activeElement;
+      currentImg = i;
+      updateLightbox();
+      lightbox.hidden = false;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      // Move focus to the close button so screen readers land in the dialog.
+      lightbox.querySelector('.lightbox-close').focus();
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.hidden = true;
+      document.body.style.overflow = '';
+      // Return focus to the gallery item the user opened — never lose them.
+      if (lastFocused) lastFocused.focus();
+    }
+    function changeSlide(dir) {
+      currentImg = (currentImg + dir + galleryItems.length) % galleryItems.length;
+      updateLightbox();
+    }
+    function updateLightbox() {
+      const img = galleryItems[currentImg].querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      // Counter is an aria-live region — including the alt text means
+      // a screen reader announces the photo description on every slide
+      // change, not just "2 of 6" with no idea what's on screen.
+      const desc = img.alt ? `: ${img.alt}` : '';
+      counter.textContent = `${currentImg + 1} of ${galleryItems.length}${desc}`;
+    }
 
-function setTextSettings(options = {}) {
-  const textColor = normalizeSetting(textColorLabels, options.textColor || textColorSelect.value);
-  const textSize = normalizeSetting(textSizeLabels, options.textSize || textSizeSelect.value);
-  const textFont = normalizeSetting(textFontLabels, options.textFont || textFontSelect.value);
+    // Keyboard controls + focus trap
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     { closeLightbox(); return; }
+      if (e.key === 'ArrowLeft')  changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+      // Trap Tab so focus stays within the dialog
+      if (e.key === 'Tab') {
+        const focusables = lightbox.querySelectorAll('button');
+        const first = focusables[0];
+        const last  = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          last.focus(); e.preventDefault();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          first.focus(); e.preventDefault();
+        }
+      }
+    });
+    // Click backdrop (not the image/buttons) to close
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
 
-  document.body.dataset.textColor = textColor;
-  document.body.dataset.textSize = textSize;
-  document.body.dataset.textFont = textFont;
-  textColorSelect.value = textColor;
-  textSizeSelect.value = textSize;
-  textFontSelect.value = textFont;
-  textSettingsStatus.textContent = "Text settings set to " + textColorLabels[textColor] + ", " + textSizeLabels[textSize] + ", " + textFontLabels[textFont] + ".";
-}
+    // ── 3. MOBILE NAV TOGGLE ──
+    // Opens/closes the slide-down menu on small screens.
+    function toggleNav() {
+      const nav = document.getElementById('primary-nav');
+      const btn = document.querySelector('.nav-toggle');
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+      btn.querySelector('i').className = isOpen ? 'ph ph-x' : 'ph ph-list';
+    }
+    // Close the menu after tapping a link.
+    document.querySelectorAll('#primary-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        const nav = document.getElementById('primary-nav');
+        if (nav.classList.contains('open')) toggleNav();
+      });
+    });
 
-const savedColorMode = localStorage.getItem(colorModeStorageKey) || "default";
-const savedTextColor = localStorage.getItem(textColorStorageKey) || "default";
-const savedTextSize = localStorage.getItem(textSizeStorageKey) || "default";
-const savedTextFont = localStorage.getItem(textFontStorageKey) || "default";
-setColorMode(savedColorMode);
-setTextSettings({
-  textColor: savedTextColor,
-  textSize: savedTextSize,
-  textFont: savedTextFont
-});
+    // ── HOME LINK — guaranteed scroll to the very top of the page.
+    // Both the brand logo and the Home nav button use href="#home". The
+    // browser default sometimes misbehaves (sticky header, scroll-margin
+    // on the hero, mid-flight smooth-scroll interruptions), so we handle
+    // it explicitly: scroll to 0, clear the hash so the URL stays clean.
+    document.querySelectorAll('a[href="#home"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        history.replaceState(null, '', location.pathname + location.search);
+      });
+    });
 
-colorModeSelect.addEventListener("change", (event) => {
-  const selectedMode = event.target.value;
-  setColorMode(selectedMode);
-  localStorage.setItem(colorModeStorageKey, selectedMode);
-});
+    // ── 4. INFO CARD HIDE/SHOW ──
+    // Each .info-card has a Hide button in its header. Clicking it
+    // collapses the body; aria-expanded keeps screen readers in sync.
+    document.querySelectorAll('.info-card__hide').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.info-card');
+        const collapsed = card.classList.toggle('is-collapsed');
+        btn.textContent = collapsed ? 'Show' : 'Hide';
+        btn.setAttribute('aria-expanded', String(!collapsed));
+      });
+    });
 
-textColorSelect.addEventListener("change", (event) => {
-  const selectedTextColor = event.target.value;
-  setTextSettings({ textColor: selectedTextColor });
-  localStorage.setItem(textColorStorageKey, selectedTextColor);
-});
+    // ── 5. SCROLLSPY — mark the active section in the nav ──
+    // As the user scrolls, the nav link for the section currently in
+    // view gets aria-current="location". Screen-reader users hear
+    // "current location" when they land on the active link, which
+    // helps them stay oriented on a long single-page site.
+    (() => {
+      const navLinks = Array.from(document.querySelectorAll('#primary-nav a[href^="#"]'));
+      if (!navLinks.length) return;
+      const linkByHash = new Map(navLinks.map(a => [a.getAttribute('href').slice(1), a]));
+      const sections = navLinks
+        .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+        .filter(Boolean);
 
-textSizeSelect.addEventListener("change", (event) => {
-  const selectedTextSize = event.target.value;
-  setTextSettings({ textSize: selectedTextSize });
-  localStorage.setItem(textSizeStorageKey, selectedTextSize);
-});
+      const setActive = (id) => {
+        navLinks.forEach(a => a.removeAttribute('aria-current'));
+        const link = linkByHash.get(id);
+        if (link) link.setAttribute('aria-current', 'location');
+      };
 
-textFontSelect.addEventListener("change", (event) => {
-  const selectedTextFont = event.target.value;
-  setTextSettings({ textFont: selectedTextFont });
-  localStorage.setItem(textFontStorageKey, selectedTextFont);
-});
+      const observer = new IntersectionObserver((entries) => {
+        // Pick the most-visible intersecting section.
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      }, { rootMargin: '-40% 0px -40% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] });
 
-const galleryItems = document.querySelectorAll(".lightbox-gallery-item");
-const lightbox = document.querySelector("#lightbox");
-const lightboxImage = document.querySelector("#lightbox-image");
-const lightboxTitle = document.querySelector("#lightbox-title");
-const lightboxDescription = document.querySelector("#lightbox-description");
-const closeLightboxButton = document.querySelector(".close-lightbox");
-let lastFocusedElement = null;
+      sections.forEach(s => observer.observe(s));
+    })();
 
-function openLightbox(item) {
-  lastFocusedElement = document.activeElement;
-  lightboxImage.src = item.getAttribute("data-full");
-  lightboxImage.alt = item.getAttribute("data-description");
-  lightboxTitle.textContent = item.getAttribute("data-title");
-  lightboxDescription.textContent = item.getAttribute("data-description");
-  lightbox.hidden = false;
-  closeLightboxButton.focus();
-}
-
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImage.src = "";
-  lightboxImage.alt = "";
-  lightboxTitle.textContent = "";
-  lightboxDescription.textContent = "";
-
-  if (lastFocusedElement) {
-    lastFocusedElement.focus();
-  }
-}
-
-galleryItems.forEach((item) => {
-  item.addEventListener("click", () => openLightbox(item));
-});
-
-closeLightboxButton.addEventListener("click", closeLightbox);
-
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) {
-    closeLightbox();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !lightbox.hidden) {
-    closeLightbox();
-  }
-});
-</script>
+    // ── 6. FOOTER CAR — drive across once when the footer scrolls in ──
+    // The class lands on the .footer-car-stage wrapper (not the SVG),
+    // because the SVG holds a permanent scaleX(-1) flip and the wrapper
+    // handles the translateX motion. Plays only once; respects
+    // prefers-reduced-motion.
+    (() => {
+      const stage = document.querySelector('.footer-car-stage');
+      if (!stage) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stage.classList.add('footer-car-stage--drive');
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      observer.observe(stage);
+    })();
+  </script>
 
 </body>
 </html>

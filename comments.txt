@@ -1,0 +1,3039 @@
+================================================================
+COMMENTS FROM: index.html
+================================================================
+===========================================================
+       1. CSS VARIABLES — DESIGN TOKENS
+       ============================================================
+       CSS variables (also called "custom properties") let you
+       define a value once and reuse it everywhere in your CSS.
+
+       Syntax:  --variable-name: value;
+       Usage:   color: var(--variable-name);
+
+       The :root selector targets the very top of the document,
+       so these variables are available to every element on the page.
+
+       TO RETHEME THE ENTIRE SITE: change only the hex values below.
+       Every button, link, label, and bar that uses var(--accent)
+       will update automatically.
+    ===========================================================
+
+===========================================================
+       2. RESET & BASE STYLES
+       ============================================================
+       Browsers apply their own default styles to every element —
+       different margins, paddings, font sizes. This "universal
+       reset" zeros them all out so we start from a clean slate
+       and the page looks the same in every browser.
+    ===========================================================
+
+The * selector targets EVERY element on the page.
+        ::before and ::after target CSS pseudo-elements
+        (the decorative content we create with content: "").
+
+Removes all default outer spacing from every element
+
+Removes all default inner spacing from every element
+
+By default, CSS calculates width EXCLUDING padding and border.
+        So a div with width: 300px and padding: 20px would actually
+        be 340px wide — confusing and hard to work with.
+
+        box-sizing: border-box changes this so that padding and
+        border are INCLUDED in the declared width.
+        A div with width: 300px and padding: 20px stays exactly
+        300px wide. This makes layouts much more predictable.
+
+Makes the page scroll smoothly when the user clicks an
+        anchor link (like href="#projects") instead of jumping
+        instantly. This is a small quality-of-life improvement.
+
+font-family lists fonts in priority order — the browser
+        uses the first one it finds on the user's device.
+
+        -apple-system        → San Francisco (Mac/iPhone)
+        BlinkMacSystemFont   → San Francisco (Chrome on Mac)
+        "Segoe UI"           → Windows system font
+        Roboto               → Android system font
+        sans-serif           → any sans-serif font as final fallback
+
+        This technique gives the page a "native" feel on every
+        device without loading a web font, which speeds up the page.
+
+Sets the page background to our cool off-white variable
+
+Sets the default text color for the whole page.
+        Child elements inherit this unless they override it.
+
+Hides any content that overflows horizontally.
+        This prevents a horizontal scrollbar from appearing
+        when animated elements briefly extend past the viewport
+        (like the mobile nav panel sliding in from off-screen).
+
+line-height controls the vertical space between lines of text.
+        1.65 means each line is 1.65× the font size tall.
+        The browser default (1.2) is too tight for body text.
+        1.65 is comfortable and easy to read.
+
+Prevents images and videos from overflowing their container.
+        If a container is 400px wide and the image is 800px,
+        max-width: 100% shrinks the image to fit within 400px.
+
+Images are inline by default, which adds a small gap below
+        them (space reserved for text descenders). display: block
+        removes that gap so images sit flush in their containers.
+
+===========================================================
+       3. HEADER / DESKTOP NAVIGATION
+       ============================================================
+       The header is fixed to the top of the viewport so it stays
+       visible as the user scrolls. It uses backdrop-filter: blur()
+       to create a frosted-glass effect.
+
+       Z-index layering used in this file:
+         header          = z-index: 1000  (topmost — always on top)
+         mobile-nav      = z-index: 999   (below header)
+         mobile-overlay  = z-index: 998   (below nav panel)
+         hero slides     = z-index: 0–2   (at the bottom)
+    ===========================================================
+
+position: fixed removes the header from normal document flow
+        and anchors it to the viewport. It will not scroll away
+        even as the user scrolls down the page.
+
+Pins the header to the top-left corner of the viewport.
+        Combined with width: 100%, it spans the full browser width.
+
+Makes the header stretch edge-to-edge across the screen
+
+Sets a fixed height for the header bar.
+        The <main> element has padding-top: 64px to match,
+        so page content starts below the header instead of
+        being hidden behind it.
+
+rgba() sets a color with transparency.
+        This is --light-bg (244,245,249) at 95% opacity.
+        The 5% transparency lets the page content slightly
+        show through, which is necessary for the blur effect
+        to look like frosted glass.
+
+backdrop-filter: blur() blurs everything BEHIND the element.
+        Combined with the semi-transparent background above, this
+        creates the "frosted glass" effect.
+
+        -webkit-backdrop-filter is the Safari-prefixed version.
+        Both lines are required for cross-browser support.
+
+A very faint 1px line at the bottom of the header.
+        rgba(0,0,0,0.07) = black at 7% opacity — barely visible
+        but provides subtle visual separation from the page content.
+
+Flexbox layout for the header's three children:
+          brand (left) | nav links (center) | cta+hamburger (right)
+
+        display: flex        → turns header into a flex container
+        align-items: center  → vertically centers all children
+        justify-content: space-between → pushes first child left,
+                               last child right, middle centered
+
+0 top/bottom padding (height controls vertical space)
+        36px left/right padding keeps content away from screen edges
+
+z-index controls which elements appear in front of others
+        when they overlap. Higher number = closer to the viewer.
+        1000 ensures the header stays above everything else on the page,
+        including the hero section and any modals or dropdowns.
+
+The brand/logo text link in the top-left of the header.
+
+Extra bold — makes the name stand out as a brand mark
+
+Slightly larger than body text (1rem = 16px)
+
+Tiny negative tracking — makes bold text look tighter
+
+Removes the default underline from anchor links
+
+Near-black text so it's readable on the light header
+
+The <span> inside the brand wraps one word so it can be
+        styled differently. This applies the accent color to just
+        that word, creating a two-tone brand name effect.
+        Example: Your(dark) Name(blue)
+
+The row of navigation links. Hidden on mobile via media query.
+        margin-left:auto pushes the nav to the right edge of the header,
+        matching the layout on the other pages.
+
+transition animates property changes smoothly.
+        color .2s means the color change takes 0.2 seconds.
+        Without this, the hover color would snap on/off instantly.
+
+.active is added to the link for the current page.
+        The heavier weight and accent color visually indicate
+        which page the user is currently on.
+
+The "Hire Me" pill button in the top-right of the header.
+        Hidden on mobile (display: none in the media query below).
+
+Allows padding and sizing on what is otherwise an anchor tag
+
+9px top/bottom, 22px left/right — comfortable button size
+
+border-radius: 999px creates a "pill" shape by rounding
+        the corners more than the element is tall. Any value larger
+        than half the element's height achieves this effect.
+        999px is a safe large number that always produces a pill.
+
+Filled with the accent blue color
+
+White text for contrast on the blue background
+
+Animates both the background color change AND the lift on hover
+
+Darkens on hover — provides visual feedback to the user
+
+translateY() moves the element along the vertical axis.
+        -2px moves it 2 pixels UPWARD — a subtle "lift" effect.
+        Combined with the shadow below, this feels like the button
+        is being physically raised off the page.
+
+===========================================================
+       4. MOBILE NAVIGATION
+       ============================================================
+       On screens narrower than 900px, the desktop nav and header
+       CTA are hidden. In their place, a hamburger button appears.
+       Clicking it triggers JavaScript to add the .open class to
+       the .mobile-nav panel, which slides it in from the RIGHT.
+    ===========================================================
+
+The three-bar hamburger button. Hidden on desktop via
+        display: none. Shown on mobile via the media query (display: flex).
+
+Hidden by default — shown only below 900px
+
+Square button — equal width and height
+
+Slightly rounded square corners
+
+Very faint border — visible but not harsh
+
+White background so it contrasts with the frosted header
+
+Changes the cursor to a hand on hover — signals it's clickable
+
+These flex properties center the three bars inside the button
+        and stack them vertically with 5px between each bar.
+        They only take effect when display is changed to flex
+        by the media query at the bottom of this stylesheet.
+
+Smooth background color transition on hover
+
+Light blue-gray on hover — gentle feedback
+
+The three horizontal bars of the hamburger icon.
+        .bar          = the middle bar (an actual HTML element)
+        .bar::before  = the top bar (drawn with CSS, no HTML needed)
+        .bar::after   = the bottom bar (drawn with CSS, no HTML needed)
+
+        ::before and ::after are CSS pseudo-elements. They insert
+        decorative content before/after the element without adding
+        HTML. The content: "" property is required to make them visible.
+
+Thin 20px wide bars
+
+Dark bars that contrast against the white button
+
+Slightly rounded ends
+
+Makes pseudo-elements take up space as block elements
+
+Allows the bars to animate if you add an X close animation
+
+position: relative on .bar allows ::before and ::after
+        to be positioned relative to this element using
+        position: absolute and the top/left properties.
+
+Required — pseudo-elements won't render without this
+
+Positions the top bar 6px above the middle bar
+
+Positions the bottom bar 6px below the middle bar
+
+─────────────────────────────────────────────────────────
+       MOBILE NAV PANEL — slides in from the RIGHT
+       ─────────────────────────────────────────────────────────
+       The panel starts completely off the right side of the screen
+       (right: -100%). When JavaScript adds the .open class,
+       CSS transitions it to right: 0, sliding it into view.
+    ─────────────────────────────────────────────────────────
+
+Fixed positioning takes the element completely out of
+        document flow and anchors it to the viewport. The panel
+        will stay in the same position even as the page scrolls.
+
+right: -100% pushes the panel completely off the right
+        edge of the screen, making it invisible.
+        When .open is added, right changes to 0, sliding it in.
+
+76% of the viewport width, but never wider than 300px.
+        This ensures the panel is a good size on phones of any width
+        while leaving some of the page visible on the left.
+
+100vh = 100% of the viewport height.
+        The panel fills the full height of the screen.
+
+Very dark navy at 96% opacity.
+        The 4% transparency allows backdrop-filter blur to work.
+
+Blurs the page content behind the panel.
+        More blur (24px) than the header (18px) because the panel
+        is full-screen and needs a stronger frosted effect.
+
+Stacks the nav links vertically inside the panel.
+        The CTA button at the bottom uses margin-top: auto to
+        push itself to the very bottom of the panel.
+
+80px top padding creates space below the close button
+        at the top of the panel.
+        28px left/right padding keeps content away from the edges.
+        40px bottom padding so the CTA button isn't flush to the bottom.
+
+This is what creates the sliding animation.
+        When the right property changes (from -100% to 0, or back),
+        it animates over 0.32 seconds with an ease curve.
+        Without this line, the panel would snap on/off instantly.
+
+Just below the header (z-index: 1000) so the header
+        stays visible even when the nav panel is open.
+
+A very faint white line on the left edge of the panel.
+        Creates a subtle separation between the panel and the
+        dimmed page content visible to the left.
+
+When JavaScript adds class="open" to the .mobile-nav element,
+        this rule takes effect. right: 0 means the right edge of the
+        panel aligns with the right edge of the viewport — fully visible.
+        The transition above animates the change smoothly.
+
+A full-screen semi-transparent layer placed between the
+        page content and the nav panel. It dims the page content
+        so the user's attention goes to the open nav panel.
+        Clicking the overlay closes the nav (via onclick="closeMobileNav()").
+
+Hidden by default — shown only when nav is open
+
+inset: 0 is shorthand for top: 0; right: 0; bottom: 0; left: 0.
+        Makes the overlay cover the entire viewport.
+
+Black at 45% opacity — dims but doesn't fully hide the page
+
+Behind the nav panel (999) but above all page content
+
+JavaScript adds class="show" to make the overlay visible
+
+The × (times/close) button inside the top of the nav panel.
+
+Positioned relative to the nav panel (which has position: fixed).
+        Sits 20px from the top and 20px from the right edge of the panel.
+
+50% border-radius on a square element = perfect circle
+
+Nearly invisible light fill — just a hint of the button shape
+
+Faint white border to define the button edges
+
+Centers the × character both horizontally and vertically
+
+Brightens slightly on hover — indicates it's clickable
+
+The small "NAVIGATION" label at the very top of the nav panel,
+        above the links. Purely decorative.
+
+Wide letter spacing creates an elegant all-caps label effect
+
+Forces text to all caps regardless of how it's typed in HTML
+
+Muted — not meant to compete with the nav links
+
+Bright white, slightly transparent — feels lighter than pure white
+
+Large text — easy to tap on a phone, prominent and clear
+
+10px top/bottom padding increases the tap target area
+
+Ultra-subtle divider line between each link
+
+Animates both the color and the indent on hover
+
+Makes the link fill the full width of the panel
+
+On hover: turns blue AND nudges right by 6px.
+        The subtle indent gives a sense of selection/motion.
+        The transition above makes both changes animate smoothly.
+
+Accent color marks the current page in the mobile nav
+
+margin-top: auto on a flex child pushes it to the very bottom
+        of the flex container. No matter how many links are in the nav,
+        the CTA button always stays at the bottom of the panel.
+
+Space above the CTA so it doesn't crowd the last link
+
+!important overrides the color set by .mobile-nav a above.
+        Without it, the CTA link would inherit the semi-transparent
+        white color and not show the correct white-on-blue style.
+
+These !important declarations override the .mobile-nav a styles
+        (font-size, border-bottom, padding-left) that would otherwise
+        apply to this link since it's also inside .mobile-nav.
+        Using !important here is acceptable because we specifically need
+        to override inherited styles for this one element.
+
+===========================================================
+       5. HERO SECTION — SLIDESHOW
+       ============================================================
+       The hero is the first full-screen section the visitor sees.
+       It has three layers stacked on top of each other using
+       position: absolute and z-index:
+
+         z-index 0-1 : .hero-slide divs (images or gradients)
+         z-index 2   : ::before overlay (dark dimming layer)
+         z-index 3   : .hero-content (text and buttons)
+
+       JavaScript controls which slide is .active.
+    ===========================================================
+
+position: relative makes this element the "positioning context"
+        for its absolutely-positioned children (the slides).
+
+Deep dark navy — fallback color if slides fail to load
+
+Each slide is a full-size layer stacked inside the hero.
+        All slides sit on top of each other at the same position.
+        Only the .active one is visible (opacity: 1).
+
+The active slide becomes fully visible and sits on top
+        of the inactive slides (z-index 0).
+
+─────────────────────────────────────────────────────────────
+      HOW TO ADD YOUR OWN IMAGE OR VIDEO TO A SLIDE
+      ─────────────────────────────────────────────────────────────
+      REQUIRED — STATE THE SOURCE OF YOUR IMAGES AND MEDIA:
+        For every image, video, or other media file you use, you
+        MUST state where it came from. In a comment next to the
+        file (or in an attribution list), write either:
+          • "Created by me on [date] using [tool, e.g. Canva,
+            iPhone camera, Photoshop]" — if you made it, OR
+          • "Source: [site name + URL], License: [e.g. Unsplash
+            free-use, Creative Commons BY 4.0]" — if you got it
+            from somewhere else.
+        Unattributed images/media will not receive credit.
+
+      REQUIRED — IF YOU USE AI FOR CODING, YOU MUST DISCLOSE IT:
+        If any AI tool (ChatGPT, Claude, Copilot, Gemini, etc.)
+        helped write or modify your code, you MUST state in a
+        comment:
+          1. WHAT you changed (which file, which section, which
+             lines), and
+          2. WHAT THAT CHANGE MEANS — explain in your own words
+             what the AI-generated code actually does, so it is
+             clear you understand it.
+        Submitting AI code you cannot explain is not acceptable.
+      ─────────────────────────────────────────────────────────────
+
+      OPTION A — CSS background image:
+        .hero-slide:nth-child(1) {
+          background-image: url('images/slide1.jpg');
+          background-size: cover;
+          background-position: center;
+        }
+
+      OPTION B — <img> tag inside the slide div:
+        <div class="hero-slide active">
+          <img src="images/slide1.jpg" class="slide-media" alt="..." />
+        </div>
+
+      OPTION C — <video> tag inside the slide div:
+        <div class="hero-slide active">
+          <video src="media/reel.mp4" class="slide-media"
+                 autoplay muted loop playsinline></video>
+        </div>
+
+      Use class="slide-media" on either — the CSS below makes
+      it fill the slide completely with no stretching.
+      ─────────────────────────────────────────────────────────────
+
+Applied to any <img> or <video> placed inside a slide.
+        Makes the media fill the entire slide like a background image.
+
+Stretch to all four edges of the slide
+
+object-fit: cover is the key property here.
+        It makes the media fill its container completely while
+        maintaining its aspect ratio — cropping the edges if
+        needed rather than distorting/stretching the image.
+        Works just like background-size: cover but for <img>/<video>.
+
+Keeps the center of the image/video in view when cropping
+
+Default dark gradient backgrounds for the three slides.
+       These are used when no image or video has been added yet.
+       Replace by adding an image/video as shown above.
+
+This is a CSS pseudo-element. ::before inserts a layer
+        BEFORE the hero's content but INSIDE the hero element.
+        It acts as a dark transparent overlay that sits on top of
+        the slides and behind the text content.
+
+        Purpose: if the hero image is bright, the overlay darkens
+        it enough so that white text stays legible on top of it.
+
+Required for ::before to render — even an empty string
+
+Covers the entire hero section
+
+Very dark navy at 50% opacity — darkens slides without hiding them
+
+Above slides (z-index 1) but below text content (z-index 3)
+
+Stacks eyebrow, slide-text area, and buttons vertically
+
+Container that holds the stacked slide-text blocks
+
+Reserves space so the absolutely-positioned texts don't overlap buttons
+
+The small pill-shaped label above the main headline.
+        Example: "ITD 110 · Web Design · NOVA Annandale"
+
+Allows padding — inline elements ignore padding/margin
+
+Small, bold, widely-spaced caps = the classic "eyebrow" label
+
+White text on the dark hero background
+
+Very faint blue fill — tinted but mostly transparent
+
+Subtle blue border defines the pill shape
+
+Pill shape via large border-radius
+
+Space between the eyebrow and the headline below it
+
+clamp(min, preferred, max) — responsive font sizing.
+        - Minimum: 2.6rem (never smaller than this, even on tiny phones)
+        - Preferred: 6.5vw (scales with viewport width)
+        - Maximum: 4.8rem (never larger than this, even on huge screens)
+
+        This replaces needing multiple media queries for font size.
+        The heading automatically finds the right size for any screen.
+
+Maximum font weight — creates a strong visual impact
+
+Tight line height — appropriate for very large display text
+
+Slight negative tracking — large text looks better tighter
+
+Gradient text effect — text is filled with a gradient
+         instead of a solid color
+
+Creates a gradient from pure white (45% of the way through)
+        to a translucent light blue. On large bold text, this gives
+        a subtle depth — top of letters slightly whiter, bottom slightly blue.
+
+Clips the background gradient to the shape of the text characters.
+        Without this, the gradient would fill the whole element background.
+
+Makes the text itself transparent so the clipped gradient
+        shows through. -webkit- prefix required for Safari/Chrome.
+        The standard property (color: transparent) doesn't work
+        the same way, so this webkit version is used instead.
+
+The subtitle paragraph below the headline.
+
+Responsive size — scales between 16px and ~21px
+
+60% opaque white — softer than the headline, secondary importance
+
+Narrower than the headline for comfortable reading line length
+
+0 top, auto left/right (centers it), 42px bottom spacing
+
+Generous line height for multi-line subtitle text
+
+Puts the two CTA buttons side by side, centered
+
+On very narrow screens, buttons stack vertically
+
+The main filled pill button — used in the hero and feature sections.
+
+Three properties animate simultaneously on hover
+
+Darkens to --accent-dark on hover
+
+Moves up 3px — the "lift" effect
+
+Blue-tinted shadow appears below the lifted button
+
+The outlined/ghost pill button — used alongside btn-primary.
+
+Semi-transparent white border — visible on dark hero bg
+
+Slightly transparent white text
+
+Border brightens to near-solid white on hover
+
+Text becomes fully white
+
+Same lift as btn-primary for visual consistency
+
+The row of small circular dots at the bottom of the hero.
+        Each dot corresponds to one slide. Clicking a dot jumps
+        to that slide (handled by JavaScript goToSlide() function).
+
+Pinned to 28px from the bottom of the hero
+
+This two-property technique centers an absolutely-positioned
+        element horizontally:
+        left: 50% moves the element's left edge to the center.
+        translateX(-50%) shifts it left by half its own width.
+        Result: the element is perfectly centered.
+
+Above overlay (z-index 2) and content (z-index 3)
+
+Perfect circle
+
+Semi-transparent white ring — visible on any slide image
+
+Empty/hollow by default
+
+Reset browser button padding
+
+Active dot fills with the accent blue color — shows current slide
+
+── Per-slide text: unique caption for each slide ──
+
+Each .slide-text sits inside .slide-text-wrapper.
+        They stack on top of each other via position: absolute.
+        Only the .active one fades in.
+
+Active text is visible and clickable
+
+===========================================================
+       6. SECTION LABELS & SHARED HELPERS
+       ============================================================
+       Reusable utility classes used across all content sections.
+       Defining them once here keeps every section consistent.
+    ===========================================================
+
+The small all-caps label above each section heading.
+        Example: "FEATURED WORK" or "WHAT I BUILD"
+
+Puts the label on its own line above the heading
+
+Wide letter spacing creates visual refinement
+
+Blue accent label matching the site's color system
+
+Responsive — scales between 27px and 40px
+
+The descriptive paragraph below section headings.
+
+Medium-dark gray — secondary text, not as prominent as headings
+
+Limits line length for better readability
+
+A reusable container class used inside skills section.
+        Centers content and caps it at 1180px so text doesn't
+        stretch uncomfortably wide on large monitors.
+
+Centers the container within any parent element
+
+Side padding so content doesn't touch screen edges on mobile
+
+Shared padding applied to all content sections
+        via class="section" in the HTML.
+
+100px top/bottom (generous breathing room), 24px sides
+
+Thin line separates adjacent sections
+
+Alternating section backgrounds so content sections are visually distinct
+
+===========================================================
+       7. FEATURE SPLIT SECTIONS
+       ============================================================
+       A two-column grid with text on one side and an image
+       placeholder on the other. The .reverse modifier flips
+       the column order for the second section.
+    ===========================================================
+
+Creates two equal columns.
+        1fr = one fraction of available space.
+        Two 1fr columns divide the space equally (50%/50%).
+
+64px of space between the text column and image column
+
+Vertically centers both columns relative to each other
+
+Reverses column order visually — creates the Z-pattern
+        where section 1 is image-left/text-right and section 2
+        is text-left/image-right, so the layout alternates.
+
+Reset text direction inside the reversed columns
+
+Stacks label, heading, paragraph, and button vertically with 16px between each
+
+Dark gradient block shown before a real screenshot is added.
+        Replace by adding an <img> tag inside .feature-visual.
+
+Large rounded corners — matches the card style
+
+Dark blue gradient — a placeholder until a real image is added
+
+Centers the placeholder text label
+
+Very dim text — clearly a placeholder, not real content
+
+===========================================================
+       8. PROJECT CARDS
+       ============================================================
+       An auto-filling grid of project cards.
+       Each card has a thumbnail image on top and a text body below.
+       Hovering lifts the card and grows its shadow.
+    ===========================================================
+
+The row above the card grid containing the heading
+        and "View all →" link.
+
+48px bottom margin separates this header from the card grid
+
+Aligns heading (taller) and link (shorter) to their bottom edges
+
+Stacks on narrow screens
+
+repeat(auto-fit, minmax(300px, 1fr)) creates a responsive
+        grid without needing breakpoints:
+
+        auto-fit     → create as many columns as fit in the row
+        minmax(300px, 1fr) → each column is at least 300px wide
+                             but can grow to fill available space (1fr)
+
+        With 3 cards at 1180px wide, this creates 3 columns (~360px each).
+        On a 700px screen, it creates 2 columns (~300px each).
+        On a phone, it creates 1 full-width column.
+
+Space between cards
+
+Large rounded corners for a modern card look
+
+Faint border defines the card edge on the white page background
+
+IMPORTANT: this clips the thumbnail image to the card's
+        border-radius. Without overflow: hidden, the image corners
+        would stick out past the rounded card corners.
+
+Animates the lift + shadow on hover over 0.3 seconds
+
+The whole card is an <a> tag — this removes the underline
+
+Inherits the page text color instead of the default link blue
+
+Makes the <a> tag fill its grid cell completely
+
+Lifts the card 8px upward on hover
+
+Shadow appears below the lifted card, reinforcing the lift effect
+
+Fixed height keeps all thumbnails the same size
+
+position: relative makes .card-tag (the category pill)
+        position relative to this thumbnail, not the whole page.
+
+Clips the img to the card-thumb boundaries
+
+Dark fallback if image fails to load
+
+Fills the 200px tall thumbnail without distorting the image
+
+Smooth zoom animation on hover (see rule below)
+
+When the card is hovered, the image inside scales up 5%.
+        Because .card-thumb has overflow: hidden, the zoom stays
+        clipped inside the card boundaries — creating a subtle
+        "zoom in" effect on hover.
+
+===========================================================
+       CARD THUMBNAIL VARIANTS — image / gradient / video
+       ============================================================
+       The default .card-thumb shows an <img>. To use a different
+       look, add one of the modifier classes below to .card-thumb:
+
+         <div class="card-thumb">                           ← image (default)
+         <div class="card-thumb thumb-gradient-purple">     ← gradient
+         <div class="card-thumb thumb-solid-blue">          ← solid color
+         <div class="card-thumb"> + <video>                 ← video
+
+       Mix and match — every variant still supports the .card-tag
+       pill and the hover lift from .project-card:hover.
+    ===========================================================
+
+── Gradient backgrounds ──────────────────────────────────
+       Each class sets a 135° two-color gradient that fills the
+       thumbnail. Pick one or add your own using the same pattern.
+
+Brand purple → brand blue — matches the site's accent palette
+
+Warm three-stop sunset — good for creative / design projects
+
+Fresh green → teal — good for "new" or "live" project cards
+
+Deep navy → wine — high contrast for white text overlays
+
+── Solid color backgrounds ───────────────────────────────
+       Single-color thumbnails when a flat look fits better than
+       a gradient. Uses the site's existing color tokens.
+
+── Centered label for color/gradient thumbs ─────────────
+       Optional: drop a <span class="thumb-label">Title</span>
+       inside a color/gradient thumb to show big white text in
+       the center (instead of relying on an image).
+
+inset:0 = top:0 right:0 bottom:0 left:0 — fills the thumb
+
+Vertically + horizontally centers the label text
+
+Prevents long titles from touching the card edges
+
+Subtle shadow keeps text readable on lighter gradients
+
+── Video thumbnail ───────────────────────────────────────
+       When using <video> inside .card-thumb, it should fill the
+       same 200px-tall area the image normally would.
+
+Fills the thumbnail area without distorting the video
+
+Same subtle zoom-on-hover as images
+
+Matches the image hover behavior so video cards feel consistent
+
+The small category pill overlaid on the top-left of the thumbnail.
+        Example: "HTML / CSS" or "Responsive Layout"
+
+Positioned 14px from the top-left corner of the thumbnail
+
+Dark semi-transparent background — readable over any image
+
+Frosted glass effect on the tag — blurs the image behind it
+
+22px top, 24px sides, 26px bottom — comfortable card body spacing
+
+Project name — bold and slightly larger than description
+
+Muted gray — secondary text below the project title
+
+===========================================================
+       9. SKILLS SECTION
+       ============================================================
+       A grid of skill cards, each with an SVG icon, skill name,
+       short description, and a progress bar.
+    ===========================================================
+
+Same auto-fit pattern as project-grid — responsive columns
+
+Comfortable inner spacing
+
+Smooth lift effect on hover
+
+Smaller lift than project cards (5px vs 8px) — subtler
+
+Controls size of the SVG icon container
+
+Space between icon and skill name
+
+Muted gray description text
+
+The gray track that the colored fill bar sits inside.
+
+Very thin bar — subtle visual indicator
+
+Light gray track
+
+Space between description and bar
+
+The colored portion of the skill bar.
+        Its width is set inline on each element:
+        style="width: 85%" — represents 85% skill level.
+
+Fills the full height of the track
+
+Gradient from the accent blue to a lighter blue.
+        90deg = left-to-right direction.
+        This gives the filled bar a shimmering depth effect.
+
+===========================================================
+       10. CTA BAND
+       ============================================================
+       Call-to-action section near the bottom of the page.
+       Heading on the left, button on the right.
+    ===========================================================
+
+Heading left, button right, both vertically centered
+
+Stacks on narrow screens
+
+===========================================================
+       11. FOOTER
+    ===========================================================
+
+Same deep dark navy as the hero bottom — visual bookend
+
+Muted text — footer is not a focus area
+
+===========================================================
+       12. SCROLL FADE-UP ANIMATIONS
+       ============================================================
+       Elements with class="fade-up" start invisible and shifted
+       downward. When JavaScript detects them entering the viewport,
+       it adds class="visible" which triggers the CSS transition.
+
+       HOW IT WORKS:
+         1. An element has class="fade-up" — starts invisible
+         2. User scrolls down
+         3. JavaScript IntersectionObserver detects the element
+            entering the viewport
+         4. JavaScript adds class="visible" to the element
+         5. CSS transitions opacity from 0→1 and translateY from
+            36px→0 simultaneously — element fades up into place
+    ===========================================================
+
+Starts invisible
+
+Starts 36px below its final position
+
+Both opacity and transform animate over 0.8 seconds.
+        The ease curve starts slow, speeds up, then slows again —
+        a natural, physical-feeling motion.
+
+Fades fully into view
+
+Moves to its natural position
+
+Staggered delays for grid children — each card starts
+       slightly after the previous one for a wave effect
+
+===========================================================
+       12b. MICROANIMATIONS & KEYFRAMES
+       ============================================================
+       Small, subtle motion added throughout the page to make the
+       UI feel alive. Each @keyframes block defines an animation
+       that is applied by name to elements below.
+    ===========================================================
+
+Gentle up-and-down float — used for the hero eyebrow pill
+       so it "breathes" slowly above the headline.
+
+Pulsing glow — used on the active slide dot so the user
+       always knows which slide is current.
+
+Horizontal shimmer — sweeps a light band across the skill
+       progress bars to suggest energy/activity.
+
+A subtle wiggle used on skill icons on hover.
+
+Arrow nudge — animated on buttons with a "→" at the end.
+
+Downward bounce hint — used on a small scroll cue.
+
+── Apply float to the hero eyebrow pill ──
+
+4s loop, smooth in/out — slow enough to feel calm, not distracting
+
+── Animated underline on desktop nav links ──
+       A line grows out from the center under each link on hover.
+
+Needed so ::after can be positioned under the link
+
+Width grows; left shifts so the underline expands from center
+
+Match the active link color
+
+── Header CTA shimmer sweep ──
+       A glossy streak moves across the button on hover.
+
+Starts hidden off to the left; slides across on hover
+
+── Primary button: same glossy sweep on hover ──
+
+── Brand: subtle color pulse on the accent word on hover ──
+
+── Active slide dot: pulsing ring so the user can feel
+           which slide is current, not just see it. ──
+
+Dots grow when hovered — a clear interactive cue
+
+── Skill icons: wiggle when their card is hovered ──
+
+display:inline-block is required for transform to work reliably
+
+── Skill progress bars: animated shimmer + grow-from-left ──
+
+shimmer moves a bright band along the bar continuously
+
+Start collapsed to the left; .visible state scales to 1
+
+When the skill card becomes .visible (scroll fade-up fires),
+       its fill bar animates out to full width.
+
+── Project cards: gentle lift + image zoom are already defined;
+           add a colored glow ring on hover for extra polish. ──
+
+Outer shadow + faint accent halo ring
+
+── Card tag: small pop when parent card is hovered ──
+
+── "View all →" link: the arrow slides on hover ──
+           We wrap the arrow behavior via a ::after pseudo-element
+           that is a separate animated glyph.
+
+── Feature visual placeholders: subtle tilt on hover ──
+
+3D-like tilt gives the placeholder a physical feel
+
+── Mobile nav links: staggered slide-in when panel opens ──
+           Each link starts shifted right + transparent; once .open
+           is on the parent, they settle into place one after another.
+
+── Hamburger: bars animate on hover for a tiny interaction cue ──
+
+Middle bar shrinks slightly so the icon feels "responsive"
+
+── Section labels: tiny leading dot that pulses ──
+
+A small live-feeling beacon next to each section label
+
+── Respect users who prefer reduced motion ──
+           Accessibility: some users get motion sickness from UI
+           animations. If they've set prefers-reduced-motion in their OS,
+           we disable non-essential animations and transitions.
+
+===========================================================
+       13. RESPONSIVE BREAKPOINTS
+       ============================================================
+       Media queries apply styles only when the screen is a
+       certain width. @media (max-width: 900px) means: "apply
+       these styles only when the screen is 900px wide or less."
+
+       We use TWO breakpoints:
+         900px — switches from desktop to tablet/mobile layout
+         600px — fine-tunes for very small phones
+    ===========================================================
+
+Hides the desktop navigation links on mobile
+
+Hides the header CTA button — replaced by mobile nav CTA
+
+Shows the hamburger button on mobile
+
+Collapses two columns to one on mobile
+
+Less gap needed when stacked vertically
+
+On mobile, stacks normally instead of reversing
+
+Stacks CTA heading and button vertically on mobile
+
+Stacks section heading and "View all" link vertically
+
+Less side padding on very narrow phones
+
+Less padding on tiny screens
+
+
+================================================================
+COMMENTS FROM: about.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO (shorter) ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — default, no external asset
+         (B) Background image     — add <img class="page-hero-media"> in HTML
+         (C) Background video     — add <video class="page-hero-media"> in HTML
+       Only ONE should be uncommented in the markup at a time.
+
+top clears the fixed header
+
+Media layer — shared rules for <img> and <video>
+
+dim so text stays readable
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+Decorative hero icon strip
+
+── 4. BIO SPLIT SECTION ──
+       Photo on one side, personal bio text on the other.
+
+Profile photo container
+
+sticks as you scroll past — nice effect
+
+Gradient border trick: outer div has gradient bg, inner has white bg
+
+this shows as the "border"
+
+Placeholder until you add your photo
+
+Fallback when no image — shows placeholder text
+
+Bio text column
+
+Fun facts row
+
+── 5. SKILLS GRID ──
+
+Skill proficiency bar
+
+Width set via inline style — e.g. style="width:85%"
+
+── 6. EDUCATION / COURSE TIMELINE ──
+
+Vertical line connecting the dots
+
+Active / current course gets gradient
+
+Completed courses get gray
+
+── 7. VALUES / APPROACH CARDS ──
+
+── 8. CTA + FOOTER ──
+
+── 9. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav links: underline grows from center on hover
+
+Brand: subtle accent-word color shift on hover
+
+Section labels: pulsing beacon dot
+
+Page hero eyebrow floats gently
+
+Bio photo frame: gentle tilt on hover
+
+Timeline dots: active one pulses so current stage is obvious
+
+Value cards: small lift + icon wiggle on hover
+
+Skill bar shimmer (if page has any)
+
+Hamburger microinteraction
+
+Mobile nav links stagger in
+
+Respect users who prefer reduced motion
+
+
+================================================================
+COMMENTS FROM: contact.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 4. CONTACT SPLIT SECTION ──
+
+Two-column layout: form on right, info on left
+
+── LEFT COLUMN: Contact info ──
+
+Individual contact method row
+
+center icon vertically with text
+
+grid + place-items is the most reliable way to center an icon font glyph
+
+Phosphor renders the glyph via ::before — force it to a block with line-height:1
+       so it sits in the optical center of the rounded square (not the text baseline).
+
+── 5. CONTACT FORM ──
+
+Label above each input
+
+Shared styles for text inputs, selects, and textareas
+
+Remove default browser outline — we add our own below
+
+Focused state: border turns purple with a soft glow ring
+
+Side-by-side fields row
+
+Submit button
+
+── 6. SOCIAL LINKS ──
+
+── 7. SUCCESS MESSAGE ──
+       Hidden by default. JavaScript shows it after form is submitted.
+    ──
+
+hidden until JS shows it
+
+── 8. CTA + FOOTER ──
+
+── 9. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Contact-method cards: lift + icon wiggle on hover
+
+Form inputs: subtle focus lift
+
+Social link hover: slide + scale
+
+Primary button shimmer sweep
+
+Hamburger + mobile nav stagger
+
+
+================================================================
+COMMENTS FROM: multimedia.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 3b. SCROLLING IMAGE STRIP ──
+       Horizontal infinite marquee that previews multimedia work.
+       Tip: drop real images by replacing the .scroll-tile divs with
+       <img src="https://placehold.co/400x300?text=Your+Image" alt="..." />. Pause on hover for accessibility.
+    ──
+
+Soft fade on the left/right edges so tiles enter and exit cleanly
+
+shifts exactly one duplicated set
+
+Optional caption overlay
+
+── 4. MEDIA TYPE TABS ──
+       Same pattern as the project filter bar — tabs switch sections.
+    ──
+
+── 5. VIDEO GALLERY ──
+
+Hidden by default — tabs control which shows
+
+Featured video — single large player
+
+The video element itself
+
+Placeholder when you haven't added a real video yet
+
+Tool badges used to create the video
+
+── 6. IMAGE GALLERY (CSS Columns = no-JS masonry) ──
+
+CSS columns create a masonry-like layout without JavaScript
+
+prevents an image from being split across columns
+
+shows if image is loading
+
+Show caption overlay on hover
+
+Placeholder when no real photo yet
+
+── 7. ANIMATION / CSS WORK GALLERY ──
+
+Preview area — shows the animation running live
+
+── BUILT-IN CSS ANIMATIONS ──
+       These animate purely with CSS — no JS needed.
+       Students: these are live demos of what you can do with CSS animations!
+    ──
+
+Pulsing circle demo
+
+Spinning gradient ring
+
+Floating card
+
+Typing cursor blink
+
+CSS snippet badge
+
+── 8. TOOLS GRID ──
+
+── 9. CTA + FOOTER ──
+
+── 10. LIGHTBOX MODAL ──
+       Clicking a photo card opens a full-screen modal with the large image.
+    ──
+
+hidden by default
+
+covers full screen
+
+JavaScript adds .open to show it
+
+── 11. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Tab buttons: smooth state transitions
+
+Video cards: lift + play-icon scale
+
+Photo items: subtle zoom + caption slide
+
+Animation cards + tool cards: gentle lift
+
+Hamburger + mobile nav stagger
+
+
+================================================================
+COMMENTS FROM: projects.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER (same across all pages) ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 4. FILTER BAR ──
+       Tabs that filter projects by category.
+       JavaScript shows/hides project cards based on their data-category attribute.
+    ──
+
+sticks below the fixed header while scrolling
+
+= header height
+
+Each filter tab button
+
+becomes colored when active
+
+The active filter tab gets underlined in purple
+
+── 5. PROJECTS SECTION ──
+
+Main grid — 3 columns on desktop, down to 1 on mobile
+
+── CARD THUMBNAIL ──
+       Each project card's media area supports THREE swappable styles:
+         (A) Gradient/color — class="card-thumb thumb-gradient" + inline gradient
+         (B) Image          — class="card-thumb thumb-image"    + <img class="thumb-media">
+         (C) Video          — class="card-thumb thumb-video"    + <video class="thumb-media" muted loop playsinline>
+       Mix and match across cards. Use the inline `--thumb-grad` CSS variable
+       on .thumb-gradient cards to set per-card colors without writing new CSS.
+    ──
+
+dark fallback while media loads
+
+(A) Gradient — uses --thumb-grad if provided, else a default
+
+(B) + (C) Shared rules for <img> and <video> media
+
+(C) Video-specific — autoplay loops should be silent
+
+Backwards-compatible: any stray <img> directly inside .card-thumb
+
+Category pill overlaid on the screenshot
+
+Status badge — "Completed", "In Progress", etc.
+
+green
+
+yellow
+
+gray
+
+Tag pills showing tech used
+
+Live link at bottom of card
+
+── 6. FEATURED PROJECT ──
+       A wider highlight card for your best/biggest project.
+    ──
+
+Visual side
+
+Placeholder when no image yet
+
+Text side
+
+Outcome / results list
+
+── 7. CTA + FOOTER ──
+
+── 8. ANIMATIONS & RESPONSIVE ──
+
+Cards hidden by filter
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Filter buttons: smooth hover + active feedback
+
+Project cards: lift, halo, thumbnail zoom, tag pop
+
+Tech tags inside cards: subtle pop on hover
+
+Featured project visual: tilt on hover
+
+Primary button shimmer sweep
+
+Hamburger + mobile nav stagger
+
+
+================================================================
+COMMENTS FROM: no-animations/index.html
+================================================================
+===========================================================
+       1. CSS VARIABLES — DESIGN TOKENS
+       ============================================================
+       CSS variables (also called "custom properties") let you
+       define a value once and reuse it everywhere in your CSS.
+
+       Syntax:  --variable-name: value;
+       Usage:   color: var(--variable-name);
+
+       The :root selector targets the very top of the document,
+       so these variables are available to every element on the page.
+
+       TO RETHEME THE ENTIRE SITE: change only the hex values below.
+       Every button, link, label, and bar that uses var(--accent)
+       will update automatically.
+    ===========================================================
+
+===========================================================
+       2. RESET & BASE STYLES
+       ============================================================
+       Browsers apply their own default styles to every element —
+       different margins, paddings, font sizes. This "universal
+       reset" zeros them all out so we start from a clean slate
+       and the page looks the same in every browser.
+    ===========================================================
+
+The * selector targets EVERY element on the page.
+        ::before and ::after target CSS pseudo-elements
+        (the decorative content we create with content: "").
+
+Removes all default outer spacing from every element
+
+Removes all default inner spacing from every element
+
+By default, CSS calculates width EXCLUDING padding and border.
+        So a div with width: 300px and padding: 20px would actually
+        be 340px wide — confusing and hard to work with.
+
+        box-sizing: border-box changes this so that padding and
+        border are INCLUDED in the declared width.
+        A div with width: 300px and padding: 20px stays exactly
+        300px wide. This makes layouts much more predictable.
+
+Makes the page scroll smoothly when the user clicks an
+        anchor link (like href="#projects") instead of jumping
+        instantly. This is a small quality-of-life improvement.
+
+font-family lists fonts in priority order — the browser
+        uses the first one it finds on the user's device.
+
+        -apple-system        → San Francisco (Mac/iPhone)
+        BlinkMacSystemFont   → San Francisco (Chrome on Mac)
+        "Segoe UI"           → Windows system font
+        Roboto               → Android system font
+        sans-serif           → any sans-serif font as final fallback
+
+        This technique gives the page a "native" feel on every
+        device without loading a web font, which speeds up the page.
+
+Sets the page background to our cool off-white variable
+
+Sets the default text color for the whole page.
+        Child elements inherit this unless they override it.
+
+Hides any content that overflows horizontally.
+        This prevents a horizontal scrollbar from appearing
+        when animated elements briefly extend past the viewport
+        (like the mobile nav panel sliding in from off-screen).
+
+line-height controls the vertical space between lines of text.
+        1.65 means each line is 1.65× the font size tall.
+        The browser default (1.2) is too tight for body text.
+        1.65 is comfortable and easy to read.
+
+Prevents images and videos from overflowing their container.
+        If a container is 400px wide and the image is 800px,
+        max-width: 100% shrinks the image to fit within 400px.
+
+Images are inline by default, which adds a small gap below
+        them (space reserved for text descenders). display: block
+        removes that gap so images sit flush in their containers.
+
+===========================================================
+       3. HEADER / DESKTOP NAVIGATION
+       ============================================================
+       The header is fixed to the top of the viewport so it stays
+       visible as the user scrolls. It uses backdrop-filter: blur()
+       to create a frosted-glass effect.
+
+       Z-index layering used in this file:
+         header          = z-index: 1000  (topmost — always on top)
+         mobile-nav      = z-index: 999   (below header)
+         mobile-overlay  = z-index: 998   (below nav panel)
+         hero slides     = z-index: 0–2   (at the bottom)
+    ===========================================================
+
+position: fixed removes the header from normal document flow
+        and anchors it to the viewport. It will not scroll away
+        even as the user scrolls down the page.
+
+Pins the header to the top-left corner of the viewport.
+        Combined with width: 100%, it spans the full browser width.
+
+Makes the header stretch edge-to-edge across the screen
+
+Sets a fixed height for the header bar.
+        The <main> element has padding-top: 64px to match,
+        so page content starts below the header instead of
+        being hidden behind it.
+
+rgba() sets a color with transparency.
+        This is --light-bg (244,245,249) at 95% opacity.
+        The 5% transparency lets the page content slightly
+        show through, which is necessary for the blur effect
+        to look like frosted glass.
+
+backdrop-filter: blur() blurs everything BEHIND the element.
+        Combined with the semi-transparent background above, this
+        creates the "frosted glass" effect.
+
+        -webkit-backdrop-filter is the Safari-prefixed version.
+        Both lines are required for cross-browser support.
+
+A very faint 1px line at the bottom of the header.
+        rgba(0,0,0,0.07) = black at 7% opacity — barely visible
+        but provides subtle visual separation from the page content.
+
+Flexbox layout for the header's three children:
+          brand (left) | nav links (center) | cta+hamburger (right)
+
+        display: flex        → turns header into a flex container
+        align-items: center  → vertically centers all children
+        justify-content: space-between → pushes first child left,
+                               last child right, middle centered
+
+0 top/bottom padding (height controls vertical space)
+        36px left/right padding keeps content away from screen edges
+
+z-index controls which elements appear in front of others
+        when they overlap. Higher number = closer to the viewer.
+        1000 ensures the header stays above everything else on the page,
+        including the hero section and any modals or dropdowns.
+
+The brand/logo text link in the top-left of the header.
+
+Extra bold — makes the name stand out as a brand mark
+
+Slightly larger than body text (1rem = 16px)
+
+Tiny negative tracking — makes bold text look tighter
+
+Removes the default underline from anchor links
+
+Near-black text so it's readable on the light header
+
+The <span> inside the brand wraps one word so it can be
+        styled differently. This applies the accent color to just
+        that word, creating a two-tone brand name effect.
+        Example: Your(dark) Name(blue)
+
+The row of navigation links. Hidden on mobile via media query.
+        margin-left:auto pushes the nav to the right edge of the header,
+        matching the layout on the other pages.
+
+transition animates property changes smoothly.
+        color .2s means the color change takes 0.2 seconds.
+        Without this, the hover color would snap on/off instantly.
+
+.active is added to the link for the current page.
+        The heavier weight and accent color visually indicate
+        which page the user is currently on.
+
+The "Hire Me" pill button in the top-right of the header.
+        Hidden on mobile (display: none in the media query below).
+
+Allows padding and sizing on what is otherwise an anchor tag
+
+9px top/bottom, 22px left/right — comfortable button size
+
+border-radius: 999px creates a "pill" shape by rounding
+        the corners more than the element is tall. Any value larger
+        than half the element's height achieves this effect.
+        999px is a safe large number that always produces a pill.
+
+Filled with the accent blue color
+
+White text for contrast on the blue background
+
+Animates both the background color change AND the lift on hover
+
+Darkens on hover — provides visual feedback to the user
+
+translateY() moves the element along the vertical axis.
+        -2px moves it 2 pixels UPWARD — a subtle "lift" effect.
+        Combined with the shadow below, this feels like the button
+        is being physically raised off the page.
+
+===========================================================
+       4. MOBILE NAVIGATION
+       ============================================================
+       On screens narrower than 900px, the desktop nav and header
+       CTA are hidden. In their place, a hamburger button appears.
+       Clicking it triggers JavaScript to add the .open class to
+       the .mobile-nav panel, which slides it in from the RIGHT.
+    ===========================================================
+
+The three-bar hamburger button. Hidden on desktop via
+        display: none. Shown on mobile via the media query (display: flex).
+
+Hidden by default — shown only below 900px
+
+Square button — equal width and height
+
+Slightly rounded square corners
+
+Very faint border — visible but not harsh
+
+White background so it contrasts with the frosted header
+
+Changes the cursor to a hand on hover — signals it's clickable
+
+These flex properties center the three bars inside the button
+        and stack them vertically with 5px between each bar.
+        They only take effect when display is changed to flex
+        by the media query at the bottom of this stylesheet.
+
+Smooth background color transition on hover
+
+Light blue-gray on hover — gentle feedback
+
+The three horizontal bars of the hamburger icon.
+        .bar          = the middle bar (an actual HTML element)
+        .bar::before  = the top bar (drawn with CSS, no HTML needed)
+        .bar::after   = the bottom bar (drawn with CSS, no HTML needed)
+
+        ::before and ::after are CSS pseudo-elements. They insert
+        decorative content before/after the element without adding
+        HTML. The content: "" property is required to make them visible.
+
+Thin 20px wide bars
+
+Dark bars that contrast against the white button
+
+Slightly rounded ends
+
+Makes pseudo-elements take up space as block elements
+
+Allows the bars to animate if you add an X close animation
+
+position: relative on .bar allows ::before and ::after
+        to be positioned relative to this element using
+        position: absolute and the top/left properties.
+
+Required — pseudo-elements won't render without this
+
+Positions the top bar 6px above the middle bar
+
+Positions the bottom bar 6px below the middle bar
+
+─────────────────────────────────────────────────────────
+       MOBILE NAV PANEL — slides in from the RIGHT
+       ─────────────────────────────────────────────────────────
+       The panel starts completely off the right side of the screen
+       (right: -100%). When JavaScript adds the .open class,
+       CSS transitions it to right: 0, sliding it into view.
+    ─────────────────────────────────────────────────────────
+
+Fixed positioning takes the element completely out of
+        document flow and anchors it to the viewport. The panel
+        will stay in the same position even as the page scrolls.
+
+right: -100% pushes the panel completely off the right
+        edge of the screen, making it invisible.
+        When .open is added, right changes to 0, sliding it in.
+
+76% of the viewport width, but never wider than 300px.
+        This ensures the panel is a good size on phones of any width
+        while leaving some of the page visible on the left.
+
+100vh = 100% of the viewport height.
+        The panel fills the full height of the screen.
+
+Very dark navy at 96% opacity.
+        The 4% transparency allows backdrop-filter blur to work.
+
+Blurs the page content behind the panel.
+        More blur (24px) than the header (18px) because the panel
+        is full-screen and needs a stronger frosted effect.
+
+Stacks the nav links vertically inside the panel.
+        The CTA button at the bottom uses margin-top: auto to
+        push itself to the very bottom of the panel.
+
+80px top padding creates space below the close button
+        at the top of the panel.
+        28px left/right padding keeps content away from the edges.
+        40px bottom padding so the CTA button isn't flush to the bottom.
+
+This is what creates the sliding animation.
+        When the right property changes (from -100% to 0, or back),
+        it animates over 0.32 seconds with an ease curve.
+        Without this line, the panel would snap on/off instantly.
+
+Just below the header (z-index: 1000) so the header
+        stays visible even when the nav panel is open.
+
+A very faint white line on the left edge of the panel.
+        Creates a subtle separation between the panel and the
+        dimmed page content visible to the left.
+
+When JavaScript adds class="open" to the .mobile-nav element,
+        this rule takes effect. right: 0 means the right edge of the
+        panel aligns with the right edge of the viewport — fully visible.
+        The transition above animates the change smoothly.
+
+A full-screen semi-transparent layer placed between the
+        page content and the nav panel. It dims the page content
+        so the user's attention goes to the open nav panel.
+        Clicking the overlay closes the nav (via onclick="closeMobileNav()").
+
+Hidden by default — shown only when nav is open
+
+inset: 0 is shorthand for top: 0; right: 0; bottom: 0; left: 0.
+        Makes the overlay cover the entire viewport.
+
+Black at 45% opacity — dims but doesn't fully hide the page
+
+Behind the nav panel (999) but above all page content
+
+JavaScript adds class="show" to make the overlay visible
+
+The × (times/close) button inside the top of the nav panel.
+
+Positioned relative to the nav panel (which has position: fixed).
+        Sits 20px from the top and 20px from the right edge of the panel.
+
+50% border-radius on a square element = perfect circle
+
+Nearly invisible light fill — just a hint of the button shape
+
+Faint white border to define the button edges
+
+Centers the × character both horizontally and vertically
+
+Brightens slightly on hover — indicates it's clickable
+
+The small "NAVIGATION" label at the very top of the nav panel,
+        above the links. Purely decorative.
+
+Wide letter spacing creates an elegant all-caps label effect
+
+Forces text to all caps regardless of how it's typed in HTML
+
+Muted — not meant to compete with the nav links
+
+Bright white, slightly transparent — feels lighter than pure white
+
+Large text — easy to tap on a phone, prominent and clear
+
+10px top/bottom padding increases the tap target area
+
+Ultra-subtle divider line between each link
+
+Animates both the color and the indent on hover
+
+Makes the link fill the full width of the panel
+
+On hover: turns blue AND nudges right by 6px.
+        The subtle indent gives a sense of selection/motion.
+        The transition above makes both changes animate smoothly.
+
+Accent color marks the current page in the mobile nav
+
+margin-top: auto on a flex child pushes it to the very bottom
+        of the flex container. No matter how many links are in the nav,
+        the CTA button always stays at the bottom of the panel.
+
+Space above the CTA so it doesn't crowd the last link
+
+!important overrides the color set by .mobile-nav a above.
+        Without it, the CTA link would inherit the semi-transparent
+        white color and not show the correct white-on-blue style.
+
+These !important declarations override the .mobile-nav a styles
+        (font-size, border-bottom, padding-left) that would otherwise
+        apply to this link since it's also inside .mobile-nav.
+        Using !important here is acceptable because we specifically need
+        to override inherited styles for this one element.
+
+===========================================================
+       5. HERO SECTION — SLIDESHOW
+       ============================================================
+       The hero is the first full-screen section the visitor sees.
+       It has three layers stacked on top of each other using
+       position: absolute and z-index:
+
+         z-index 0-1 : .hero-slide divs (images or gradients)
+         z-index 2   : ::before overlay (dark dimming layer)
+         z-index 3   : .hero-content (text and buttons)
+
+       JavaScript controls which slide is .active.
+    ===========================================================
+
+position: relative makes this element the "positioning context"
+        for its absolutely-positioned children (the slides).
+
+Deep dark navy — fallback color if slides fail to load
+
+Each slide is a full-size layer stacked inside the hero.
+        All slides sit on top of each other at the same position.
+        Only the .active one is visible (opacity: 1).
+
+The active slide becomes fully visible and sits on top
+        of the inactive slides (z-index 0).
+
+─────────────────────────────────────────────────────────────
+      HOW TO ADD YOUR OWN IMAGE OR VIDEO TO A SLIDE
+      ─────────────────────────────────────────────────────────────
+      REQUIRED — STATE THE SOURCE OF YOUR IMAGES AND MEDIA:
+        For every image, video, or other media file you use, you
+        MUST state where it came from. In a comment next to the
+        file (or in an attribution list), write either:
+          • "Created by me on [date] using [tool, e.g. Canva,
+            iPhone camera, Photoshop]" — if you made it, OR
+          • "Source: [site name + URL], License: [e.g. Unsplash
+            free-use, Creative Commons BY 4.0]" — if you got it
+            from somewhere else.
+        Unattributed images/media will not receive credit.
+
+      REQUIRED — IF YOU USE AI FOR CODING, YOU MUST DISCLOSE IT:
+        If any AI tool (ChatGPT, Claude, Copilot, Gemini, etc.)
+        helped write or modify your code, you MUST state in a
+        comment:
+          1. WHAT you changed (which file, which section, which
+             lines), and
+          2. WHAT THAT CHANGE MEANS — explain in your own words
+             what the AI-generated code actually does, so it is
+             clear you understand it.
+        Submitting AI code you cannot explain is not acceptable.
+      ─────────────────────────────────────────────────────────────
+
+      OPTION A — CSS background image:
+        .hero-slide:nth-child(1) {
+          background-image: url('images/slide1.jpg');
+          background-size: cover;
+          background-position: center;
+        }
+
+      OPTION B — <img> tag inside the slide div:
+        <div class="hero-slide active">
+          <img src="images/slide1.jpg" class="slide-media" alt="..." />
+        </div>
+
+      OPTION C — <video> tag inside the slide div:
+        <div class="hero-slide active">
+          <video src="media/reel.mp4" class="slide-media"
+                 autoplay muted loop playsinline></video>
+        </div>
+
+      Use class="slide-media" on either — the CSS below makes
+      it fill the slide completely with no stretching.
+      ─────────────────────────────────────────────────────────────
+
+Applied to any <img> or <video> placed inside a slide.
+        Makes the media fill the entire slide like a background image.
+
+Stretch to all four edges of the slide
+
+object-fit: cover is the key property here.
+        It makes the media fill its container completely while
+        maintaining its aspect ratio — cropping the edges if
+        needed rather than distorting/stretching the image.
+        Works just like background-size: cover but for <img>/<video>.
+
+Keeps the center of the image/video in view when cropping
+
+Default dark gradient backgrounds for the three slides.
+       These are used when no image or video has been added yet.
+       Replace by adding an image/video as shown above.
+
+This is a CSS pseudo-element. ::before inserts a layer
+        BEFORE the hero's content but INSIDE the hero element.
+        It acts as a dark transparent overlay that sits on top of
+        the slides and behind the text content.
+
+        Purpose: if the hero image is bright, the overlay darkens
+        it enough so that white text stays legible on top of it.
+
+Required for ::before to render — even an empty string
+
+Covers the entire hero section
+
+Very dark navy at 50% opacity — darkens slides without hiding them
+
+Above slides (z-index 1) but below text content (z-index 3)
+
+Stacks eyebrow, slide-text area, and buttons vertically
+
+Container that holds the stacked slide-text blocks
+
+Reserves space so the absolutely-positioned texts don't overlap buttons
+
+The small pill-shaped label above the main headline.
+        Example: "ITD 110 · Web Design · NOVA Annandale"
+
+Allows padding — inline elements ignore padding/margin
+
+Small, bold, widely-spaced caps = the classic "eyebrow" label
+
+White text on the dark hero background
+
+Very faint blue fill — tinted but mostly transparent
+
+Subtle blue border defines the pill shape
+
+Pill shape via large border-radius
+
+Space between the eyebrow and the headline below it
+
+clamp(min, preferred, max) — responsive font sizing.
+        - Minimum: 2.6rem (never smaller than this, even on tiny phones)
+        - Preferred: 6.5vw (scales with viewport width)
+        - Maximum: 4.8rem (never larger than this, even on huge screens)
+
+        This replaces needing multiple media queries for font size.
+        The heading automatically finds the right size for any screen.
+
+Maximum font weight — creates a strong visual impact
+
+Tight line height — appropriate for very large display text
+
+Slight negative tracking — large text looks better tighter
+
+Gradient text effect — text is filled with a gradient
+         instead of a solid color
+
+Creates a gradient from pure white (45% of the way through)
+        to a translucent light blue. On large bold text, this gives
+        a subtle depth — top of letters slightly whiter, bottom slightly blue.
+
+Clips the background gradient to the shape of the text characters.
+        Without this, the gradient would fill the whole element background.
+
+Makes the text itself transparent so the clipped gradient
+        shows through. -webkit- prefix required for Safari/Chrome.
+        The standard property (color: transparent) doesn't work
+        the same way, so this webkit version is used instead.
+
+The subtitle paragraph below the headline.
+
+Responsive size — scales between 16px and ~21px
+
+60% opaque white — softer than the headline, secondary importance
+
+Narrower than the headline for comfortable reading line length
+
+0 top, auto left/right (centers it), 42px bottom spacing
+
+Generous line height for multi-line subtitle text
+
+Puts the two CTA buttons side by side, centered
+
+On very narrow screens, buttons stack vertically
+
+The main filled pill button — used in the hero and feature sections.
+
+Three properties animate simultaneously on hover
+
+Darkens to --accent-dark on hover
+
+Moves up 3px — the "lift" effect
+
+Blue-tinted shadow appears below the lifted button
+
+The outlined/ghost pill button — used alongside btn-primary.
+
+Semi-transparent white border — visible on dark hero bg
+
+Slightly transparent white text
+
+Border brightens to near-solid white on hover
+
+Text becomes fully white
+
+Same lift as btn-primary for visual consistency
+
+The row of small circular dots at the bottom of the hero.
+        Each dot corresponds to one slide. Clicking a dot jumps
+        to that slide (handled by JavaScript goToSlide() function).
+
+Pinned to 28px from the bottom of the hero
+
+This two-property technique centers an absolutely-positioned
+        element horizontally:
+        left: 50% moves the element's left edge to the center.
+        translateX(-50%) shifts it left by half its own width.
+        Result: the element is perfectly centered.
+
+Above overlay (z-index 2) and content (z-index 3)
+
+Perfect circle
+
+Semi-transparent white ring — visible on any slide image
+
+Empty/hollow by default
+
+Reset browser button padding
+
+Active dot fills with the accent blue color — shows current slide
+
+── Per-slide text: unique caption for each slide ──
+
+Each .slide-text sits inside .slide-text-wrapper.
+        They stack on top of each other via position: absolute.
+        Only the .active one fades in.
+
+Active text is visible and clickable
+
+===========================================================
+       6. SECTION LABELS & SHARED HELPERS
+       ============================================================
+       Reusable utility classes used across all content sections.
+       Defining them once here keeps every section consistent.
+    ===========================================================
+
+The small all-caps label above each section heading.
+        Example: "FEATURED WORK" or "WHAT I BUILD"
+
+Puts the label on its own line above the heading
+
+Wide letter spacing creates visual refinement
+
+Blue accent label matching the site's color system
+
+Responsive — scales between 27px and 40px
+
+The descriptive paragraph below section headings.
+
+Medium-dark gray — secondary text, not as prominent as headings
+
+Limits line length for better readability
+
+A reusable container class used inside skills section.
+        Centers content and caps it at 1180px so text doesn't
+        stretch uncomfortably wide on large monitors.
+
+Centers the container within any parent element
+
+Side padding so content doesn't touch screen edges on mobile
+
+Shared padding applied to all content sections
+        via class="section" in the HTML.
+
+100px top/bottom (generous breathing room), 24px sides
+
+Thin line separates adjacent sections
+
+Alternating section backgrounds so content sections are visually distinct
+
+===========================================================
+       7. FEATURE SPLIT SECTIONS
+       ============================================================
+       A two-column grid with text on one side and an image
+       placeholder on the other. The .reverse modifier flips
+       the column order for the second section.
+    ===========================================================
+
+Creates two equal columns.
+        1fr = one fraction of available space.
+        Two 1fr columns divide the space equally (50%/50%).
+
+64px of space between the text column and image column
+
+Vertically centers both columns relative to each other
+
+Reverses column order visually — creates the Z-pattern
+        where section 1 is image-left/text-right and section 2
+        is text-left/image-right, so the layout alternates.
+
+Reset text direction inside the reversed columns
+
+Stacks label, heading, paragraph, and button vertically with 16px between each
+
+Dark gradient block shown before a real screenshot is added.
+        Replace by adding an <img> tag inside .feature-visual.
+
+Large rounded corners — matches the card style
+
+Dark blue gradient — a placeholder until a real image is added
+
+Centers the placeholder text label
+
+Very dim text — clearly a placeholder, not real content
+
+===========================================================
+       8. PROJECT CARDS
+       ============================================================
+       An auto-filling grid of project cards.
+       Each card has a thumbnail image on top and a text body below.
+       Hovering lifts the card and grows its shadow.
+    ===========================================================
+
+The row above the card grid containing the heading
+        and "View all →" link.
+
+48px bottom margin separates this header from the card grid
+
+Aligns heading (taller) and link (shorter) to their bottom edges
+
+Stacks on narrow screens
+
+repeat(auto-fit, minmax(300px, 1fr)) creates a responsive
+        grid without needing breakpoints:
+
+        auto-fit     → create as many columns as fit in the row
+        minmax(300px, 1fr) → each column is at least 300px wide
+                             but can grow to fill available space (1fr)
+
+        With 3 cards at 1180px wide, this creates 3 columns (~360px each).
+        On a 700px screen, it creates 2 columns (~300px each).
+        On a phone, it creates 1 full-width column.
+
+Space between cards
+
+Large rounded corners for a modern card look
+
+Faint border defines the card edge on the white page background
+
+IMPORTANT: this clips the thumbnail image to the card's
+        border-radius. Without overflow: hidden, the image corners
+        would stick out past the rounded card corners.
+
+Animates the lift + shadow on hover over 0.3 seconds
+
+The whole card is an <a> tag — this removes the underline
+
+Inherits the page text color instead of the default link blue
+
+Makes the <a> tag fill its grid cell completely
+
+Lifts the card 8px upward on hover
+
+Shadow appears below the lifted card, reinforcing the lift effect
+
+Fixed height keeps all thumbnails the same size
+
+position: relative makes .card-tag (the category pill)
+        position relative to this thumbnail, not the whole page.
+
+Clips the img to the card-thumb boundaries
+
+Dark fallback if image fails to load
+
+Fills the 200px tall thumbnail without distorting the image
+
+Smooth zoom animation on hover (see rule below)
+
+When the card is hovered, the image inside scales up 5%.
+        Because .card-thumb has overflow: hidden, the zoom stays
+        clipped inside the card boundaries — creating a subtle
+        "zoom in" effect on hover.
+
+===========================================================
+       CARD THUMBNAIL VARIANTS — image / gradient / video
+       ============================================================
+       The default .card-thumb shows an <img>. To use a different
+       look, add one of the modifier classes below to .card-thumb:
+
+         <div class="card-thumb">                           ← image (default)
+         <div class="card-thumb thumb-gradient-purple">     ← gradient
+         <div class="card-thumb thumb-solid-blue">          ← solid color
+         <div class="card-thumb"> + <video>                 ← video
+
+       Mix and match — every variant still supports the .card-tag
+       pill and the hover lift from .project-card:hover.
+    ===========================================================
+
+── Gradient backgrounds ──────────────────────────────────
+       Each class sets a 135° two-color gradient that fills the
+       thumbnail. Pick one or add your own using the same pattern.
+
+Brand purple → brand blue — matches the site's accent palette
+
+Warm three-stop sunset — good for creative / design projects
+
+Fresh green → teal — good for "new" or "live" project cards
+
+Deep navy → wine — high contrast for white text overlays
+
+── Solid color backgrounds ───────────────────────────────
+       Single-color thumbnails when a flat look fits better than
+       a gradient. Uses the site's existing color tokens.
+
+── Centered label for color/gradient thumbs ─────────────
+       Optional: drop a <span class="thumb-label">Title</span>
+       inside a color/gradient thumb to show big white text in
+       the center (instead of relying on an image).
+
+inset:0 = top:0 right:0 bottom:0 left:0 — fills the thumb
+
+Vertically + horizontally centers the label text
+
+Prevents long titles from touching the card edges
+
+Subtle shadow keeps text readable on lighter gradients
+
+── Video thumbnail ───────────────────────────────────────
+       When using <video> inside .card-thumb, it should fill the
+       same 200px-tall area the image normally would.
+
+Fills the thumbnail area without distorting the video
+
+Same subtle zoom-on-hover as images
+
+Matches the image hover behavior so video cards feel consistent
+
+The small category pill overlaid on the top-left of the thumbnail.
+        Example: "HTML / CSS" or "Responsive Layout"
+
+Positioned 14px from the top-left corner of the thumbnail
+
+Dark semi-transparent background — readable over any image
+
+Frosted glass effect on the tag — blurs the image behind it
+
+22px top, 24px sides, 26px bottom — comfortable card body spacing
+
+Project name — bold and slightly larger than description
+
+Muted gray — secondary text below the project title
+
+===========================================================
+       9. SKILLS SECTION
+       ============================================================
+       A grid of skill cards, each with an SVG icon, skill name,
+       short description, and a progress bar.
+    ===========================================================
+
+Same auto-fit pattern as project-grid — responsive columns
+
+Comfortable inner spacing
+
+Smooth lift effect on hover
+
+Smaller lift than project cards (5px vs 8px) — subtler
+
+Controls size of the SVG icon container
+
+Space between icon and skill name
+
+Muted gray description text
+
+The gray track that the colored fill bar sits inside.
+
+Very thin bar — subtle visual indicator
+
+Light gray track
+
+Space between description and bar
+
+The colored portion of the skill bar.
+        Its width is set inline on each element:
+        style="width: 85%" — represents 85% skill level.
+
+Fills the full height of the track
+
+Gradient from the accent blue to a lighter blue.
+        90deg = left-to-right direction.
+        This gives the filled bar a shimmering depth effect.
+
+===========================================================
+       10. CTA BAND
+       ============================================================
+       Call-to-action section near the bottom of the page.
+       Heading on the left, button on the right.
+    ===========================================================
+
+Heading left, button right, both vertically centered
+
+Stacks on narrow screens
+
+===========================================================
+       11. FOOTER
+    ===========================================================
+
+Same deep dark navy as the hero bottom — visual bookend
+
+Muted text — footer is not a focus area
+
+===========================================================
+       12. SCROLL FADE-UP ANIMATIONS
+       ============================================================
+       Elements with class="fade-up" start invisible and shifted
+       downward. When JavaScript detects them entering the viewport,
+       it adds class="visible" which triggers the CSS transition.
+
+       HOW IT WORKS:
+         1. An element has class="fade-up" — starts invisible
+         2. User scrolls down
+         3. JavaScript IntersectionObserver detects the element
+            entering the viewport
+         4. JavaScript adds class="visible" to the element
+         5. CSS transitions opacity from 0→1 and translateY from
+            36px→0 simultaneously — element fades up into place
+    ===========================================================
+
+Starts invisible
+
+Starts 36px below its final position
+
+Both opacity and transform animate over 0.8 seconds.
+        The ease curve starts slow, speeds up, then slows again —
+        a natural, physical-feeling motion.
+
+Fades fully into view
+
+Moves to its natural position
+
+Staggered delays for grid children — each card starts
+       slightly after the previous one for a wave effect
+
+===========================================================
+       12b. MICROANIMATIONS & KEYFRAMES
+       ============================================================
+       Small, subtle motion added throughout the page to make the
+       UI feel alive. Each @keyframes block defines an animation
+       that is applied by name to elements below.
+    ===========================================================
+
+Gentle up-and-down float — used for the hero eyebrow pill
+       so it "breathes" slowly above the headline.
+
+Pulsing glow — used on the active slide dot so the user
+       always knows which slide is current.
+
+Horizontal shimmer — sweeps a light band across the skill
+       progress bars to suggest energy/activity.
+
+A subtle wiggle used on skill icons on hover.
+
+Arrow nudge — animated on buttons with a "→" at the end.
+
+Downward bounce hint — used on a small scroll cue.
+
+── Apply float to the hero eyebrow pill ──
+
+4s loop, smooth in/out — slow enough to feel calm, not distracting
+
+── Animated underline on desktop nav links ──
+       A line grows out from the center under each link on hover.
+
+Needed so ::after can be positioned under the link
+
+Width grows; left shifts so the underline expands from center
+
+Match the active link color
+
+── Header CTA shimmer sweep ──
+       A glossy streak moves across the button on hover.
+
+Starts hidden off to the left; slides across on hover
+
+── Primary button: same glossy sweep on hover ──
+
+── Brand: subtle color pulse on the accent word on hover ──
+
+── Active slide dot: pulsing ring so the user can feel
+           which slide is current, not just see it. ──
+
+Dots grow when hovered — a clear interactive cue
+
+── Skill icons: wiggle when their card is hovered ──
+
+display:inline-block is required for transform to work reliably
+
+── Skill progress bars: animated shimmer + grow-from-left ──
+
+shimmer moves a bright band along the bar continuously
+
+Start collapsed to the left; .visible state scales to 1
+
+When the skill card becomes .visible (scroll fade-up fires),
+       its fill bar animates out to full width.
+
+── Project cards: gentle lift + image zoom are already defined;
+           add a colored glow ring on hover for extra polish. ──
+
+Outer shadow + faint accent halo ring
+
+── Card tag: small pop when parent card is hovered ──
+
+── "View all →" link: the arrow slides on hover ──
+           We wrap the arrow behavior via a ::after pseudo-element
+           that is a separate animated glyph.
+
+── Feature visual placeholders: subtle tilt on hover ──
+
+3D-like tilt gives the placeholder a physical feel
+
+── Mobile nav links: staggered slide-in when panel opens ──
+           Each link starts shifted right + transparent; once .open
+           is on the parent, they settle into place one after another.
+
+── Hamburger: bars animate on hover for a tiny interaction cue ──
+
+Middle bar shrinks slightly so the icon feels "responsive"
+
+── Section labels: tiny leading dot that pulses ──
+
+A small live-feeling beacon next to each section label
+
+── Respect users who prefer reduced motion ──
+           Accessibility: some users get motion sickness from UI
+           animations. If they've set prefers-reduced-motion in their OS,
+           we disable non-essential animations and transitions.
+
+===========================================================
+       13. RESPONSIVE BREAKPOINTS
+       ============================================================
+       Media queries apply styles only when the screen is a
+       certain width. @media (max-width: 900px) means: "apply
+       these styles only when the screen is 900px wide or less."
+
+       We use TWO breakpoints:
+         900px — switches from desktop to tablet/mobile layout
+         600px — fine-tunes for very small phones
+    ===========================================================
+
+Hides the desktop navigation links on mobile
+
+Hides the header CTA button — replaced by mobile nav CTA
+
+Shows the hamburger button on mobile
+
+Collapses two columns to one on mobile
+
+Less gap needed when stacked vertically
+
+On mobile, stacks normally instead of reversing
+
+Stacks CTA heading and button vertically on mobile
+
+Stacks section heading and "View all" link vertically
+
+Less side padding on very narrow phones
+
+Less padding on tiny screens
+
+===========================================================
+       REDUCED-MOTION OVERRIDES
+       ============================================================
+       This page is the quieter twin of ../index.html. This block
+       is the ONLY stylistic difference — it neutralizes the
+       animations and microinteractions from the standard version.
+
+       Disabled here:
+         • All CSS transitions (color/hover changes snap, not fade)
+         • All CSS keyframe animations (scroll-cue bounce, etc.)
+         • Hover transforms (card lift, image zoom, tag pop)
+         • Smooth scroll jumps straight to anchors
+         • Scroll-triggered .fade-up — forced visible at page load
+         • Hero slideshow cycling — only the first slide is shown
+
+       Kept as-is:
+         • Static visuals: shadows, borders, gradients, blur
+         • Layout, typography, color palette
+         • Hover color/opacity changes (they just apply instantly)
+
+       !important is used throughout so these rules win no matter
+       where the original declaration lives in the stylesheet.
+    ===========================================================
+
+Disables every transition + keyframe animation site-wide
+
+Anchor-link jumps are instant instead of smooth-scrolled
+
+Fade-up elements start (and stay) fully visible — the JS
+       IntersectionObserver still adds .visible but that no longer
+       matters because we're forcing the end state from the start.
+
+Neutralize hover transforms across every interactive element.
+       The :hover rules still fire — color/shadow changes still apply
+       — but nothing physically moves, lifts, scales, or zooms.
+
+Hero slideshow: hide every slide except the first, so the
+       JS interval can still tick in the background without anything
+       visibly cycling. Same treatment for the matching caption.
+
+
+================================================================
+COMMENTS FROM: no-animations/about.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO (shorter) ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — default, no external asset
+         (B) Background image     — add <img class="page-hero-media"> in HTML
+         (C) Background video     — add <video class="page-hero-media"> in HTML
+       Only ONE should be uncommented in the markup at a time.
+
+top clears the fixed header
+
+Media layer — shared rules for <img> and <video>
+
+dim so text stays readable
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+Decorative hero icon strip
+
+── 4. BIO SPLIT SECTION ──
+       Photo on one side, personal bio text on the other.
+
+Profile photo container
+
+sticks as you scroll past — nice effect
+
+Gradient border trick: outer div has gradient bg, inner has white bg
+
+this shows as the "border"
+
+Placeholder until you add your photo
+
+Fallback when no image — shows placeholder text
+
+Bio text column
+
+Fun facts row
+
+── 5. SKILLS GRID ──
+
+Skill proficiency bar
+
+Width set via inline style — e.g. style="width:85%"
+
+── 6. EDUCATION / COURSE TIMELINE ──
+
+Vertical line connecting the dots
+
+Active / current course gets gradient
+
+Completed courses get gray
+
+── 7. VALUES / APPROACH CARDS ──
+
+── 8. CTA + FOOTER ──
+
+── 9. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav links: underline grows from center on hover
+
+Brand: subtle accent-word color shift on hover
+
+Section labels: pulsing beacon dot
+
+Page hero eyebrow floats gently
+
+Bio photo frame: gentle tilt on hover
+
+Timeline dots: active one pulses so current stage is obvious
+
+Value cards: small lift + icon wiggle on hover
+
+Skill bar shimmer (if page has any)
+
+Hamburger microinteraction
+
+Mobile nav links stagger in
+
+Respect users who prefer reduced motion
+
+===========================================================
+       REDUCED-MOTION OVERRIDES
+       ============================================================
+       This page is the quieter twin of ../about.html. This block
+       is the ONLY stylistic difference — it neutralizes the
+       animations and microinteractions from the standard version.
+
+       Disabled here:
+         • All CSS transitions (color/hover changes snap, not fade)
+         • All CSS keyframe animations
+         • Hover transforms (card lift, image zoom, tag pop)
+         • Smooth scroll jumps straight to anchors
+         • Scroll-triggered .fade-up — forced visible at page load
+
+       Kept as-is:
+         • Static visuals: shadows, borders, gradients, blur
+         • Layout, typography, color palette
+         • Hover color/opacity changes (they just apply instantly)
+
+       !important is used throughout so these rules win no matter
+       where the original declaration lives in the stylesheet.
+    ===========================================================
+
+Disables every transition + keyframe animation site-wide
+
+Anchor-link jumps are instant instead of smooth-scrolled
+
+Forces fade-up elements to their final visible state
+
+Neutralize hover transforms across every interactive element.
+       The :hover rules still fire — color/shadow changes still apply
+       — but nothing physically moves, lifts, scales, or zooms.
+
+
+================================================================
+COMMENTS FROM: no-animations/contact.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 4. CONTACT SPLIT SECTION ──
+
+Two-column layout: form on right, info on left
+
+── LEFT COLUMN: Contact info ──
+
+Individual contact method row
+
+center icon vertically with text
+
+grid + place-items is the most reliable way to center an icon font glyph
+
+Phosphor renders the glyph via ::before — force it to a block with line-height:1
+       so it sits in the optical center of the rounded square (not the text baseline).
+
+── 5. CONTACT FORM ──
+
+Label above each input
+
+Shared styles for text inputs, selects, and textareas
+
+Remove default browser outline — we add our own below
+
+Focused state: border turns purple with a soft glow ring
+
+Side-by-side fields row
+
+Submit button
+
+── 6. SOCIAL LINKS ──
+
+── 7. SUCCESS MESSAGE ──
+       Hidden by default. JavaScript shows it after form is submitted.
+    ──
+
+hidden until JS shows it
+
+── 8. CTA + FOOTER ──
+
+── 9. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Contact-method cards: lift + icon wiggle on hover
+
+Form inputs: subtle focus lift
+
+Social link hover: slide + scale
+
+Primary button shimmer sweep
+
+Hamburger + mobile nav stagger
+
+===========================================================
+       REDUCED-MOTION OVERRIDES
+       ============================================================
+       This page is the quieter twin of ../contact.html. This block
+       is the ONLY stylistic difference — it neutralizes the
+       animations and microinteractions from the standard version.
+
+       Disabled here:
+         • All CSS transitions (color/hover changes snap, not fade)
+         • All CSS keyframe animations
+         • Hover transforms (card lift, image zoom, tag pop)
+         • Smooth scroll jumps straight to anchors
+         • Scroll-triggered .fade-up — forced visible at page load
+
+       Kept as-is:
+         • Static visuals: shadows, borders, gradients, blur
+         • Layout, typography, color palette
+         • Hover color/opacity changes (they just apply instantly)
+
+       !important is used throughout so these rules win no matter
+       where the original declaration lives in the stylesheet.
+    ===========================================================
+
+
+================================================================
+COMMENTS FROM: no-animations/multimedia.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 3b. SCROLLING IMAGE STRIP ──
+       Horizontal infinite marquee that previews multimedia work.
+       Tip: drop real images by replacing the .scroll-tile divs with
+       <img src="https://placehold.co/400x300?text=Your+Image" alt="..." />. Pause on hover for accessibility.
+    ──
+
+Soft fade on the left/right edges so tiles enter and exit cleanly
+
+shifts exactly one duplicated set
+
+Optional caption overlay
+
+── 4. MEDIA TYPE TABS ──
+       Same pattern as the project filter bar — tabs switch sections.
+    ──
+
+── 5. VIDEO GALLERY ──
+
+Hidden by default — tabs control which shows
+
+Featured video — single large player
+
+The video element itself
+
+Placeholder when you haven't added a real video yet
+
+Tool badges used to create the video
+
+── 6. IMAGE GALLERY (CSS Columns = no-JS masonry) ──
+
+CSS columns create a masonry-like layout without JavaScript
+
+prevents an image from being split across columns
+
+shows if image is loading
+
+Show caption overlay on hover
+
+Placeholder when no real photo yet
+
+── PHOTO SLIDESHOW (replaces the masonry grid in the
+       reduced-motion version) ──────────────────────────────────
+       One photo visible at a time with prev/next arrows and dot
+       indicators. Click the photo to open it full-screen in the
+       lightbox — the lightbox also has its own prev/next so the
+       user can flip through every image at full size.
+
+Anchor for the absolutely-positioned arrow buttons
+
+Locks a consistent shape so layout doesn't jump on photo change
+
+Same gradient as the old placeholder — visible while images load
+
+Hints that clicking opens a larger view
+
+Round prev/next buttons overlaid on the slide
+
+Caption + dots row sits below the image
+
+JS generates one dot per photo; the active one fills with accent
+
+Lightbox prev/next — added so the lightbox is also navigable.
+       Click a slide → lightbox opens at that photo → arrows flip
+       through every photo at full size without closing the modal.
+
+Smaller arrows + tighter to the edges on phones
+
+── 7. ANIMATION / CSS WORK GALLERY ──
+
+Preview area — shows the animation running live
+
+── BUILT-IN CSS ANIMATIONS ──
+       These animate purely with CSS — no JS needed.
+       Students: these are live demos of what you can do with CSS animations!
+    ──
+
+Pulsing circle demo
+
+Spinning gradient ring
+
+Floating card
+
+Typing cursor blink
+
+CSS snippet badge
+
+── 8. TOOLS GRID ──
+
+── 9. CTA + FOOTER ──
+
+── 10. LIGHTBOX MODAL ──
+       Clicking a photo card opens a full-screen modal with the large image.
+    ──
+
+hidden by default
+
+covers full screen
+
+JavaScript adds .open to show it
+
+── 11. ANIMATIONS & RESPONSIVE ──
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Tab buttons: smooth state transitions
+
+Video cards: lift + play-icon scale
+
+Photo items: subtle zoom + caption slide
+
+Animation cards + tool cards: gentle lift
+
+Hamburger + mobile nav stagger
+
+===========================================================
+       REDUCED-MOTION OVERRIDES
+       ============================================================
+       This page is the quieter twin of ../multimedia.html. This
+       block is the ONLY stylistic difference — it neutralizes the
+       animations and microinteractions from the standard version.
+
+       Disabled here:
+         • All CSS transitions (color/hover changes snap, not fade)
+         • All CSS keyframe animations
+         • Hover transforms (card lift, image zoom, tag pop)
+         • Smooth scroll jumps straight to anchors
+         • Scroll-triggered .fade-up — forced visible at page load
+
+       Kept as-is:
+         • Static visuals: shadows, borders, gradients, blur
+         • Layout, typography, color palette
+         • Hover color/opacity changes (they just apply instantly)
+
+       !important is used throughout so these rules win no matter
+       where the original declaration lives in the stylesheet.
+    ===========================================================
+
+
+================================================================
+COMMENTS FROM: no-animations/projects.html
+================================================================
+── 1. VARIABLES & RESET ──
+
+── 2. HEADER (same across all pages) ──
+
+── 3. PAGE HERO ──
+       Supports THREE swappable background styles:
+         (A) Animated gradient    — class="page-hero hero-gradient" (default, no asset)
+         (B) Background image     — class="page-hero hero-image" + <img class="page-hero-media">
+         (C) Background video     — class="page-hero hero-video" + <video class="page-hero-media">
+       Only ONE media element should be active at a time.
+
+Media layer — shared rules for <img> and <video>
+
+(A) Gradient option — animated aurora
+
+(B) + (C) Dark overlay for image/video legibility
+
+── 4. FILTER BAR ──
+       Tabs that filter projects by category.
+       JavaScript shows/hides project cards based on their data-category attribute.
+    ──
+
+sticks below the fixed header while scrolling
+
+= header height
+
+Each filter tab button
+
+becomes colored when active
+
+The active filter tab gets underlined in purple
+
+── 5. PROJECTS SECTION ──
+
+Main grid — 3 columns on desktop, down to 1 on mobile
+
+── CARD THUMBNAIL ──
+       Each project card's media area supports THREE swappable styles:
+         (A) Gradient/color — class="card-thumb thumb-gradient" + inline gradient
+         (B) Image          — class="card-thumb thumb-image"    + <img class="thumb-media">
+         (C) Video          — class="card-thumb thumb-video"    + <video class="thumb-media" muted loop playsinline>
+       Mix and match across cards. Use the inline `--thumb-grad` CSS variable
+       on .thumb-gradient cards to set per-card colors without writing new CSS.
+    ──
+
+dark fallback while media loads
+
+(A) Gradient — uses --thumb-grad if provided, else a default
+
+(B) + (C) Shared rules for <img> and <video> media
+
+(C) Video-specific — autoplay loops should be silent
+
+Backwards-compatible: any stray <img> directly inside .card-thumb
+
+Category pill overlaid on the screenshot
+
+Status badge — "Completed", "In Progress", etc.
+
+green
+
+yellow
+
+gray
+
+Tag pills showing tech used
+
+Live link at bottom of card
+
+── 6. FEATURED PROJECT ──
+       A wider highlight card for your best/biggest project.
+    ──
+
+Visual side
+
+Placeholder when no image yet
+
+Text side
+
+Outcome / results list
+
+── 7. CTA + FOOTER ──
+
+── 8. ANIMATIONS & RESPONSIVE ──
+
+Cards hidden by filter
+
+── Microanimations (shared light set) ──
+
+Nav underline
+
+Filter buttons: smooth hover + active feedback
+
+Project cards: lift, halo, thumbnail zoom, tag pop
+
+Tech tags inside cards: subtle pop on hover
+
+Featured project visual: tilt on hover
+
+Primary button shimmer sweep
+
+Hamburger + mobile nav stagger
+
+===========================================================
+       REDUCED-MOTION OVERRIDES
+       ============================================================
+       This page is the quieter twin of ../projects.html. This block
+       is the ONLY stylistic difference — it neutralizes the
+       animations and microinteractions from the standard version.
+
+       Disabled here:
+         • All CSS transitions (color/hover changes snap, not fade)
+         • All CSS keyframe animations
+         • Hover transforms (card lift, image zoom, tag pop)
+         • Smooth scroll jumps straight to anchors
+         • Scroll-triggered .fade-up — forced visible at page load
+
+       Kept as-is:
+         • Static visuals: shadows, borders, gradients, blur
+         • Layout, typography, color palette
+         • Hover color/opacity changes (they just apply instantly)
+
+       !important is used throughout so these rules win no matter
+       where the original declaration lives in the stylesheet.
+    ===========================================================
+
+

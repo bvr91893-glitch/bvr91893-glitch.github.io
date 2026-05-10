@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="64" viewBox="0 0 96 64" role="img" aria-labelledby="title desc">
+  <title id="title">DMAS badge</title>
+  <desc id="desc">Text badge for Virginia Department of Medical Assistance Services.</desc>
+  <rect width="96" height="64" fill="#2f4f9d"/>
+  <text x="48" y="29" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">DMAS</text>
+  <text x="48" y="45" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Virginia Medicaid</text>
+</svg>

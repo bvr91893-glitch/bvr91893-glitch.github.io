@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Projects – ITE 170 · NOVA</title>
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <a class="brand" href="index.html">Your<span>Name</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="toggleNav()">
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+    <nav id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#images">Images</a>
+      <a href="index.html#video">Video</a>
+      <a href="index.html#projects" aria-current="page">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <section class="page-hero" aria-labelledby="page-heading">
+      <h1 id="page-heading">AI Projects</h1>
+      <p>I'm just getting started with AI tools. This page tracks what
+         I'm learning now and what I plan to build next — it'll fill
+         out with real projects as I ship them.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ HONEST EMPTY STATE
+      One "currently learning" panel + a list of upcoming projects.
+      Replace these with real entries as you ship them.
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" aria-labelledby="learning-heading">
+      <h2 id="learning-heading">Currently learning</h2>
+
+      <article class="item-card" style="max-width: 720px;">
+        <div class="item-card-cover" aria-hidden="true">
+          <i class="ph ph-rocket-launch"></i>
+        </div>
+        <div class="item-card-body">
+          <p class="item-card-meta">In progress</p>
+          <h3>Building my first AI project</h3>
+          <p>I'm reading the Claude and OpenAI API docs, working through
+             prompt design exercises, and sketching ideas for a small
+             tool I can ship. My first real project will land here when
+             it's ready — I'd rather show you something I actually built
+             than fake a demo.</p>
+          <div class="item-card-tags" aria-label="Tools and topics I'm learning">
+            <span class="item-card-tag">Claude API</span>
+            <span class="item-card-tag">OpenAI API</span>
+            <span class="item-card-tag">Prompt design</span>
+            <span class="item-card-tag">JavaScript</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="inner" aria-labelledby="planned-heading">
+      <h2 id="planned-heading">What I want to build</h2>
+      <p>A short list of project ideas I'm excited about — I'll cross
+         them off and link to real work as I finish each one.</p>
+
+      <ul style="color: var(--muted); padding-left: 24px; margin-top: 16px; max-width: 720px;">
+        <li>A small chatbot that helps NOVA students find class resources.</li>
+        <li>An AI-assisted writing tool for short-form blog posts.</li>
+        <li>A prompt library — my best prompts, organized and searchable.</li>
+      </ul>
+
+      <p style="margin-top:32px;"><a href="index.html"><span aria-hidden="true">← </span>Back to home</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Your Name · ITE 170 · NOVA Annandale</p>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

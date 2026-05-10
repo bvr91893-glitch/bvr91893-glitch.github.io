@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="64" viewBox="0 0 96 64" role="img" aria-labelledby="title desc">
+  <title id="title">MAC badge</title>
+  <desc id="desc">Text badge for Medicaid Member Advisory Committee.</desc>
+  <rect width="96" height="64" fill="#151515"/>
+  <text x="48" y="29" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">MAC</text>
+  <text x="48" y="45" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Advisory Work</text>
+</svg>

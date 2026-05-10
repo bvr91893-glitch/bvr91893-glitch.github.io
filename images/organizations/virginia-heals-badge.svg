@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="64" viewBox="0 0 96 64" role="img" aria-labelledby="title desc">
+  <title id="title">Virginia HEALS badge</title>
+  <desc id="desc">Text badge for Virginia HEALS.</desc>
+  <rect width="96" height="64" fill="#5b3f91"/>
+  <text x="48" y="25" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Virginia</text>
+  <text x="48" y="43" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="700" text-anchor="middle">HEALS</text>
+</svg>

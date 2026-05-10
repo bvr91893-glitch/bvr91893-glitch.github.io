@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Websites – ITE 170 · NOVA</title>
+
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <a class="brand" href="index.html">Your<span>Name</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="toggleNav()">
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+    <nav id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#images">Images</a>
+      <a href="index.html#video">Video</a>
+      <a href="index.html#projects" aria-current="page">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <section class="page-hero" aria-labelledby="page-heading">
+      <h1 id="page-heading">Websites</h1>
+      <p>Responsive sites built with HTML, CSS, and JavaScript —
+         class projects, freelance work, and personal experiments.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ WEBSITES
+      The first card describes THIS portfolio in detail — it's a
+      real, shipped site that demonstrates real skills.
+
+      To add another site:
+        1. Copy the <article class="item-card"> block below
+           (look for the "TEMPLATE" comment).
+        2. Paste it inside <div class="item-grid"> above the
+           template comment.
+        3. Update the icon, meta line, title, description,
+           tags, and link.
+        4. If you have a screenshot, replace the .item-card-cover
+           div with: <img class="item-card-cover" src="images/your-screenshot.jpg"
+           alt="Screenshot of [Site Name] homepage" />
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" aria-labelledby="sites-list">
+      <h2 id="sites-list" class="sr-only">List of websites</h2>
+
+      <div class="item-grid">
+
+        <!-- ━━━ REAL ENTRY: this portfolio ━━━ -->
+        <article class="item-card">
+          <div class="item-card-cover" aria-hidden="true">
+            <i class="ph ph-globe"></i>
+          </div>
+          <div class="item-card-body">
+            <p class="item-card-meta">ITE 170 capstone · 2026</p>
+            <h3>My ITE 170 Portfolio</h3>
+            <p>The site you're reading right now. A multi-page personal
+               portfolio I built from scratch as my ITE 170 capstone at
+               NOVA Annandale.</p>
+            <p><strong style="color: var(--text);">What's on it:</strong>
+               a hero slideshow with a pause control, a clickable image
+               gallery that opens a keyboard-navigable lightbox, a
+               featured video, an about page, project sub-pages
+               (certifications, AI projects, websites), and a full-screen
+               contact form wired up to Formspree.</p>
+            <p><strong style="color: var(--text);">What I focused on:</strong>
+               full mobile responsiveness with a hamburger nav, and
+               accessibility from the ground up — skip links, ARIA
+               landmarks, real form labels, focus management, and
+               <code style="color: var(--accent);">prefers-reduced-motion</code>
+               support so it's usable with a screen reader.</p>
+            <div class="item-card-tags" aria-label="Tech used">
+              <span class="item-card-tag">HTML</span>
+              <span class="item-card-tag">CSS</span>
+              <span class="item-card-tag">JavaScript</span>
+              <span class="item-card-tag">Responsive</span>
+              <span class="item-card-tag">Accessibility</span>
+              <span class="item-card-tag">Formspree</span>
+            </div>
+            <a class="item-card-link" href="index.html">
+              Visit the home page <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- ━━━ TEMPLATE — copy this whole <article> for each new site.
+             Delete this comment and the article below once you have
+             real entries to show.  ━━━ -->
+        <!--
+        <article class="item-card">
+          <img class="item-card-cover" src="images/your-screenshot.jpg"
+               alt="Screenshot of Site Name homepage" />
+          <div class="item-card-body">
+            <p class="item-card-meta">Class project · Month YYYY</p>
+            <h3>Site Name</h3>
+            <p>What the site does, who it's for, and what made it
+               interesting to build.</p>
+            <div class="item-card-tags" aria-label="Tech used">
+              <span class="item-card-tag">HTML</span>
+              <span class="item-card-tag">CSS</span>
+            </div>
+            <a class="item-card-link" href="https://your-site-url.com"
+               target="_blank" rel="noopener">
+              Visit site <span class="sr-only">(opens in a new tab)</span> →
+            </a>
+          </div>
+        </article>
+        -->
+
+      </div>
+
+      <!-- Friendly empty-state hint that disappears once cards are added. -->
+      <p style="margin-top: 32px; padding: 20px; background: var(--panel); border: 1px dashed var(--border); border-radius: 12px; color: var(--muted);">
+        <strong style="color: var(--text);">Got more sites to show?</strong>
+        Uncomment the template above (delete the <code>&lt;!--</code> and
+        <code>--&gt;</code> lines) and fill in your details. Add as many
+        <code>&lt;article class="item-card"&gt;</code> blocks as you have sites.
+      </p>
+
+      <p style="margin-top:32px;"><a href="index.html"><span aria-hidden="true">← </span>Back to home</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Your Name · ITE 170 · NOVA Annandale</p>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

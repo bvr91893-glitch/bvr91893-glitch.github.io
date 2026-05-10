@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="64" viewBox="0 0 96 64" role="img" aria-labelledby="title desc">
+  <title id="title">OTRP badge</title>
+  <desc id="desc">Text badge for Office of Trauma and Resilience Policy.</desc>
+  <rect width="96" height="64" fill="#2d5f4f"/>
+  <text x="48" y="29" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">OTRP</text>
+  <text x="48" y="45" fill="#ffffff" font-family="Arial, sans-serif" font-size="9" text-anchor="middle">Trauma Policy</text>
+</svg>

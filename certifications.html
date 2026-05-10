@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certifications – ITE 170 · NOVA</title>
+
+  <!-- Phosphor icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <a class="brand" href="index.html">Your<span>Name</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav" onclick="toggleNav()">
+      <i class="ph ph-list" aria-hidden="true"></i>
+    </button>
+    <nav id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#images">Images</a>
+      <a href="index.html#video">Video</a>
+      <a href="index.html#projects" aria-current="page">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+
+    <!-- ════════════════════════════════════════════════════════
+      PAGE HERO — heading + intro for this topic
+    ════════════════════════════════════════════════════════ -->
+    <section class="page-hero" aria-labelledby="page-heading">
+      <h1 id="page-heading">Certifications</h1>
+      <p>Industry credentials and coursework I've completed —
+         building proof of skills employers can verify.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+      ★ CERTIFICATIONS — replace each .item-card with a real cert.
+      Each card has: cover, issuer + date, name, link to verify.
+    ════════════════════════════════════════════════════════ -->
+    <section class="inner" aria-labelledby="cert-list">
+      <h2 id="cert-list" class="sr-only">List of certifications</h2>
+
+      <div class="item-grid">
+        <article class="item-card">
+          <div class="item-card-cover" aria-hidden="true">
+            <i class="ph ph-certificate"></i>
+          </div>
+          <div class="item-card-body">
+            <p class="item-card-meta">Issuer · Month YYYY</p>
+            <h3>Certification Name</h3>
+            <p>Short description of what this certification covers and
+               what skills it demonstrates.</p>
+            <div class="item-card-tags" aria-label="Skills">
+              <span class="item-card-tag">Skill 1</span>
+              <span class="item-card-tag">Skill 2</span>
+            </div>
+            <a class="item-card-link" href="#" aria-label="Verify Certification Name (opens issuer site in a new tab)" target="_blank" rel="noopener">
+              Verify credential <span class="sr-only">(opens in a new tab)</span> <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="item-card">
+          <div class="item-card-cover" aria-hidden="true">
+            <i class="ph ph-medal"></i>
+          </div>
+          <div class="item-card-body">
+            <p class="item-card-meta">Issuer · Month YYYY</p>
+            <h3>Certification Name</h3>
+            <p>Short description of what this certification covers and
+               what skills it demonstrates.</p>
+            <div class="item-card-tags" aria-label="Skills">
+              <span class="item-card-tag">Skill 1</span>
+              <span class="item-card-tag">Skill 2</span>
+            </div>
+            <a class="item-card-link" href="#" target="_blank" rel="noopener">
+              Verify credential <span class="sr-only">(opens in a new tab)</span> <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="item-card">
+          <div class="item-card-cover" aria-hidden="true">
+            <i class="ph ph-graduation-cap"></i>
+          </div>
+          <div class="item-card-body">
+            <p class="item-card-meta">Issuer · Month YYYY</p>
+            <h3>Certification Name</h3>
+            <p>Short description of what this certification covers and
+               what skills it demonstrates.</p>
+            <div class="item-card-tags" aria-label="Skills">
+              <span class="item-card-tag">Skill 1</span>
+              <span class="item-card-tag">Skill 2</span>
+            </div>
+            <a class="item-card-link" href="#" target="_blank" rel="noopener">
+              Verify credential <span class="sr-only">(opens in a new tab)</span> <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <p style="margin-top:32px;"><a href="index.html"><span aria-hidden="true">← </span>Back to home</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Your Name · ITE 170 · NOVA Annandale</p>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
